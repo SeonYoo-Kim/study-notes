@@ -64,7 +64,7 @@ h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(28px, 7vw
 .tabs::-webkit-scrollbar { display: none; }
 .tab { font: inherit; font-weight: 600; font-size: 14px; border: 0; background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; }
 .tab[aria-selected="true"] { background: var(--sheet); color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / .12); }
-.quiz { margin-left: auto; font: inherit; font-size: 14px; font-weight: 600; border: 1.5px solid var(--omr); color: var(--omr); background: transparent; border-radius: 999px; padding: 5px 14px; cursor: pointer; }
+.quiz { flex: none; white-space: nowrap; margin-left: auto; font: inherit; font-size: 14px; font-weight: 600; border: 1.5px solid var(--omr); color: var(--omr); background: transparent; border-radius: 999px; padding: 5px 14px; cursor: pointer; }
 .quiz[aria-pressed="true"] { background: var(--omr); color: var(--sheet); }
 .timer { margin-left: auto; font-family: var(--f-mono); font-variant-numeric: tabular-nums; min-width: 4.6em; }
 .timer + .quiz { margin-left: 0; }
@@ -81,6 +81,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--omr); outline-o
 .doc { display: grid; gap: 14px; padding-top: 18px; }
 .sec { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 16px 8px; min-width: 0; scroll-margin-top: 120px; }
 .sec.intro { background: transparent; border: 0; padding: 0; }
+.sec blockquote { margin: 8px 0; border-left: 3px solid var(--rule); padding: 2px 0 2px 12px; color: var(--muted); font-size: 14.5px; }
+.sec blockquote p { margin: 4px 0; }
 .sec.intro blockquote { margin: 0; border-left: 3px solid var(--omr); padding: 2px 0 2px 14px; color: var(--muted); font-size: 14px; }
 .sec.intro blockquote p { margin: 4px 0; }
 h2 { font-family: var(--f-display); font-weight: 800; font-size: 22px; line-height: 1.35; margin: 0 0 10px; text-wrap: balance; }
