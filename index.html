@@ -131,6 +131,7 @@ h2 + .q { border-top: 0; padding-top: 0; margin-top: 8px; }
 .ch > span { flex: 1; min-width: 0; }
 .ch:hover { border-color: var(--muted); }
 .choices.done .ch { cursor: default; }
+.choices.done .ch.sel { cursor: pointer; }
 .ch.sel { border-color: var(--ink); }
 .ch.right { border-color: var(--ok); background: var(--ok-soft); }
 .ch.wrong { border-color: var(--omr); background: var(--omr-soft); text-decoration: line-through; }
@@ -172,6 +173,7 @@ h2 + .q { border-top: 0; padding-top: 0; margin-top: 8px; }
       <button class="quiz" id="quiz" aria-pressed="false">가리기</button>
     </div>
     <nav class="chips" id="chips"></nav>
+    <div class="hint" id="hint2">보기를 누르면 채점된다. 고른 보기를 다시 누르면 그 문제만 되돌리고, 절 제목의 초기화는 그 절 전체를 지운다. 답은 이 브라우저에 저장된다.</div>
     <div class="hint" id="hint" hidden>외울 것만 가려졌어. 누르면 하나씩 보인다.</div>
   </div>
 
@@ -4055,6 +4057,7 @@ t[0] = 5
     });
     store('lofa-tab', key);
     if (window.__setTimer) window.__setTimer(key);
+    var h2 = document.getElementById('hint2'); if (h2) h2.hidden = !(key === 'drill' || key === 'csdrill');
   }
   tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.part); window.scrollTo(0, 0); }); });
   var h = (location.hash || '').slice(1);
@@ -4130,7 +4133,12 @@ t[0] = 5
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('.ch');
     if (b) {
-      var box = b.parentNode; if (box.classList.contains('done')) return;
+      var box = b.parentNode;
+      if (box.classList.contains('done')) {
+        // 이미 고른 보기를 다시 누르면 그 문제만 되돌린다
+        if (b.classList.contains('sel')) { delete ans[box.dataset.q]; saveAns(); paint(box); scoreOf(box.closest('.sec')); }
+        return;
+      }
       ans[box.dataset.q] = b.dataset.n; saveAns(); paint(box); scoreOf(box.closest('.sec')); return;
     }
     var r = e.target.closest && e.target.closest('.reset');
