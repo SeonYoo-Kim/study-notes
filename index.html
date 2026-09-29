@@ -60,8 +60,9 @@ h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(28px, 7vw
 /* sticky bar */
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); margin-inline: -16px; padding-inline: 16px; }
 .row { display: flex; align-items: center; gap: 8px; padding-block: 10px 6px; }
-.tabs { display: flex; gap: 4px; background: var(--code-bg); border-radius: 8px; padding: 3px; }
-.tab { font: inherit; font-weight: 600; font-size: 15px; border: 0; background: transparent; color: var(--muted); padding: 6px 16px; border-radius: 6px; cursor: pointer; }
+.tabs { display: flex; gap: 2px; background: var(--code-bg); border-radius: 8px; padding: 3px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { font: inherit; font-weight: 600; font-size: 14px; border: 0; background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; }
 .tab[aria-selected="true"] { background: var(--sheet); color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / .12); }
 .quiz { margin-left: auto; font: inherit; font-size: 14px; font-weight: 600; border: 1.5px solid var(--omr); color: var(--omr); background: transparent; border-radius: 999px; padding: 5px 14px; cursor: pointer; }
 .quiz[aria-pressed="true"] { background: var(--omr); color: var(--sheet); }
@@ -168,7 +169,7 @@ h2 + .q { border-top: 0; padding-top: 0; margin-top: 8px; }
 
   <div class="bar">
     <div class="row">
-      <div class="tabs" role="tablist"><button class="tab" role="tab" id="tab-cs" data-part="cs" aria-selected="true">전공</button><button class="tab" role="tab" id="tab-ncs" data-part="ncs" aria-selected="false">NCS</button><button class="tab" role="tab" id="tab-drill" data-part="drill" aria-selected="false">NCS 연습</button><button class="tab" role="tab" id="tab-csdrill" data-part="csdrill" aria-selected="false">전공 연습</button></div>
+      <div class="tabs" role="tablist"><button class="tab" role="tab" id="tab-cs" data-part="cs" aria-selected="true">전공</button><button class="tab" role="tab" id="tab-ncs" data-part="ncs" aria-selected="false">NCS</button><button class="tab" role="tab" id="tab-drill" data-part="drill" aria-selected="false">NCS 연습</button><button class="tab" role="tab" id="tab-csdrill" data-part="csdrill" aria-selected="false">전공 연습</button><button class="tab" role="tab" id="tab-kh" data-part="kh" aria-selected="false">한국사</button></div>
       <button class="quiz timer" id="timer" aria-pressed="false" title="누르면 시작/정지, 두 번 누르면 초기화">70:00</button>
       <button class="quiz" id="quiz" aria-pressed="false">가리기</button>
     </div>
@@ -935,7 +936,7 @@ OS/네트워크/보안은 범위에 명시되지 않았지만 "전산학 일반"
 <li>신분증, 수험표, 컴퓨터용 사인펜, 수정테이프, <strong>아날로그 손목시계</strong>(시험장에 시계 없을 수 있음. 전자시계 금지일 수 있으니 안내문 확인)</li>
 <li>계산기는 대개 금지. 연습 때도 쓰지 않는다</li>
 <li>시험 안내문에서 확인할 것: <strong>오답 감점</strong>, 과락 기준, 영역별 문항 수, 입실 시각</li>
-</ul></section></article></div><div class="part" id="part-drill" data-part="drill" hidden><nav class="chips" aria-label="NCS 연습 목차"><a class="chip" href="#drill-1">진단</a><a class="chip" href="#drill-2">의사소통</a><a class="chip" href="#drill-3">수리</a><a class="chip" href="#drill-4">문제해결</a><a class="chip" href="#drill-5">자원관리</a><a class="chip" href="#drill-6">조직이해</a><a class="chip" href="#drill-7">모의 1회</a><a class="chip" href="#drill-8">모의 2회</a></nav><article class="doc"><section class="sec noquiz" id="drill-1"><h2>NCS 연습문제 40제 (2026-09-29 작성)</h2>
+</ul></section></article></div><div class="part" id="part-drill" data-part="drill" hidden><nav class="chips" aria-label="NCS 연습 목차"><a class="chip" href="#drill-1">진단</a><a class="chip" href="#drill-2">의사소통</a><a class="chip" href="#drill-3">수리</a><a class="chip" href="#drill-4">문제해결</a><a class="chip" href="#drill-5">자원관리</a><a class="chip" href="#drill-6">조직이해</a><a class="chip" href="#drill-7">모의 1회</a><a class="chip" href="#drill-8">모의 2회</a><a class="chip" href="#drill-9">정보능력</a></nav><article class="doc"><section class="sec noquiz" id="drill-1"><h2>NCS 연습문제 40제 (2026-09-29 작성)</h2>
 <blockquote>
 <p>지방재정공제회 필기 10/11 대비. 5개 영역 피듈형(모듈 이론 + PSAT식 풀이) 자작 문제.
 문제마다 목표 시간이 있다. <strong>70초 안에 못 풀면 넘기는 연습</strong>까지가 목표다.
@@ -3119,6 +3120,105 @@ D: "B의 말은 거짓이다."</p>
 <p class="q"><strong>문 260.</strong> 사업별 조직의 단점으로 가장 적절한 것은?</p>
 <div class="choices" data-q="drill-260" data-ans="2"><button type="button" class="ch" data-n="1">①<span>환경 변화에 느리게 대응한다.</span></button><button type="button" class="ch" data-n="2">②<span>사업부마다 기능이 중복되어 자원이 낭비된다.</span></button><button type="button" class="ch" data-n="3">③<span>전문성이 지나치게 높아진다.</span></button><button type="button" class="ch" data-n="4">④<span>의사결정이 지나치게 집중된다.</span></button></div>
 <details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+</section><section class="sec noquiz" id="drill-9"><h2>정보능력 드릴 15제 (문 261~275)</h2>
+<blockquote>
+<p>KTL 필기(10/10)는 조직이해 대신 <strong>정보능력</strong>이 들어간다. 엑셀 함수, 컴퓨터 일반, 정보 윤리, 정보 검색이 나온다. 전산 전공자에게는 쉬운 영역이라 여기서 다 맞혀야 한다.</p>
+</blockquote>
+<h3>정보능력 요약</h3>
+<ul>
+<li><strong>정보의 가공 단계</strong>: 자료(data) → 정보(information) → 지식(knowledge). 자료는 가공 전 사실, 정보는 목적에 맞게 가공한 것, 지식은 정보를 일반화한 것</li>
+<li><strong>정보 처리 절차</strong>: 기획(5W2H) → 수집 → 관리 → 활용. 5W2H = What, Where, When, Who, Why, How, <strong>How much</strong></li>
+<li><strong>정보 검색 연산자</strong>: AND(<code>*</code>, <code>&amp;</code>), OR(<code>|</code>, <code>+</code>), NOT(<code>-</code>, <code>!</code>), 인접 검색(<code>~</code>, near)</li>
+<li><strong>엑셀 함수 단골</strong></li>
+</ul>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>함수</th>
+<th>기능</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="함수">SUM, AVERAGE, MAX, MIN</td><td data-label="기능">합, 평균, 최대, 최소</td></tr>
+<tr><td data-label="함수">COUNT / COUNTA / COUNTBLANK</td><td data-label="기능">숫자 셀 수 / 비어 있지 않은 셀 수 / 빈 셀 수</td></tr>
+<tr><td data-label="함수">SUMIF, COUNTIF, AVERAGEIF</td><td data-label="기능">조건에 맞는 것만</td></tr>
+<tr><td data-label="함수">IF(조건, 참, 거짓)</td><td data-label="기능">조건 분기</td></tr>
+<tr><td data-label="함수">VLOOKUP(찾을값, 범위, 열 번호, FALSE)</td><td data-label="기능">세로 표에서 찾기. FALSE(0)는 정확히 일치</td></tr>
+<tr><td data-label="함수">RANK(값, 범위, 0)</td><td data-label="기능">순위. 0 또는 생략은 내림차순(큰 값이 1등)</td></tr>
+<tr><td data-label="함수">ROUND(값, 자릿수) / ROUNDDOWN / ROUNDUP</td><td data-label="기능">반올림 / 내림 / 올림. 자릿수 −1은 십의 자리</td></tr>
+<tr><td data-label="함수">LEFT, RIGHT, MID</td><td data-label="기능">문자열 잘라내기</td></tr>
+<tr><td data-label="함수">INDEX, MATCH</td><td data-label="기능">위치로 값 찾기, 값의 위치 찾기</td></tr>
+<tr><td data-label="함수"><code>$A$1</code></td><td data-label="기능">절대 참조. 복사해도 고정</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>컴퓨터 일반</strong>: CPU(제어 장치, 연산 장치, 레지스터), 주기억장치 RAM(휘발성)과 ROM(비휘발성), 보조기억장치 SSD와 HDD, 캐시는 CPU와 RAM 사이 / 1바이트 = 8비트, KB → MB → GB → TB / 운영체제(Windows, Linux), 응용 소프트웨어, 유틸리티 / 압축(ZIP), 확장자</li>
+<li><strong>인터넷과 보안</strong>: URL 구조(프로토콜://도메인/경로), IP 주소와 도메인, DNS / 피싱(가짜 사이트로 정보 탈취), 스미싱(문자), 파밍(DNS 변조), 랜섬웨어(암호화 후 금전 요구), 스푸핑, 스니핑 / 백신, 방화벽, 이중 인증</li>
+<li><strong>정보 윤리와 개인정보</strong>: 저작권(공표 후 저작자 사후 70년), 소프트웨어 라이선스(프리웨어, 셰어웨어, 오픈소스), 개인정보 수집은 최소한, 목적 외 이용 금지, 파기 의무 / 사이버 폭력, 저작권 침해, 불법 복제는 위법</li>
+<li><strong>단위와 진법</strong>: 1KB = 1,024B(또는 1,000B), 2진수 1010 = 10, 16진수 FF = 255</li>
+<li><strong>정보 관리 방법</strong>: 목록(색인), 분류(주제별, 시간별), 분석(SWOT 등)</li>
+</ul>
+<h3>정보능력 드릴</h3>
+<p class="q"><strong>문 261.</strong> 자료, 정보, 지식의 관계로 옳은 것은?</p>
+<div class="choices" data-q="drill-261" data-ans="2"><button type="button" class="ch" data-n="1">①<span>정보를 가공하면 자료가 된다.</span></button><button type="button" class="ch" data-n="2">②<span>자료를 목적에 맞게 가공하면 정보가 되고, 정보를 일반화하면 지식이 된다.</span></button><button type="button" class="ch" data-n="3">③<span>지식은 가공되지 않은 사실이다.</span></button><button type="button" class="ch" data-n="4">④<span>세 용어는 같은 뜻이다.</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 262.</strong> 정보 기획의 5W2H에서 2H는?</p>
+<div class="choices" data-q="drill-262" data-ans="1"><button type="button" class="ch" data-n="1">①<span>How, How much</span></button><button type="button" class="ch" data-n="2">②<span>How, How many</span></button><button type="button" class="ch" data-n="3">③<span>Hour, How</span></button><button type="button" class="ch" data-n="4">④<span>How, Human</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 263.</strong> 검색 엔진에서 "정보처리기사"는 포함하고 "실기"는 제외하려 할 때 쓰는 연산자는?</p>
+<div class="choices" data-q="drill-263" data-ans="3"><button type="button" class="ch" data-n="1">①<span>정보처리기사 AND 실기</span></button><button type="button" class="ch" data-n="2">②<span>정보처리기사 OR 실기</span></button><button type="button" class="ch" data-n="3">③<span>정보처리기사 NOT 실기</span></button><button type="button" class="ch" data-n="4">④<span>정보처리기사 NEAR 실기</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 기호로는 <code>정보처리기사 -실기</code>.</p>
+</details>
+<p class="q"><strong>문 264.</strong> 엑셀에서 A1:A10 중 80 이상인 셀의 개수를 구하는 수식은?</p>
+<div class="choices" data-q="drill-264" data-ans="2"><button type="button" class="ch" data-n="1">①<span>=COUNT(A1:A10, "&gt;=80")</span></button><button type="button" class="ch" data-n="2">②<span>=COUNTIF(A1:A10, "&gt;=80")</span></button><button type="button" class="ch" data-n="3">③<span>=SUMIF(A1:A10, "&gt;=80")</span></button><button type="button" class="ch" data-n="4">④<span>=IF(A1:A10&gt;=80, 1, 0)</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 265.</strong> 엑셀 =VLOOKUP("김", A2:C10, 3, FALSE)의 의미는?</p>
+<div class="choices" data-q="drill-265" data-ans="2"><button type="button" class="ch" data-n="1">①<span>A2:C10의 3행에서 "김"을 찾는다.</span></button><button type="button" class="ch" data-n="2">②<span>A열에서 "김"을 정확히 찾아 같은 행의 세 번째 열(C열) 값을 돌려준다.</span></button><button type="button" class="ch" data-n="3">③<span>"김"과 비슷한 값을 찾는다.</span></button><button type="button" class="ch" data-n="4">④<span>C열에서 "김"을 찾아 A열 값을 돌려준다.</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> FALSE는 정확히 일치. 찾을 값은 범위의 첫 열에 있어야 한다.</p>
+</details>
+<p class="q"><strong>문 266.</strong> 엑셀 =ROUND(1234.567, -1)의 결과는?</p>
+<div class="choices" data-q="drill-266" data-ans="3"><button type="button" class="ch" data-n="1">①<span>1234.6</span></button><button type="button" class="ch" data-n="2">②<span>1235</span></button><button type="button" class="ch" data-n="3">③<span>1230</span></button><button type="button" class="ch" data-n="4">④<span>1200</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 자릿수 −1은 십의 자리로 반올림.</p>
+</details>
+<p class="q"><strong>문 267.</strong> 엑셀 =RANK(B2, $B$2:$B$10)에서 $ 기호의 역할은?</p>
+<div class="choices" data-q="drill-267" data-ans="2"><button type="button" class="ch" data-n="1">①<span>셀을 잠근다</span></button><button type="button" class="ch" data-n="2">②<span>수식을 복사해도 범위가 고정된다(절대 참조)</span></button><button type="button" class="ch" data-n="3">③<span>금액 서식을 적용한다</span></button><button type="button" class="ch" data-n="4">④<span>오류를 무시한다</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 268.</strong> 셀 A1이 "합격", A2가 빈칸, A3이 90일 때 =COUNTA(A1:A3)과 =COUNT(A1:A3)의 결과는?</p>
+<div class="choices" data-q="drill-268" data-ans="2"><button type="button" class="ch" data-n="1">①<span>3, 1</span></button><button type="button" class="ch" data-n="2">②<span>2, 1</span></button><button type="button" class="ch" data-n="3">③<span>2, 2</span></button><button type="button" class="ch" data-n="4">④<span>3, 3</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> COUNTA는 비어 있지 않은 셀(2개), COUNT는 숫자 셀(1개).</p>
+</details>
+<p class="q"><strong>문 269.</strong> 전원이 꺼지면 내용이 사라지는 기억장치는?</p>
+<div class="choices" data-q="drill-269" data-ans="2"><button type="button" class="ch" data-n="1">①<span>ROM</span></button><button type="button" class="ch" data-n="2">②<span>RAM</span></button><button type="button" class="ch" data-n="3">③<span>SSD</span></button><button type="button" class="ch" data-n="4">④<span>HDD</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 270.</strong> 2진수 1011을 10진수로 바꾸면?</p>
+<div class="choices" data-q="drill-270" data-ans="3"><button type="button" class="ch" data-n="1">①<span>9</span></button><button type="button" class="ch" data-n="2">②<span>10</span></button><button type="button" class="ch" data-n="3">③<span>11</span></button><button type="button" class="ch" data-n="4">④<span>13</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 8 + 0 + 2 + 1.</p>
+</details>
+<p class="q"><strong>문 271.</strong> 문자 메시지로 악성 링크를 보내 개인정보를 빼내는 수법은?</p>
+<div class="choices" data-q="drill-271" data-ans="2"><button type="button" class="ch" data-n="1">①<span>피싱</span></button><button type="button" class="ch" data-n="2">②<span>스미싱</span></button><button type="button" class="ch" data-n="3">③<span>파밍</span></button><button type="button" class="ch" data-n="4">④<span>스니핑</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> SMS + 피싱. 파밍은 정상 주소를 입력해도 가짜 사이트로 가게 DNS를 조작한다.</p>
+</details>
+<p class="q"><strong>문 272.</strong> 파일을 암호화한 뒤 복구 대가로 금전을 요구하는 악성 코드는?</p>
+<div class="choices" data-q="drill-272" data-ans="3"><button type="button" class="ch" data-n="1">①<span>웜</span></button><button type="button" class="ch" data-n="2">②<span>트로이 목마</span></button><button type="button" class="ch" data-n="3">③<span>랜섬웨어</span></button><button type="button" class="ch" data-n="4">④<span>스파이웨어</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 273.</strong> 개인정보 보호 원칙으로 옳지 않은 것은?</p>
+<div class="choices" data-q="drill-273" data-ans="3"><button type="button" class="ch" data-n="1">①<span>수집 목적에 필요한 최소한만 수집한다.</span></button><button type="button" class="ch" data-n="2">②<span>목적이 달성되면 지체 없이 파기한다.</span></button><button type="button" class="ch" data-n="3">③<span>수집한 개인정보는 다른 목적에도 자유롭게 쓸 수 있다.</span></button><button type="button" class="ch" data-n="4">④<span>정보 주체의 동의를 받는다.</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 274.</strong> 저작권에 대한 설명으로 옳은 것은?</p>
+<div class="choices" data-q="drill-274" data-ans="2"><button type="button" class="ch" data-n="1">①<span>인터넷에 올라온 자료는 자유롭게 써도 된다.</span></button><button type="button" class="ch" data-n="2">②<span>저작권은 저작자 사후 70년까지 보호된다.</span></button><button type="button" class="ch" data-n="3">③<span>출처를 밝히면 어떤 자료든 복제할 수 있다.</span></button><button type="button" class="ch" data-n="4">④<span>소프트웨어는 저작권 대상이 아니다.</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 275.</strong> URL <code>https://www.example.go.kr/notice/list.do</code>에서 프로토콜은?</p>
+<div class="choices" data-q="drill-275" data-ans="2"><button type="button" class="ch" data-n="1">①<span>www</span></button><button type="button" class="ch" data-n="2">②<span>https</span></button><button type="button" class="ch" data-n="3">③<span>example.go.kr</span></button><button type="button" class="ch" data-n="4">④<span>list.do</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
 </details></section></article></div><div class="part" id="part-csdrill" data-part="csdrill" hidden><nav class="chips" aria-label="전공 연습 목차"><a class="chip" href="#csdrill-1">소프트웨어공학</a><a class="chip" href="#csdrill-2">데이터베이스</a><a class="chip" href="#csdrill-3">프로그래밍과 자료구조</a><a class="chip" href="#csdrill-4">인공지능개론</a><a class="chip" href="#csdrill-5">전공 모의</a></nav><article class="doc"><section class="sec noquiz" id="csdrill-1"><h2>소프트웨어공학 드릴 30제 (문 1~30)</h2>
 <blockquote>
 <p>요약본 <code>cs-written-exam-summary.md</code> 1장 범위. 정보처리기사 필기 1, 2과목 수준. 목표 시간은 실전 80초 기준이다.</p>
@@ -4037,6 +4137,260 @@ t[0] = 5
 <p class="q"><strong>문 180.</strong> 서브넷 마스크가 255.255.255.192(/26)일 때 한 서브넷에서 사용 가능한 호스트 수는?</p>
 <div class="choices" data-q="csdrill-180" data-ans="2"><button type="button" class="ch" data-n="1">①<span>30</span></button><button type="button" class="ch" data-n="2">②<span>62</span></button><button type="button" class="ch" data-n="3">③<span>64</span></button><button type="button" class="ch" data-n="4">④<span>126</span></button></div>
 <details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 호스트 비트 6개 → 2⁶ − 2 = 62.</p>
+</details></section></article></div><div class="part" id="part-kh" data-part="kh" hidden><nav class="chips" aria-label="한국사 목차"><a class="chip" href="#kh-1">한국사 한 장 요약</a><a class="chip" href="#kh-2">한국사 연습</a></nav><article class="doc"><section class="sec" id="kh-1"><h2>한국사 한 장 요약 (공기업 필기 5문항용)</h2>
+<blockquote>
+<p>KTL 10/10 필기의 한국사 5문항 대비. 100점 중 5점이라 하루 이상 쓰지 않는다.
+공기업 한국사는 수능과 다르다. 사료 해석보다 <strong>시대 순서, 대표 인물과 업적, 근현대 사건 순서</strong>를 묻는다. 이 한 장에서 4문제를 노린다.</p>
+</blockquote>
+<h3>0. 시대 순서 (이것만은 외운다)</h3>
+<p>구석기 → 신석기 → 청동기 → 고조선 → 삼국(고구려, 백제, 신라) + 가야 → 통일신라와 발해(남북국) → 후삼국 → 고려 → 조선 → 개항기와 대한제국 → 일제강점기 → 대한민국</p>
+<h3>1. 선사와 고조선</h3>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>시대</th>
+<th>키워드</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="시대">구석기</td><td data-label="키워드">뗀석기, 주먹도끼, 동굴과 막집, 이동 생활</td></tr>
+<tr><td data-label="시대">신석기</td><td data-label="키워드">간석기, <strong>빗살무늬 토기</strong>, 농경 시작, 움집, 정착</td></tr>
+<tr><td data-label="시대">청동기</td><td data-label="키워드"><strong>비파형 동검</strong>, 고인돌, 민무늬 토기, 벼농사, 계급 발생</td></tr>
+<tr><td data-label="시대">고조선</td><td data-label="키워드">단군왕검(기원전 2333), <strong>8조법</strong>(살인, 상해, 절도), 위만 조선, 한 무제에 멸망(기원전 108)</td></tr>
+</tbody>
+</table></div>
+<h3>2. 삼국과 남북국</h3>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>나라</th>
+<th>대표 왕과 업적</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="나라">고구려</td><td data-label="대표 왕과 업적">소수림왕(불교 공인, 태학, 율령) / <strong>광개토대왕</strong>(영토 확장, 광개토대왕릉비) / 장수왕(평양 천도, 남진) / 을지문덕 살수대첩(612) / 연개소문</td></tr>
+<tr><td data-label="나라">백제</td><td data-label="대표 왕과 업적">근초고왕(전성기, 마한 정복, 고구려 고국원왕 전사) / 무령왕(무령왕릉, 22담로) / 성왕(사비 천도) / 계백 황산벌 / 멸망 660</td></tr>
+<tr><td data-label="나라">신라</td><td data-label="대표 왕과 업적">지증왕(국호 신라, 우산국) / <strong>법흥왕</strong>(불교 공인, 율령, 금관가야 병합) / <strong>진흥왕</strong>(한강 유역 확보, 순수비, 화랑도) / 김춘추와 김유신 / 삼국 통일 676(문무왕)</td></tr>
+<tr><td data-label="나라">가야</td><td data-label="대표 왕과 업적">금관가야(김해), 대가야(고령), 철 생산, 중앙집권 실패</td></tr>
+<tr><td data-label="나라">통일신라</td><td data-label="대표 왕과 업적">신문왕(9주 5소경, 국학, 관료전), 원효(불교 대중화)와 의상(화엄), 장보고(청해진), 골품제</td></tr>
+<tr><td data-label="나라">발해</td><td data-label="대표 왕과 업적">대조영 건국(698), 해동성국(선왕), 고구려 계승 의식</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>순서 문제 단골: 근초고왕(4C) → 광개토대왕, 장수왕(5C) → 진흥왕(6C) → 삼국 통일(7C)</li>
+</ul>
+<h3>3. 고려 (918~1392)</h3>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>인물</th>
+<th>업적</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="인물">태조 왕건</td><td data-label="업적">후삼국 통일(936), 훈요 10조, 북진 정책, 호족 포섭(사성 정책)</td></tr>
+<tr><td data-label="인물">광종</td><td data-label="업적"><strong>노비안검법, 과거제</strong> 실시, 왕권 강화</td></tr>
+<tr><td data-label="인물">성종</td><td data-label="업적">최승로 시무 28조, 유교 정치, 12목 설치</td></tr>
+<tr><td data-label="인물">서희</td><td data-label="업적">거란과 외교 담판으로 강동 6주 획득</td></tr>
+<tr><td data-label="인물">강감찬</td><td data-label="업적">귀주대첩(1019)</td></tr>
+<tr><td data-label="인물">무신정변</td><td data-label="업적">1170, 이후 최씨 무신 정권(최충헌, 교정도감)</td></tr>
+<tr><td data-label="인물">대몽 항쟁</td><td data-label="업적">강화도 천도, 삼별초, <strong>팔만대장경</strong></td></tr>
+<tr><td data-label="인물">공민왕</td><td data-label="업적">반원 개혁, 쌍성총관부 수복, 신돈 등용</td></tr>
+<tr><td data-label="인물">문화</td><td data-label="업적">고려청자(상감), <strong>직지심체요절</strong>(현존 최고 금속활자본, 1377), 삼국사기(김부식, 유교적) / 삼국유사(일연, 단군 신화 수록)</td></tr>
+</tbody>
+</table></div>
+<h3>4. 조선 (1392~1897)</h3>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>인물과 사건</th>
+<th>키워드</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="인물과 사건">태조 이성계</td><td data-label="키워드">위화도 회군(1388), 한양 천도</td></tr>
+<tr><td data-label="인물과 사건">태종</td><td data-label="키워드">6조 직계제, 호패법, 사병 혁파</td></tr>
+<tr><td data-label="인물과 사건"><strong>세종</strong></td><td data-label="키워드"><strong>훈민정음</strong>(1443 창제, 1446 반포), 집현전, 4군 6진, 측우기, 앙부일구, 농사직설</td></tr>
+<tr><td data-label="인물과 사건">세조</td><td data-label="키워드">계유정난, 6조 직계제 부활, 경국대전 편찬 시작</td></tr>
+<tr><td data-label="인물과 사건">성종</td><td data-label="키워드"><strong>경국대전 완성</strong>, 홍문관</td></tr>
+<tr><td data-label="인물과 사건">사화</td><td data-label="키워드">무오(연산군) → 갑자(연산군) → 기묘(중종, 조광조) → 을사(명종)</td></tr>
+<tr><td data-label="인물과 사건">임진왜란</td><td data-label="키워드">1592, <strong>이순신</strong>(한산도, 명량, 노량), 권율 행주대첩, 김시민 진주대첩, 의병 곽재우</td></tr>
+<tr><td data-label="인물과 사건">광해군</td><td data-label="키워드">중립 외교, 대동법 시작(경기도), 인조반정으로 폐위</td></tr>
+<tr><td data-label="인물과 사건">병자호란</td><td data-label="키워드">1636, 남한산성, 삼전도 굴욕</td></tr>
+<tr><td data-label="인물과 사건">영조</td><td data-label="키워드"><strong>탕평책</strong>, 균역법, 청계천 준설</td></tr>
+<tr><td data-label="인물과 사건">정조</td><td data-label="키워드">규장각, 장용영, <strong>수원 화성</strong>, 초계문신제, 신해통공</td></tr>
+<tr><td data-label="인물과 사건">세도 정치</td><td data-label="키워드">순조, 헌종, 철종. 삼정의 문란, 홍경래의 난(1811), 임술 농민 봉기(1862)</td></tr>
+<tr><td data-label="인물과 사건">실학</td><td data-label="키워드">유형원, 이익, <strong>정약용</strong>(목민심서, 경세유표, 거중기) / 박지원(열하일기), 박제가(북학의)</td></tr>
+<tr><td data-label="인물과 사건">기타</td><td data-label="키워드">대동법(공납을 쌀로), 균역법(군포 2필→1필), 훈련도감</td></tr>
+</tbody>
+</table></div>
+<h3>5. 개항기와 대한제국 (1863~1910)</h3>
+<p>순서로 외운다. <strong>흥선대원군 → 강화도조약 → 임오군란 → 갑신정변 → 동학과 갑오개혁 → 을미사변 → 아관파천 → 대한제국 → 을사늑약 → 국권 피탈</strong></p>
+<div class="tw cols-3"><table>
+<thead>
+<tr>
+<th>연도</th>
+<th>사건</th>
+<th>키워드</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="연도">1863~</td><td data-label="사건">흥선대원군</td><td data-label="키워드">경복궁 중건, 서원 철폐, 호포제, 통상 수교 거부, 척화비</td></tr>
+<tr><td data-label="연도">1866, 1871</td><td data-label="사건">병인양요(프랑스), 신미양요(미국)</td><td data-label="키워드">외규장각 도서, 척화비</td></tr>
+<tr><td data-label="연도"><strong>1876</strong></td><td data-label="사건"><strong>강화도조약</strong></td><td data-label="키워드">최초의 근대적 조약, 불평등(치외법권), 운요호 사건</td></tr>
+<tr><td data-label="연도">1882</td><td data-label="사건">임오군란</td><td data-label="키워드">구식 군대 차별, 청 개입</td></tr>
+<tr><td data-label="연도">1884</td><td data-label="사건"><strong>갑신정변</strong></td><td data-label="키워드">김옥균 급진 개화파, 3일 천하, 우정총국</td></tr>
+<tr><td data-label="연도">1894</td><td data-label="사건"><strong>동학농민운동</strong></td><td data-label="키워드">전봉준, 고부 봉기, 집강소, 우금치</td></tr>
+<tr><td data-label="연도">1894</td><td data-label="사건">갑오개혁</td><td data-label="키워드">신분제 폐지, 과거제 폐지, 홍범 14조</td></tr>
+<tr><td data-label="연도">1895</td><td data-label="사건">을미사변</td><td data-label="키워드">명성황후 시해, 단발령, 을미의병</td></tr>
+<tr><td data-label="연도">1896</td><td data-label="사건">아관파천, 독립협회</td><td data-label="키워드">서재필, 독립신문, 만민공동회</td></tr>
+<tr><td data-label="연도">1897</td><td data-label="사건"><strong>대한제국</strong></td><td data-label="키워드">고종 황제 즉위, 광무개혁, 구본신참</td></tr>
+<tr><td data-label="연도"><strong>1905</strong></td><td data-label="사건"><strong>을사늑약</strong></td><td data-label="키워드">외교권 박탈, 통감부, 을사의병</td></tr>
+<tr><td data-label="연도">1907</td><td data-label="사건">헤이그 특사, 고종 강제 퇴위, 군대 해산, 국채보상운동</td><td data-label="키워드"></td></tr>
+<tr><td data-label="연도">1909</td><td data-label="사건">안중근, 하얼빈에서 이토 히로부미 저격</td><td data-label="키워드"></td></tr>
+<tr><td data-label="연도">1910</td><td data-label="사건">국권 피탈(경술국치)</td><td data-label="키워드"></td></tr>
+</tbody>
+</table></div>
+<h3>6. 일제강점기 (1910~1945)</h3>
+<div class="tw cols-3"><table>
+<thead>
+<tr>
+<th>시기</th>
+<th>통치 방식</th>
+<th>저항</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="시기">1910년대</td><td data-label="통치 방식"><strong>무단 통치</strong>(헌병 경찰, 태형), 토지 조사 사업</td><td data-label="저항">비밀 결사(대한광복회)</td></tr>
+<tr><td data-label="시기"><strong>1919</strong></td><td data-label="통치 방식"><strong>3.1 운동</strong> → 문화 통치로 전환</td><td data-label="저항"><strong>대한민국 임시정부 수립(상하이, 1919. 4)</strong></td></tr>
+<tr><td data-label="시기">1920년대</td><td data-label="통치 방식">문화 통치(기만), 산미 증식 계획</td><td data-label="저항">봉오동 전투(홍범도), <strong>청산리 대첩</strong>(김좌진, 1920), 6.10 만세(1926), 신간회(1927), 광주 학생 항일 운동(1929)</td></tr>
+<tr><td data-label="시기">1930년대~</td><td data-label="통치 방식">민족 말살 통치(황국신민화, 창씨개명, 신사참배), 병참 기지화</td><td data-label="저항">윤봉길(1932, 상하이 훙커우), 이봉창, <strong>한국광복군</strong>(1940, 충칭), 조선어학회</td></tr>
+<tr><td data-label="시기">1945</td><td data-label="통치 방식">8.15 광복</td><td data-label="저항"></td></tr>
+</tbody>
+</table></div>
+<h3>7. 현대 (1945~)</h3>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>연도</th>
+<th>사건</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="연도">1945</td><td data-label="사건">광복, 미소 군정, 모스크바 3국 외상 회의(신탁 통치 논쟁)</td></tr>
+<tr><td data-label="연도">1948</td><td data-label="사건"><strong>5.10 총선거 → 7.17 제헌 헌법 → 8.15 대한민국 정부 수립</strong> (이승만)</td></tr>
+<tr><td data-label="연도">1950~53</td><td data-label="사건">6.25 전쟁, 인천 상륙 작전(9.15), 휴전 협정(1953. 7. 27)</td></tr>
+<tr><td data-label="연도">1960</td><td data-label="사건"><strong>4.19 혁명</strong> (3.15 부정 선거, 이승만 하야)</td></tr>
+<tr><td data-label="연도">1961</td><td data-label="사건">5.16 군사 정변</td></tr>
+<tr><td data-label="연도">1972</td><td data-label="사건">유신 헌법, 7.4 남북 공동 성명</td></tr>
+<tr><td data-label="연도">1979</td><td data-label="사건">10.26, 12.12</td></tr>
+<tr><td data-label="연도">1980</td><td data-label="사건"><strong>5.18 민주화 운동</strong></td></tr>
+<tr><td data-label="연도">1987</td><td data-label="사건"><strong>6월 민주 항쟁</strong> → 대통령 직선제 개헌(6.29 선언)</td></tr>
+<tr><td data-label="연도">1988</td><td data-label="사건">서울 올림픽</td></tr>
+<tr><td data-label="연도">1991</td><td data-label="사건">남북 기본 합의서, 남북 유엔 동시 가입</td></tr>
+<tr><td data-label="연도">2000</td><td data-label="사건">6.15 남북 공동 선언(첫 남북 정상 회담)</td></tr>
+</tbody>
+</table></div>
+<h3>8. 문화재와 기록물 (자주 나오는 것만)</h3>
+<ul>
+<li>유네스코 세계기록유산: 훈민정음 해례본, <strong>조선왕조실록</strong>, 직지심체요절, 승정원일기, 팔만대장경판, 동의보감, 일성록, 5.18 기록물, 난중일기, 새마을운동 기록물</li>
+<li>세계문화유산: 석굴암과 불국사, 해인사 장경판전, 종묘, 창덕궁, 수원 화성, 경주 역사 지구, 고인돌 유적, 조선 왕릉, 한국의 서원</li>
+<li>금속활자: 직지(1377, 현존 최고) / 목판: 무구정광대다라니경(현존 최고 목판 인쇄물, 통일신라)</li>
+</ul>
+<h3>풀이 요령</h3>
+<ol>
+<li>보기 4개 중 <strong>시대가 다른 것을 지운다.</strong> 세종과 광종이 한 보기에 있으면 그 보기는 틀렸다.</li>
+<li>인물이 나오면 <strong>나라와 세기</strong>부터 잡는다. 광개토대왕은 고구려 5세기, 진흥왕은 신라 6세기.</li>
+<li>근현대는 <strong>연도 순서</strong>를 묻는다. 강화도조약(1876) → 갑신정변(1884) → 동학(1894) → 을사늑약(1905) → 3.1운동(1919)만 확실히 하면 순서 문제는 다 맞는다.</li>
+<li>모르면 <strong>가장 유명한 것</strong>을 고른다. 5점짜리 시험은 지엽적으로 내지 않는다.</li>
+</ol>
+</section><section class="sec noquiz" id="kh-2"><h2>한국사 연습 20제 (문 1~20)</h2>
+<blockquote>
+<p>한 장 요약을 한 번 읽고 푼다. 공기업 5문항 수준이라 지엽적인 것은 없다. 목표 시간은 문항당 40초.</p>
+</blockquote>
+<h3>한국사 연습</h3>
+<p class="q"><strong>문 1.</strong> 다음 유물이 처음 등장한 시대는?</p>
+<blockquote>
+<p>빗살무늬 토기, 간석기, 움집</p>
+</blockquote>
+<div class="choices" data-q="kh-1" data-ans="2"><button type="button" class="ch" data-n="1">①<span>구석기</span></button><button type="button" class="ch" data-n="2">②<span>신석기</span></button><button type="button" class="ch" data-n="3">③<span>청동기</span></button><button type="button" class="ch" data-n="4">④<span>철기</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 구석기는 뗀석기, 청동기는 비파형 동검과 고인돌.</p>
+</details>
+<p class="q"><strong>문 2.</strong> 고조선의 8조법에서 알 수 있는 사실이 아닌 것은?</p>
+<div class="choices" data-q="kh-2" data-ans="4"><button type="button" class="ch" data-n="1">①<span>사람을 죽인 자는 사형에 처했다.</span></button><button type="button" class="ch" data-n="2">②<span>남을 다치게 하면 곡물로 배상했다.</span></button><button type="button" class="ch" data-n="3">③<span>도둑질한 자는 노비로 삼았다.</span></button><button type="button" class="ch" data-n="4">④<span>과거 시험으로 관리를 뽑았다.</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 과거제는 고려 광종 때다.</p>
+</details>
+<p class="q"><strong>문 3.</strong> 다음 왕들을 시대순으로 나열한 것은?</p>
+<div class="choices" data-q="kh-3" data-ans="1"><button type="button" class="ch" data-n="1">①<span>근초고왕 → 광개토대왕 → 진흥왕</span></button><button type="button" class="ch" data-n="2">②<span>진흥왕 → 근초고왕 → 광개토대왕</span></button><button type="button" class="ch" data-n="3">③<span>광개토대왕 → 진흥왕 → 근초고왕</span></button><button type="button" class="ch" data-n="4">④<span>근초고왕 → 진흥왕 → 광개토대왕</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 백제 전성기(4세기) → 고구려 전성기(5세기) → 신라 전성기(6세기).</p>
+</details>
+<p class="q"><strong>문 4.</strong> 신라 진흥왕의 업적은?</p>
+<div class="choices" data-q="kh-4" data-ans="2"><button type="button" class="ch" data-n="1">①<span>불교 공인</span></button><button type="button" class="ch" data-n="2">②<span>한강 유역 확보와 순수비 건립</span></button><button type="button" class="ch" data-n="3">③<span>삼국 통일</span></button><button type="button" class="ch" data-n="4">④<span>국호를 신라로 정함</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 불교 공인은 법흥왕, 삼국 통일은 문무왕, 국호는 지증왕.</p>
+</details>
+<p class="q"><strong>문 5.</strong> 살수대첩(612)에서 수나라 군대를 물리친 고구려 장군은?</p>
+<div class="choices" data-q="kh-5" data-ans="2"><button type="button" class="ch" data-n="1">①<span>연개소문</span></button><button type="button" class="ch" data-n="2">②<span>을지문덕</span></button><button type="button" class="ch" data-n="3">③<span>김유신</span></button><button type="button" class="ch" data-n="4">④<span>계백</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 6.</strong> 발해에 대한 설명으로 옳은 것은?</p>
+<div class="choices" data-q="kh-6" data-ans="1"><button type="button" class="ch" data-n="1">①<span>대조영이 건국했으며 고구려 계승 의식을 가졌다.</span></button><button type="button" class="ch" data-n="2">②<span>신라를 멸망시켰다.</span></button><button type="button" class="ch" data-n="3">③<span>한강 유역에 도읍했다.</span></button><button type="button" class="ch" data-n="4">④<span>왕건이 세웠다.</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 전성기에 해동성국이라 불렸다.</p>
+</details>
+<p class="q"><strong>문 7.</strong> 고려 광종의 정책은?</p>
+<div class="choices" data-q="kh-7" data-ans="1"><button type="button" class="ch" data-n="1">①<span>노비안검법과 과거제 실시</span></button><button type="button" class="ch" data-n="2">②<span>훈민정음 창제</span></button><button type="button" class="ch" data-n="3">③<span>대동법 실시</span></button><button type="button" class="ch" data-n="4">④<span>탕평책 실시</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> ②는 세종, ③은 광해군, ④는 영조.</p>
+</details>
+<p class="q"><strong>문 8.</strong> 거란의 침입 때 외교 담판으로 강동 6주를 얻은 인물은?</p>
+<div class="choices" data-q="kh-8" data-ans="2"><button type="button" class="ch" data-n="1">①<span>강감찬</span></button><button type="button" class="ch" data-n="2">②<span>서희</span></button><button type="button" class="ch" data-n="3">③<span>윤관</span></button><button type="button" class="ch" data-n="4">④<span>최영</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 강감찬은 귀주대첩.</p>
+</details>
+<p class="q"><strong>문 9.</strong> 현존하는 세계 최고(最古)의 금속 활자 인쇄본은?</p>
+<div class="choices" data-q="kh-9" data-ans="3"><button type="button" class="ch" data-n="1">①<span>팔만대장경</span></button><button type="button" class="ch" data-n="2">②<span>무구정광대다라니경</span></button><button type="button" class="ch" data-n="3">③<span>직지심체요절</span></button><button type="button" class="ch" data-n="4">④<span>조선왕조실록</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 1377년 고려. 무구정광대다라니경은 목판 인쇄물.</p>
+</details>
+<p class="q"><strong>문 10.</strong> 조선 세종의 업적이 아닌 것은?</p>
+<div class="choices" data-q="kh-10" data-ans="3"><button type="button" class="ch" data-n="1">①<span>훈민정음 창제</span></button><button type="button" class="ch" data-n="2">②<span>4군 6진 개척</span></button><button type="button" class="ch" data-n="3">③<span>경국대전 완성</span></button><button type="button" class="ch" data-n="4">④<span>측우기 제작</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 경국대전 완성은 성종.</p>
+</details>
+<p class="q"><strong>문 11.</strong> 임진왜란(1592) 때 활약한 인물이 아닌 것은?</p>
+<div class="choices" data-q="kh-11" data-ans="4"><button type="button" class="ch" data-n="1">①<span>이순신</span></button><button type="button" class="ch" data-n="2">②<span>권율</span></button><button type="button" class="ch" data-n="3">③<span>곽재우</span></button><button type="button" class="ch" data-n="4">④<span>강감찬</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 강감찬은 고려 시대 인물이다.</p>
+</details>
+<p class="q"><strong>문 12.</strong> 조선 영조와 정조에 대한 설명으로 옳은 것은?</p>
+<div class="choices" data-q="kh-12" data-ans="1"><button type="button" class="ch" data-n="1">①<span>영조는 탕평책을, 정조는 규장각과 수원 화성을 남겼다.</span></button><button type="button" class="ch" data-n="2">②<span>영조는 훈민정음을, 정조는 경국대전을 만들었다.</span></button><button type="button" class="ch" data-n="3">③<span>영조는 임진왜란을, 정조는 병자호란을 겪었다.</span></button><button type="button" class="ch" data-n="4">④<span>영조와 정조는 고려의 왕이다.</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 13.</strong> 정약용의 저서는?</p>
+<div class="choices" data-q="kh-13" data-ans="2"><button type="button" class="ch" data-n="1">①<span>열하일기</span></button><button type="button" class="ch" data-n="2">②<span>목민심서</span></button><button type="button" class="ch" data-n="3">③<span>북학의</span></button><button type="button" class="ch" data-n="4">④<span>동의보감</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 열하일기 박지원, 북학의 박제가, 동의보감 허준.</p>
+</details>
+<p class="q"><strong>문 14.</strong> 1876년 일본과 맺은 최초의 근대적 조약이자 불평등 조약은?</p>
+<div class="choices" data-q="kh-14" data-ans="1"><button type="button" class="ch" data-n="1">①<span>강화도조약</span></button><button type="button" class="ch" data-n="2">②<span>을사늑약</span></button><button type="button" class="ch" data-n="3">③<span>한성조약</span></button><button type="button" class="ch" data-n="4">④<span>제물포조약</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 15.</strong> 다음 사건을 순서대로 나열한 것은?</p>
+<div class="choices" data-q="kh-15" data-ans="2"><button type="button" class="ch" data-n="1">①<span>갑신정변 → 강화도조약 → 동학농민운동 → 을사늑약</span></button><button type="button" class="ch" data-n="2">②<span>강화도조약 → 갑신정변 → 동학농민운동 → 을사늑약</span></button><button type="button" class="ch" data-n="3">③<span>강화도조약 → 동학농민운동 → 갑신정변 → 을사늑약</span></button><button type="button" class="ch" data-n="4">④<span>을사늑약 → 강화도조약 → 갑신정변 → 동학농민운동</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 1876 → 1884 → 1894 → 1905.</p>
+</details>
+<p class="q"><strong>문 16.</strong> 1905년 을사늑약의 결과는?</p>
+<div class="choices" data-q="kh-16" data-ans="2"><button type="button" class="ch" data-n="1">①<span>대한제국 선포</span></button><button type="button" class="ch" data-n="2">②<span>외교권 박탈과 통감부 설치</span></button><button type="button" class="ch" data-n="3">③<span>갑오개혁 실시</span></button><button type="button" class="ch" data-n="4">④<span>3.1 운동 발생</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 17.</strong> 3.1 운동(1919)의 영향으로 옳은 것은?</p>
+<div class="choices" data-q="kh-17" data-ans="2"><button type="button" class="ch" data-n="1">①<span>강화도조약 체결</span></button><button type="button" class="ch" data-n="2">②<span>대한민국 임시정부 수립</span></button><button type="button" class="ch" data-n="3">③<span>갑신정변 발생</span></button><button type="button" class="ch" data-n="4">④<span>아관파천</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 1919년 4월 상하이. 일제는 무단 통치에서 문화 통치로 전환했다.</p>
+</details>
+<p class="q"><strong>문 18.</strong> 1920년 청산리 대첩을 이끈 인물은?</p>
+<div class="choices" data-q="kh-18" data-ans="2"><button type="button" class="ch" data-n="1">①<span>홍범도</span></button><button type="button" class="ch" data-n="2">②<span>김좌진</span></button><button type="button" class="ch" data-n="3">③<span>윤봉길</span></button><button type="button" class="ch" data-n="4">④<span>안중근</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 홍범도는 봉오동 전투, 윤봉길은 1932 훙커우 의거, 안중근은 1909 하얼빈.</p>
+</details>
+<p class="q"><strong>문 19.</strong> 대한민국 정부가 수립된 해는?</p>
+<div class="choices" data-q="kh-19" data-ans="2"><button type="button" class="ch" data-n="1">①<span>1945년</span></button><button type="button" class="ch" data-n="2">②<span>1948년</span></button><button type="button" class="ch" data-n="3">③<span>1950년</span></button><button type="button" class="ch" data-n="4">④<span>1953년</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 5.10 총선거 → 7.17 제헌 헌법 → 8.15 정부 수립.</p>
+</details>
+<p class="q"><strong>문 20.</strong> 다음 민주화 운동을 순서대로 나열한 것은?</p>
+<div class="choices" data-q="kh-20" data-ans="1"><button type="button" class="ch" data-n="1">①<span>4.19 혁명 → 5.18 민주화 운동 → 6월 민주 항쟁</span></button><button type="button" class="ch" data-n="2">②<span>5.18 민주화 운동 → 4.19 혁명 → 6월 민주 항쟁</span></button><button type="button" class="ch" data-n="3">③<span>6월 민주 항쟁 → 4.19 혁명 → 5.18 민주화 운동</span></button><button type="button" class="ch" data-n="4">④<span>4.19 혁명 → 6월 민주 항쟁 → 5.18 민주화 운동</span></button></div>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 1960 → 1980 → 1987.</p>
 </details></section></article></div>
 
   <p class="foot">원본: prep/cs-written-exam-summary.md, prep/ncs-intro.md (2026-09-29). ★ 표시는 빈출.</p>
@@ -4057,7 +4411,7 @@ t[0] = 5
     });
     store('lofa-tab', key);
     if (window.__setTimer) window.__setTimer(key);
-    var h2 = document.getElementById('hint2'); if (h2) h2.hidden = !(key === 'drill' || key === 'csdrill');
+    var h2 = document.getElementById('hint2'); if (h2) h2.hidden = !(key === 'drill' || key === 'csdrill' || key === 'kh');
   }
   tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.part); window.scrollTo(0, 0); }); });
   var h = (location.hash || '').slice(1);
