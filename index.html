@@ -3441,7 +3441,7 @@ D: "B의 말은 거짓이다."</p>
   }
   tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.part); window.scrollTo(0, 0); }); });
   var h = (location.hash || '').slice(1);
-  var start = (h === 'ncs' || h === 'cs') ? h : (store('lofa-tab') || 'cs');
+  var start = document.getElementById('part-' + h) ? h : (store('lofa-tab') || 'cs');
   if (!document.getElementById('part-' + start)) start = 'cs';
   show(start);
 
