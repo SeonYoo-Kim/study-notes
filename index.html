@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<title>지방재정 필기 노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Nanum+Myeongjo:wght@700;800&display=swap">
+<style>
+/* Layout: 시험지 한 장. 상단에 OMR식 시험 정보, 고정 탭(전공/NCS)과 목차 칩, 본문은 단일 칼럼 노트 */
+:root {
+  --paper: #f6f7f5;
+  --sheet: #ffffff;
+  --ink: #1c2126;
+  --muted: #5b646e;
+  --rule: #dde1de;
+  --omr: #c8385a;
+  --omr-soft: #fae6eb;
+  --code-bg: #eef0ed;
+  --f-display: "Nanum Myeongjo", "Batang", serif;
+  --f-body: "IBM Plex Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131518; --sheet: #1a1d21; --ink: #e6e8ea; --muted: #9aa2ab;
+    --rule: #2d3238; --omr: #ff7e97; --omr-soft: #3b2029; --code-bg: #23272c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131518; --sheet: #1a1d21; --ink: #e6e8ea; --muted: #9aa2ab;
+  --rule: #2d3238; --omr: #ff7e97; --omr-soft: #3b2029; --code-bg: #23272c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 0 64px; }
+
+/* header */
+.head { padding-block: 28px 18px; display: grid; gap: 14px; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; color: var(--omr); font-weight: 600; }
+h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(28px, 7vw, 40px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.slot { border: 1.5px solid var(--omr); border-radius: 4px; padding: 10px 12px; background: var(--sheet); display: grid; gap: 2px; min-width: 0; }
+.slot b { font-family: var(--f-mono); font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.slot span { font-size: 13px; color: var(--muted); }
+.bubbles { display: flex; gap: 6px; margin-top: 4px; }
+.bubbles i { width: 14px; height: 18px; border: 1.5px solid var(--omr); border-radius: 50%; display: block; }
+.bubbles i.on { background: var(--omr); }
+
+/* sticky bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); margin-inline: -16px; padding-inline: 16px; }
+.row { display: flex; align-items: center; gap: 8px; padding-block: 10px 6px; }
+.tabs { display: flex; gap: 4px; background: var(--code-bg); border-radius: 8px; padding: 3px; }
+.tab { font: inherit; font-weight: 600; font-size: 15px; border: 0; background: transparent; color: var(--muted); padding: 6px 16px; border-radius: 6px; cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--sheet); color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / .12); }
+.quiz { margin-left: auto; font: inherit; font-size: 14px; font-weight: 600; border: 1.5px solid var(--omr); color: var(--omr); background: transparent; border-radius: 999px; padding: 5px 14px; cursor: pointer; }
+.quiz[aria-pressed="true"] { background: var(--omr); color: var(--sheet); }
+.chips { display: flex; gap: 6px; overflow-x: auto; padding-block: 4px 10px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; font-size: 13px; color: var(--ink); text-decoration: none; border: 1px solid var(--rule); background: var(--sheet); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+.chip:active { border-color: var(--omr); }
+.part > .chips { display: none; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--omr); outline-offset: 2px; }
+
+/* document */
+.doc { display: grid; gap: 14px; padding-top: 18px; }
+.sec { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 16px 8px; min-width: 0; scroll-margin-top: 120px; }
+.sec.intro { background: transparent; border: 0; padding: 0; }
+.sec.intro blockquote { margin: 0; border-left: 3px solid var(--omr); padding: 2px 0 2px 14px; color: var(--muted); font-size: 14px; }
+.sec.intro blockquote p { margin: 4px 0; }
+h2 { font-family: var(--f-display); font-weight: 800; font-size: 22px; line-height: 1.35; margin: 0 0 10px; text-wrap: balance; }
+h3 { font-size: 17px; font-weight: 600; margin: 22px 0 6px; padding-top: 14px; border-top: 1px dashed var(--rule); }
+h2 + h3 { border-top: 0; padding-top: 0; margin-top: 8px; }
+p, ul, ol { margin: 8px 0; }
+ul, ol { padding-left: 1.2em; }
+li { margin: 3px 0; }
+li > ul { margin: 2px 0; }
+strong { font-weight: 600; background: linear-gradient(transparent 62%, var(--omr-soft) 62%); }
+code { font-family: var(--f-mono); font-size: .88em; background: var(--code-bg); border-radius: 3px; padding: 1px 5px; overflow-wrap: anywhere; }
+pre { background: var(--code-bg); border-radius: 6px; padding: 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; overflow-wrap: normal; font-size: 13px; }
+.star { color: var(--omr); }
+.tw { overflow-x: auto; margin: 10px 0; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; font-size: 14px; line-height: 1.5; min-width: 100%; }
+th, td { border-bottom: 1px solid var(--rule); padding: 7px 10px 7px 0; text-align: left; vertical-align: top; }
+th { font-weight: 600; color: var(--muted); font-size: 13px; white-space: nowrap; }
+td:first-child { white-space: nowrap; font-weight: 500; }
+
+/* 가리기 모드 */
+.hide-on strong { color: transparent; background: var(--omr-soft); border-radius: 3px; cursor: pointer; }
+.hide-on strong.shown { color: inherit; background: linear-gradient(transparent 62%, var(--omr-soft) 62%); }
+.hint { font-size: 13px; color: var(--muted); padding-bottom: 8px; }
+.foot { color: var(--muted); font-size: 13px; padding-top: 20px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">한국지방재정공제회 정보화 6급 필기</div>
+    <h1>10월 11일 필기 노트</h1>
+    <div class="meta">
+      <div class="slot"><b id="dday">D-12</b><span>2026. 10. 11.(일)</span></div>
+      <div class="slot"><b>60문항 70분</b><span>NCS, 문항당 70초</span></div>
+      <div class="slot"><b>60문항 80분</b><span>전공, 문항당 80초</span></div>
+    </div>
+  </header>
+
+  <div class="bar">
+    <div class="row">
+      <div class="tabs" role="tablist"><button class="tab" role="tab" id="tab-cs" data-part="cs" aria-selected="true">전공</button><button class="tab" role="tab" id="tab-ncs" data-part="ncs" aria-selected="false">NCS</button></div>
+      <button class="quiz" id="quiz" aria-pressed="false">가리기</button>
+    </div>
+    <nav class="chips" id="chips"></nav>
+    <div class="hint" id="hint" hidden>굵은 글씨가 가려졌어. 누르면 하나씩 보인다.</div>
+  </div>
+
+  <div class="part" id="part-cs" data-part="cs"><nav class="chips" aria-label="전공 목차"><a class="chip" href="#cs-1">0. 우선순위</a><a class="chip" href="#cs-2">1. 소프트웨어공학</a><a class="chip" href="#cs-3">2. 데이터베이스</a><a class="chip" href="#cs-4">3. 프로그래밍과 자료구조</a><a class="chip" href="#cs-5">4. AI 개론</a><a class="chip" href="#cs-6">부록 A. 운영체제</a><a class="chip" href="#cs-7">부록 B. 네트워크와 보안</a><a class="chip" href="#cs-8">공부 순서</a></nav><article class="doc"><section class="sec intro"><blockquote>
+<p>1차 용도: 지방재정공제회 정보화 필기 10/11(일) 직무수행능력 <strong>60문항 80분 = 문항당 80초</strong>.
+공고 출제범위: <strong>소프트웨어공학, 데이터베이스, 프로그래밍, AI의 기본 원리</strong> (과목명 "전산학 일반, 인공지능개론").
+OS/네트워크/보안은 범위에 명시되지 않았지만 "전산학 일반"이라 나올 수 있어 부록으로 줄여 넣었다.
+다른 공기업 전산 필기(SGI, 교직원공제회, 장학재단, 가스공사 등)에도 재사용한다.</p>
+<p>표기: <span class="star" aria-label="빈출">★</span> = 거의 매번 나오는 것. 계산 = 손으로 한 번 풀어볼 것.</p>
+</blockquote>
+
+</section><section class="sec" id="cs-1"><h2>0. 우선순위</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>과목</th>
+<th>예상 비중</th>
+<th>공부 방식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>데이터베이스</td>
+<td>높음</td>
+<td>정규화, SQL, 트랜잭션은 계산과 판별 문제가 확실히 나온다</td>
+</tr>
+<tr>
+<td>소프트웨어공학</td>
+<td>높음</td>
+<td>암기 비중이 가장 크다. 결합도, 응집도, 테스트, 패턴 순서를 외운다</td>
+</tr>
+<tr>
+<td>AI 개론</td>
+<td>중간</td>
+<td>석사 전공이라 딥러닝은 익숙하다. <strong>고전 AI(탐색, 논리)와 ML 평가지표 계산</strong>을 보강한다</td>
+</tr>
+<tr>
+<td>프로그래밍</td>
+<td>중간</td>
+<td>코드 출력 추적 문제. C 포인터, Java 상속/오버라이딩, Python 슬라이싱</td>
+</tr>
+<tr>
+<td>OS/네트워크/보안</td>
+<td>낮음</td>
+<td>부록. 시간 남으면</td>
+</tr>
+</tbody>
+</table></div>
+<p>비중은 추정이다(출제 대행사, 과목별 문항 수 비공개).</p>
+
+</section><section class="sec" id="cs-2"><h2>1. 소프트웨어공학</h2>
+<h3>1-1. 개발 생명주기 모델</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>모델</th>
+<th>핵심</th>
+<th>키워드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>폭포수</td>
+<td>단계를 순서대로, 되돌아가기 어려움</td>
+<td>고전적, 선형 순차, 문서 중심</td>
+</tr>
+<tr>
+<td>프로토타입</td>
+<td>견본을 먼저 만들어 요구사항 확인</td>
+<td>요구사항 불명확할 때</td>
+</tr>
+<tr>
+<td>나선형(Boehm)</td>
+<td>반복마다 <strong>위험 분석</strong></td>
+<td>계획 → 위험분석 → 개발 → 고객평가</td>
+</tr>
+<tr>
+<td>반복/점진</td>
+<td>기능을 나눠 여러 번 인도</td>
+<td></td>
+</tr>
+<tr>
+<td>애자일</td>
+<td>짧은 주기, 고객 협업, 변화 수용</td>
+<td>XP, 스크럼, 칸반</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>애자일 선언 4가치</strong>: 프로세스와 도구보다 <strong>개인과 상호작용</strong>, 포괄적 문서보다 <strong>작동하는 소프트웨어</strong>, 계약 협상보다 <strong>고객 협력</strong>, 계획 준수보다 <strong>변화 대응</strong></li>
+<li><strong>XP 5가치</strong>: 용기, 단순성, 의사소통, 피드백, 존중. 실천: 짝 프로그래밍, TDD, 지속적 통합, 리팩토링, 작은 릴리즈</li>
+<li><strong>스크럼</strong>: 제품 책임자(PO, 백로그 우선순위), 스크럼 마스터(장애 제거, 코치), 개발팀 / 스프린트(보통 2~4주), 일일 스크럼(15분), 스프린트 리뷰, 회고 / 번다운 차트</li>
+<li><strong>V 모델</strong> <span class="star" aria-label="빈출">★</span>: 요구분석 ↔ 인수 테스트, 시스템 설계 ↔ 시스템 테스트, 상세 설계 ↔ 통합 테스트, 코딩 ↔ 단위 테스트</li>
+</ul>
+<h3>1-2. 요구사항</h3>
+<ul>
+<li><strong>기능 요구사항</strong>: 시스템이 무엇을 하는가 / <strong>비기능</strong>: 성능, 보안, 가용성, 사용성 등 품질과 제약</li>
+<li>개발 절차: 도출 → 분석 → 명세 → 확인(검증)</li>
+<li>도출 기법: 인터뷰, 브레인스토밍, 설문, 프로토타이핑, 유스케이스, JAD(공동 설계 워크숍)</li>
+<li>구조적 분석 도구: <strong>DFD</strong>(자료 흐름도: 프로세스, 자료흐름, 자료저장소, 단말), <strong>DD</strong>(자료 사전), 소단위 명세서, STD(상태 전이도)</li>
+<li>자료 사전 기호: <code>=</code> 정의, <code>+</code> 연결, <code>[ | ]</code> 선택, <code>{ }</code> 반복, <code>( )</code> 생략 가능, <code>* *</code> 주석</li>
+</ul>
+<h3>1-3. UML <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>구조(정적)</strong>: 클래스, 객체, 컴포넌트, 배치, 복합체 구조, 패키지</li>
+<li><strong>행위(동적)</strong>: 유스케이스, <strong>시퀀스</strong>, 커뮤니케이션, 상태, 활동, 타이밍</li>
+<li>관계
+  | 관계 | 의미 | 표기 |
+  |---|---|---|
+  | 연관 | 서로 관련 | 실선 |
+  | 집합(Aggregation) | 전체와 부분, <strong>부분이 독립적으로 존재 가능</strong> | 빈 마름모 |
+  | 합성(Composition) | 전체와 부분, <strong>전체가 사라지면 부분도 사라짐</strong> | 채운 마름모 |
+  | 일반화 | 상속 (is-a) | 빈 삼각형 실선 |
+  | 실체화 | 인터페이스 구현 | 빈 삼각형 점선 |
+  | 의존 | 잠깐 사용 (매개변수 등) | 점선 화살표 |</li>
+<li>유스케이스 관계: <strong>include</strong>(반드시 포함), <strong>extend</strong>(조건부 확장)</li>
+</ul>
+<h3>1-4. 모듈 설계: 결합도와 응집도 <span class="star" aria-label="빈출">★</span><span class="star" aria-label="빈출">★</span> (순서 문제 단골)</h3>
+<ul>
+<li>좋은 설계 = <strong>결합도는 낮게, 응집도는 높게</strong></li>
+<li><strong>결합도 (약함 → 강함, 좋음 → 나쁨)</strong>
+  <strong>자료 &lt; 스탬프 &lt; 제어 &lt; 외부 &lt; 공통 &lt; 내용</strong>
+  암기: "자스제외공내"</li>
+<li>자료: 필요한 값만 인자로 / 스탬프: 자료구조(배열, 레코드)를 통째로 / 제어: 플래그로 상대 흐름 제어 / 외부: 외부 선언 데이터 참조 / 공통: 전역 변수 공유 / 내용: 상대 내부를 직접 참조</li>
+<li><strong>응집도 (강함 → 약함, 좋음 → 나쁨)</strong>
+  <strong>기능 &gt; 순차 &gt; 교환(통신) &gt; 절차 &gt; 시간 &gt; 논리 &gt; 우연</strong>
+  암기: "기순교절시논우"</li>
+<li>순차: 앞 출력이 뒤 입력 / 교환: 같은 입력이나 출력을 쓰는 기능 모음 / 절차: 순서대로 실행 / 시간: 같은 시점에 실행(초기화 등) / 논리: 비슷한 성격을 묶고 플래그로 선택 / 우연: 관계 없음</li>
+<li>팬인(fan-in, 나를 호출하는 수)은 높게, 팬아웃(내가 호출하는 수)은 낮게</li>
+</ul>
+<h3>1-5. 객체지향 원칙</h3>
+<ul>
+<li>특징: 캡슐화, 상속, 다형성, 추상화 (+ 정보 은닉)</li>
+<li><strong>SOLID</strong>: SRP(단일 책임), OCP(확장엔 열림 수정엔 닫힘), LSP(자식이 부모 자리 대체 가능), ISP(인터페이스 분리), DIP(추상에 의존)</li>
+<li>상세 답안: <code>prep/interview-cs-2026h2.md</code> 1번</li>
+</ul>
+<h3>1-6. GoF 디자인 패턴 <span class="star" aria-label="빈출">★</span> (분류 문제)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>생성 (5)</th>
+<th>구조 (7)</th>
+<th>행위 (11)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>추상 팩토리, 빌더, 팩토리 메서드, 프로토타입, <strong>싱글톤</strong></td>
+<td><strong>어댑터</strong>, 브리지, 컴포지트, 데코레이터, <strong>퍼사드</strong>, 플라이웨이트, 프록시</td>
+<td>책임 연쇄, 커맨드, 인터프리터, 반복자, 중재자, 메멘토, <strong>옵서버</strong>, 상태, <strong>전략</strong>, 템플릿 메서드, 방문자</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>한 줄 정의(자주 묻는 것만)</li>
+<li>싱글톤: 인스턴스 하나만 / 팩토리 메서드: 생성을 서브클래스에 위임 / 빌더: 복잡한 객체를 단계별 조립</li>
+<li>어댑터: 호환 안 되는 인터페이스 변환 / 데코레이터: 동적으로 기능 추가 / 퍼사드: 복잡한 하위 시스템에 단순한 창구 / 프록시: 대리 객체로 접근 제어 / 컴포지트: 트리 구조로 부분과 전체를 동일하게</li>
+<li>옵서버: 상태 변화를 구독자에게 통지 / 전략: 알고리즘을 캡슐화해 교체 / 템플릿 메서드: 골격은 상위, 세부는 하위 / 상태: 상태별 행동을 객체로 / 반복자: 내부 구조 노출 없이 순회</li>
+<li>암기 요령: 생성은 "만든다", 구조는 "붙인다/감싼다", 나머지는 전부 행위</li>
+</ul>
+<h3>1-7. 테스트 <span class="star" aria-label="빈출">★</span><span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>블랙박스(명세 기반)</strong>: 동등 분할, <strong>경계값 분석</strong>, 원인 결과 그래프, 오류 예측, 비교 검사</li>
+<li><strong>화이트박스(구조 기반)</strong>: 기초 경로 검사, 제어 구조 검사(조건, 루프, 데이터 흐름)</li>
+<li><strong>커버리지 (약 → 강)</strong>: 구문(문장) &lt; 결정(분기) &lt; 조건 &lt; 조건/결정 &lt; MC/DC &lt; 다중 조건</li>
+<li>결정: 각 분기의 참/거짓을 한 번씩 / 조건: 각 개별 조건식의 참/거짓을 한 번씩</li>
+<li><strong>순환 복잡도(McCabe)</strong> 계산: <strong>V(G) = E − N + 2</strong> (간선 − 노드 + 2) = <strong>판단(분기)문 수 + 1</strong> = 닫힌 영역 수 + 1</li>
+<li>통합 테스트</li>
+<li><strong>하향식</strong>: 상위부터, 하위 모듈 대신 <strong>스텁(Stub)</strong> 사용</li>
+<li><strong>상향식</strong>: 하위부터, 상위 모듈 대신 <strong>드라이버(Driver)</strong> 사용, 클러스터 단위</li>
+<li>빅뱅: 한 번에 / 샌드위치: 혼합</li>
+<li>인수 테스트: <strong>알파</strong>(개발자 환경에서 사용자가) / <strong>베타</strong>(사용자 환경에서, 개발자 없이)</li>
+<li>회귀 테스트: 수정 후 기존 기능이 깨지지 않았는지 재확인</li>
+<li>검증(Verification): 제품을 올바르게 만드는가(명세대로) / 확인(Validation): 올바른 제품을 만드는가(사용자 요구대로)</li>
+<li>테스트 오라클: 기대 결과를 판단하는 기준. 참(True), 샘플링, 휴리스틱, 일관성 검사</li>
+<li>테스트 원리: 결함 집중(파레토 80/20), 살충제 패러독스(같은 테스트 반복하면 결함 못 찾음), 오류 부재의 궤변, 완벽한 테스트 불가능</li>
+</ul>
+<h3>1-8. 프로젝트 관리와 품질</h3>
+<ul>
+<li>비용 산정</li>
+<li>하향식: 전문가 판단, <strong>델파이</strong>(전문가 여럿 + 조정자)</li>
+<li>상향식: LOC(원시 코드 라인 수, 낙관치 + 4×중간치 + 비관치 / 6), 개발 단계별 인월수</li>
+<li>수학적: <strong>COCOMO</strong>(조직형 5만 라인 이하, 반분리형 30만 라인 이하, 내장형 30만 라인 초과), <strong>Putnam</strong>(Rayleigh-Norden 곡선), <strong>FP 기능 점수</strong></li>
+<li>일정: PERT(낙관, 보통, 비관 3점 추정), CPM(임계 경로 = <strong>가장 긴 경로</strong>), 간트 차트</li>
+<li><strong>CMMI 5단계</strong>: 초기 → 관리 → 정의 → 정량적 관리 → 최적화</li>
+<li>ISO/IEC 9126 품질 특성: <strong>기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성</strong> (후속 25010은 보안성, 호환성 추가)</li>
+<li>형상 관리 절차: 식별 → 통제 → 감사 → 기록(상태 보고). 도구: Git, SVN, CVS</li>
+<li>유지보수 유형: 수정(교정), 적응, 완전화(기능 개선, 비중 최대), 예방</li>
+<li>리팩토링: 외부 동작은 그대로, 내부 구조 개선 / 역공학: 코드에서 설계를 복원 / 재공학: 분석, 재구성, 역공학, 이관</li>
+</ul>
+
+</section><section class="sec" id="cs-3"><h2>2. 데이터베이스</h2>
+<h3>2-1. 기본 구조</h3>
+<ul>
+<li><strong>3단계 스키마</strong>: 외부(사용자 뷰) / 개념(전체 논리 구조, 기관 전체 하나) / 내부(물리 저장)</li>
+<li><strong>데이터 독립성</strong>: 논리적 독립성(개념 스키마가 바뀌어도 외부 스키마 영향 없음) / 물리적 독립성(내부가 바뀌어도 개념 영향 없음)</li>
+<li>DB 설계 순서: 요구 분석 → <strong>개념적 설계(ER 다이어그램)</strong> → <strong>논리적 설계(릴레이션 스키마, 정규화)</strong> → <strong>물리적 설계(인덱스, 저장 구조)</strong> → 구현</li>
+<li>ER 표기(피터 첸): 개체 사각형, 관계 마름모, 속성 타원, 기본키 속성 밑줄, 다중값 속성 이중 타원</li>
+</ul>
+<h3>2-2. 관계형 모델 용어 <span class="star" aria-label="빈출">★</span></h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>용어</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>릴레이션</td>
+<td>표</td>
+</tr>
+<tr>
+<td>튜플</td>
+<td>행</td>
+</tr>
+<tr>
+<td>속성</td>
+<td>열</td>
+</tr>
+<tr>
+<td><strong>차수(Degree)</strong></td>
+<td><strong>속성(열)의 수</strong></td>
+</tr>
+<tr>
+<td><strong>카디널리티</strong></td>
+<td><strong>튜플(행)의 수</strong></td>
+</tr>
+<tr>
+<td>도메인</td>
+<td>속성이 가질 수 있는 값의 집합</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>릴레이션 특성: 튜플은 중복 없음, 튜플 순서 없음, 속성 순서 없음, 속성값은 원자값</li>
+</ul>
+<h3>2-3. 키와 무결성 <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>슈퍼키</strong>: 유일성만 / <strong>후보키</strong>: 유일성 + <strong>최소성</strong> / <strong>기본키</strong>: 후보키 중 선택, NULL 불가 / 대체키: 나머지 후보키 / <strong>외래키</strong>: 다른 릴레이션의 기본키 참조</li>
+<li>무결성: <strong>개체 무결성</strong>(기본키는 NULL, 중복 불가) / <strong>참조 무결성</strong>(외래키는 참조 대상에 있는 값이거나 NULL) / 도메인 무결성</li>
+<li>참조 동작: CASCADE, SET NULL, SET DEFAULT, RESTRICT(NO ACTION)</li>
+</ul>
+<h3>2-4. 관계 대수 <span class="star" aria-label="빈출">★</span></h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>연산</th>
+<th>기호</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Select</td>
+<td>σ</td>
+<td>조건에 맞는 <strong>행</strong></td>
+</tr>
+<tr>
+<td>Project</td>
+<td>π</td>
+<td>원하는 <strong>열</strong></td>
+</tr>
+<tr>
+<td>Join</td>
+<td>⋈</td>
+<td>공통 속성으로 결합</td>
+</tr>
+<tr>
+<td>Division</td>
+<td>÷</td>
+<td>B의 모든 값과 관련된 A의 튜플</td>
+</tr>
+<tr>
+<td>합, 교, 차</td>
+<td>∪ ∩ −</td>
+<td>합병 가능해야 함(차수와 도메인 동일)</td>
+</tr>
+<tr>
+<td>카티션 곱</td>
+<td>×</td>
+<td>차수는 합, 카디널리티는 곱</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>관계 대수는 <strong>절차적</strong>(어떻게), 관계 해석은 <strong>비절차적</strong>(무엇을)</li>
+<li>계산: R(차수 3, 카디널리티 4) × S(차수 2, 카디널리티 5) → 차수 <strong>5</strong>, 카디널리티 <strong>20</strong></li>
+</ul>
+<h3>2-5. 정규화 <span class="star" aria-label="빈출">★</span><span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li>목적: 중복 제거, <strong>이상 현상</strong>(삽입, 삭제, 갱신) 방지</li>
+<li>함수 종속 X → Y: X 값이 Y 값을 하나로 결정</li>
+<li>단계 (암기: "도부이결다조")
+  | 정규형 | 조건 |
+  |---|---|
+  | 1NF | 모든 속성이 <strong>원자값</strong> (도메인이 원자값) |
+  | 2NF | 1NF + <strong>부분 함수 종속 제거</strong> (기본키 일부에만 종속된 속성 분리) |
+  | 3NF | 2NF + <strong>이행 함수 종속 제거</strong> (A→B, B→C 이면 A→C 분리) |
+  | BCNF | <strong>모든 결정자가 후보키</strong> |
+  | 4NF | <strong>다치 종속</strong> 제거 |
+  | 5NF | <strong>조인 종속</strong> 제거 |</li>
+<li>역정규화(반정규화): 성능을 위해 일부러 중복 허용 (테이블 병합, 컬럼 추가, 요약 테이블)</li>
+<li>부분 함수 종속은 <strong>복합키일 때만</strong> 생긴다. 기본키가 단일 속성이면 1NF는 곧 2NF</li>
+</ul>
+<h3>2-6. SQL <span class="star" aria-label="빈출">★</span><span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li>분류</li>
+<li><strong>DDL</strong>: CREATE, ALTER, DROP, TRUNCATE, RENAME</li>
+<li><strong>DML</strong>: SELECT, INSERT, UPDATE, DELETE</li>
+<li><strong>DCL</strong>: GRANT, REVOKE</li>
+<li><strong>TCL</strong>: COMMIT, ROLLBACK, SAVEPOINT</li>
+<li>DELETE(DML, 롤백 가능, 행 단위) / TRUNCATE(DDL, 롤백 불가, 구조 유지) / DROP(구조까지 삭제)</li>
+<li>DROP 옵션: CASCADE(참조하는 것까지 삭제), RESTRICT(참조 있으면 거부)</li>
+<li><strong>논리적 실행 순서</strong>: <strong>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY</strong>
+  → WHERE에는 집계함수 불가, 집계 조건은 HAVING</li>
+<li>NULL</li>
+<li><code>= NULL</code>은 항상 참이 아님 → <code>IS NULL</code></li>
+<li><strong>COUNT(*)는 NULL 포함, COUNT(컬럼)은 NULL 제외</strong>, SUM/AVG도 NULL 제외</li>
+<li>NULL과의 산술 연산 결과는 NULL</li>
+<li>조인: INNER / LEFT, RIGHT, FULL OUTER / CROSS(카티션 곱) / SELF / NATURAL(같은 이름 컬럼 자동)</li>
+<li>집합: UNION(중복 제거), <strong>UNION ALL(중복 포함)</strong>, INTERSECT, EXCEPT(MINUS)</li>
+<li>서브쿼리: IN, EXISTS, ANY(하나라도), ALL(전부)</li>
+<li>LIKE: <code>%</code> 0개 이상 문자, <code>_</code> 정확히 1문자</li>
+<li>뷰: 논리적 가상 테이블, 삭제는 DROP VIEW, <strong>ALTER로 정의 수정 불가</strong>(재생성), 뷰 위에 뷰 가능, 독립적 인덱스 불가</li>
+<li>GRANT 예: <code>GRANT SELECT ON 학생 TO 김 WITH GRANT OPTION;</code> (받은 권한을 남에게 줄 수 있음)</li>
+<li>연습 쿼리
+  <code>sql
+  SELECT 학과, COUNT(*) AS 인원, AVG(점수)
+  FROM 학생
+  WHERE 학년 &gt;= 2
+  GROUP BY 학과
+  HAVING AVG(점수) &gt;= 80
+  ORDER BY 인원 DESC;</code></li>
+</ul>
+<h3>2-7. 트랜잭션과 동시성 <span class="star" aria-label="빈출">★</span><span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>ACID</strong>: 원자성(전부 아니면 전무, COMMIT/ROLLBACK) / 일관성 / 격리성(동시 실행이 서로 간섭 안 함) / 지속성(커밋되면 영구)</li>
+<li>상태: 활동 → 부분 완료 → 완료 / 실패 → 철회</li>
+<li><strong>격리 수준과 허용되는 이상 현상</strong>
+  | 격리 수준 | Dirty Read | Non-Repeatable Read | Phantom Read |
+  |---|---|---|---|
+  | READ UNCOMMITTED | 발생 | 발생 | 발생 |
+  | READ COMMITTED | 방지 | 발생 | 발생 |
+  | REPEATABLE READ | 방지 | 방지 | 발생 |
+  | SERIALIZABLE | 방지 | 방지 | 방지 |</li>
+<li>Dirty: 커밋 안 된 값 읽음 / Non-Repeatable: 같은 행을 두 번 읽었는데 값이 바뀜 / Phantom: 같은 조건 조회에 없던 행이 생김</li>
+<li>동시성 제어 없을 때 문제: <strong>갱신 분실</strong>, 모순성, 연쇄 복귀, 현황 파악 오류</li>
+<li>기법</li>
+<li><strong>로킹</strong>: 공유락(읽기, S) / 배타락(쓰기, X). 로킹 단위가 <strong>크면 병행성 낮고 오버헤드 작음</strong>, 작으면 반대</li>
+<li><strong>2단계 로킹(2PL)</strong>: 확장 단계(락 획득만) → 축소 단계(해제만). 직렬성 보장, 교착상태는 막지 못함</li>
+<li>타임스탬프 순서, 낙관적 검증(실행 → 검증 → 기록), 다중 버전(MVCC)</li>
+<li><strong>교착상태 4조건</strong>: 상호 배제, 점유와 대기, 비선점, 환형 대기 (하나라도 깨면 예방)</li>
+</ul>
+<h3>2-8. 회복과 인덱스</h3>
+<ul>
+<li>로그 기반 회복: <strong>즉시 갱신</strong>(UNDO + REDO 필요) / <strong>지연 갱신</strong>(REDO만, UNDO 불필요)</li>
+<li>커밋된 트랜잭션은 REDO, 커밋 안 된 것은 UNDO</li>
+<li>체크포인트: 그 이후 로그만 보면 됨 / 그림자 페이징: 로그 없이 페이지 테이블 복사본</li>
+<li>인덱스: <strong>B-트리</strong>(균형 트리) / <strong>B+트리</strong>(데이터는 리프에만, 리프끼리 연결 → 범위 검색 유리) / 해시(동등 비교 빠름, 범위 검색 불리)</li>
+<li>인덱스 장단점: 조회 빠름 / 삽입, 수정, 삭제 느려지고 공간 추가</li>
+</ul>
+
+</section><section class="sec" id="cs-4"><h2>3. 프로그래밍과 자료구조</h2>
+<h3>3-1. 코드 추적 함정 <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>전위/후위 증감</strong>: <code>a = 5; b = a++ + ++a;</code> → a++는 5를 쓰고 6, ++a는 7로 올리고 7 → b = 12, a = 7 (C에서는 한 식에 같은 변수 두 번 변경은 미정의 동작이지만 시험은 이 방식으로 계산하는 경우가 있음. Java는 좌→우로 확정)</li>
+<li>정수 나눗셈: <code>7 / 2 = 3</code>, <code>7 % 2 = 1</code>, <code>-7 / 2</code> 는 C/Java에서 −3(0 방향 버림), Python <code>-7 // 2 = -4</code>(내림)</li>
+<li>비트 연산: <code>&amp;</code> AND, <code>|</code> OR, <code>^</code> XOR, <code>~</code> NOT, <code>&lt;&lt;</code> 곱하기 2, <code>&gt;&gt;</code> 나누기 2 / <code>5 &amp; 3 = 1</code>, <code>5 | 3 = 7</code>, <code>5 ^ 3 = 6</code>, <code>~5 = -6</code></li>
+<li>단락 평가: <code>&amp;&amp;</code>는 앞이 거짓이면 뒤 실행 안 함, <code>||</code>는 앞이 참이면 뒤 실행 안 함</li>
+<li>switch에서 <strong>break 없으면 아래로 계속 실행(fall-through)</strong></li>
+<li>C 포인터: <code>int a[] = {10,20,30}; int *p = a;</code> → <code>*(p+1) = 20</code>, <code>*p+1 = 11</code>, <code>p[2] = 30</code>. 배열 이름 = 첫 원소 주소</li>
+<li>C 문자열 끝은 <code>'\0'</code>, <code>sizeof("abc") = 4</code>, <code>strlen("abc") = 3</code></li>
+<li>재귀 추적: 호출 스택을 종이에 그린다. 팩토리얼, 피보나치, 하노이(이동 횟수 2ⁿ − 1)</li>
+</ul>
+<h3>3-2. Java <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>오버로딩</strong>: 같은 이름, <strong>매개변수가 다름</strong> (한 클래스 안) / <strong>오버라이딩</strong>: 부모 메서드 재정의, 시그니처 동일</li>
+<li>다형성 문제 패턴: <code>Parent p = new Child(); p.show();</code> → <strong>오버라이딩된 메서드는 Child 것이 실행</strong>, 필드와 static 메서드는 <strong>선언 타입(Parent) 것</strong></li>
+<li>생성자 순서: 자식 생성 시 <strong>부모 생성자가 먼저</strong> 실행 (<code>super()</code> 자동 삽입)</li>
+<li>접근 제어자 (넓음 → 좁음)
+  | 제어자 | 같은 클래스 | 같은 패키지 | 다른 패키지 자식 | 전체 |
+  |---|---|---|---|---|
+  | public | O | O | O | O |
+  | protected | O | O | O | X |
+  | default | O | O | X | X |
+  | private | O | X | X | X |</li>
+<li><code>static</code>: 클래스 공유 / <code>final</code>: 변수는 상수, 메서드는 오버라이딩 금지, 클래스는 상속 금지 / <code>abstract</code>: 인스턴스 생성 불가</li>
+<li>인터페이스: 다중 구현 가능, 클래스는 <strong>단일 상속</strong></li>
+<li>예외: checked(컴파일러 강제, IOException) / unchecked(RuntimeException, NullPointerException). <code>finally</code>는 항상 실행</li>
+<li>문자열: <code>==</code>는 참조 비교, <code>equals()</code>는 값 비교</li>
+</ul>
+<h3>3-3. Python</h3>
+<ul>
+<li>슬라이싱 <code>s[start:end:step]</code>, end는 <strong>미포함</strong>: <code>"abcdef"[1:4] = "bcd"</code>, <code>[::-1]</code> 뒤집기, <code>[-2:] = "ef"</code></li>
+<li>가변: list, dict, set / 불변: int, str, tuple</li>
+<li><code>range(1, 10, 3)</code> → 1, 4, 7</li>
+<li>리스트 컴프리헨션 <code>[x*2 for x in range(5) if x % 2 == 0]</code> → [0, 4, 8]</li>
+<li><code>a = [1,2]; b = a; b.append(3)</code> → a도 [1,2,3] (같은 객체)</li>
+<li><code>//</code> 몫(내림), <code>**</code> 거듭제곱, <code>and</code>/<code>or</code>는 마지막으로 평가한 값을 반환 (<code>0 or 5 = 5</code>)</li>
+</ul>
+<h3>3-4. 자료구조 <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li>선형: 배열, 연결 리스트, <strong>스택(LIFO)</strong>, <strong>큐(FIFO)</strong>, 데크 / 비선형: 트리, 그래프</li>
+<li>스택 활용: 함수 호출, 후위 표기 계산, 괄호 검사, DFS / 큐 활용: BFS, 스케줄링</li>
+<li><strong>수식 표기 변환</strong> 계산: 중위 <code>A + B * C</code> → 후위 <code>A B C * +</code> → 전위 <code>+ A * B C</code>
+  요령: 우선순위대로 괄호를 씌우고 연산자를 괄호 뒤(후위)나 앞(전위)으로 옮긴다</li>
+<li><strong>트리 순회</strong> 계산: 전위(루트 → 왼 → 오), <strong>중위(왼 → 루트 → 오)</strong>, 후위(왼 → 오 → 루트)</li>
+<li>이진 탐색 트리를 중위 순회하면 <strong>오름차순</strong></li>
+<li>트리 용어: 차수(자식 수), 단말 노드(리프), 높이 / 이진 트리 깊이 k의 최대 노드 수 <strong>2ᵏ − 1</strong>, 레벨 i의 최대 노드 수 2ⁱ⁻¹ / 단말 노드 수 n₀ = n₂ + 1 (n₂ = 차수 2인 노드 수)</li>
+<li>힙: 완전 이진 트리, 최대 힙은 부모 ≥ 자식, 우선순위 큐 구현</li>
+<li>그래프: 무방향 완전 그래프 간선 <strong>n(n−1)/2</strong>, 방향 완전 그래프 <strong>n(n−1)</strong></li>
+<li>최소 신장 트리: <strong>크루스칼</strong>(간선 가중치 순 + 사이클 검사), <strong>프림</strong>(정점에서 확장) / 최단 경로: <strong>다익스트라</strong>(음수 간선 불가), 벨만 포드(음수 가능), 플로이드 워셜(모든 쌍)</li>
+<li>해시 충돌 해결: 체이닝 / 개방 주소법(선형 탐사, 이차 탐사, 이중 해싱)</li>
+</ul>
+<h3>3-5. 정렬과 탐색 <span class="star" aria-label="빈출">★</span><span class="star" aria-label="빈출">★</span> (표 통째로 외운다)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>정렬</th>
+<th>평균</th>
+<th>최악</th>
+<th>안정</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>버블</td>
+<td>n²</td>
+<td>n²</td>
+<td>O</td>
+<td>인접 교환</td>
+</tr>
+<tr>
+<td>선택</td>
+<td>n²</td>
+<td>n²</td>
+<td>X</td>
+<td>최솟값을 골라 앞으로</td>
+</tr>
+<tr>
+<td>삽입</td>
+<td>n²</td>
+<td>n²</td>
+<td>O</td>
+<td><strong>최선 n</strong>(거의 정렬됐을 때)</td>
+</tr>
+<tr>
+<td>셸</td>
+<td>n^1.5</td>
+<td>n²</td>
+<td>X</td>
+<td>삽입 정렬 개선</td>
+</tr>
+<tr>
+<td>퀵</td>
+<td>n log n</td>
+<td><strong>n²</strong></td>
+<td>X</td>
+<td>피벗, 분할 정복, 이미 정렬된 입력에서 최악</td>
+</tr>
+<tr>
+<td>병합</td>
+<td>n log n</td>
+<td>n log n</td>
+<td>O</td>
+<td>추가 메모리 n</td>
+</tr>
+<tr>
+<td>힙</td>
+<td>n log n</td>
+<td>n log n</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>기수</td>
+<td>dn</td>
+<td>dn</td>
+<td>O</td>
+<td>비교하지 않음</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>1회전 결과 묻는 문제가 단골이다. 예: <code>[5, 3, 8, 1]</code> 버블 1회전 → <code>[3, 5, 1, 8]</code> (가장 큰 값이 끝으로) / 선택 1회전 → <code>[1, 3, 8, 5]</code> / 삽입 1회전(두 번째 원소 삽입) → <code>[3, 5, 8, 1]</code></li>
+<li>이진 탐색: 정렬돼 있어야 함, O(log n) / 순차 탐색 O(n) / 해시 O(1)</li>
+</ul>
+
+</section><section class="sec" id="cs-5"><h2>4. AI 개론</h2>
+<h3>4-1. 기초와 역사</h3>
+<ul>
+<li>1950 튜링 테스트 / <strong>1956 다트머스 회의</strong>(매카시, "인공지능" 용어) / 1970년대, 1980년대 후반 AI 겨울 / 1980년대 전문가 시스템 / 1986 역전파 재조명 / 2012 AlexNet(딥러닝 부상) / 2016 알파고 / 2017 Transformer</li>
+<li>약한 AI(특정 작업) / 강한 AI(인간 수준 범용 지능, AGI)</li>
+<li>중국어 방 논증(설): 기호 조작만으로는 이해가 아니다 → 튜링 테스트 비판</li>
+<li>지능형 에이전트: 환경을 센서로 지각하고 액추에이터로 행동. 단순 반사, 모델 기반, 목표 기반, 효용 기반, 학습 에이전트</li>
+</ul>
+<h3>4-2. 탐색 <span class="star" aria-label="빈출">★</span> (고전 AI, 보강 필요)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>탐색</th>
+<th>방식</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BFS</td>
+<td>큐, 넓게</td>
+<td>완전, 간선 비용 같으면 최적, 메모리 큼</td>
+</tr>
+<tr>
+<td>DFS</td>
+<td>스택, 깊게</td>
+<td>메모리 적음, 무한 경로에 빠질 수 있음, 최적 아님</td>
+</tr>
+<tr>
+<td>반복 심화</td>
+<td>깊이 제한을 늘려가며 DFS</td>
+<td>BFS의 완전성 + DFS의 메모리</td>
+</tr>
+<tr>
+<td>균일 비용</td>
+<td>누적 비용 g(n) 최소 우선</td>
+<td>최적</td>
+</tr>
+<tr>
+<td>탐욕 최선 우선</td>
+<td>휴리스틱 h(n)만</td>
+<td>빠르지만 최적 아님</td>
+</tr>
+<tr>
+<td><strong>A*</strong></td>
+<td><strong>f(n) = g(n) + h(n)</strong></td>
+<td>h가 <strong>허용적(과대추정 안 함)</strong>이면 최적</td>
+</tr>
+<tr>
+<td>언덕 오르기</td>
+<td>현재보다 나은 이웃으로</td>
+<td><strong>지역 최적</strong>에 갇힘 → 모의 담금질, 무작위 재시작</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>게임 트리</strong>: 미니맥스(MAX는 최대, MIN은 최소를 고른다) / <strong>알파 베타 가지치기</strong>: 결과에 영향 없는 가지를 잘라 탐색량 감소, 결과값은 미니맥스와 동일. α ≥ β이면 가지치기</li>
+<li>유전 알고리즘: 선택, <strong>교차</strong>, <strong>돌연변이</strong>, 적합도 함수</li>
+</ul>
+<h3>4-3. 지식 표현과 추론</h3>
+<ul>
+<li>명제 논리: 대우(p→q ≡ ¬q→¬p)는 항상 동치, 역과 이는 동치 아님</li>
+<li>1차 술어 논리: ∀(모든), ∃(존재), 술어와 변수</li>
+<li>규칙(IF THEN), <strong>프레임</strong>(슬롯과 값, 상속), <strong>의미망</strong>(노드와 링크, is-a, part-of), 스크립트</li>
+<li>전문가 시스템 구성: 지식 베이스, <strong>추론 엔진</strong>, 사용자 인터페이스, 설명 기능</li>
+<li><strong>전향 추론</strong>(데이터 → 결론, 데이터 구동) / <strong>후향 추론</strong>(가설 → 근거 확인, 목표 구동)</li>
+<li>퍼지 논리: 0과 1 사이 소속 정도</li>
+</ul>
+<h3>4-4. 머신러닝 분류 <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>지도 학습</strong>(정답 있음): 분류(범주), 회귀(연속값)</li>
+<li><strong>비지도 학습</strong>(정답 없음): 군집, 차원 축소, 연관 규칙(지지도, 신뢰도, 향상도)</li>
+<li><strong>강화 학습</strong>: 에이전트, 환경, 상태, 행동, <strong>보상</strong>, 정책. MDP, Q-러닝, 탐험과 활용(ε-탐욕)</li>
+<li>준지도(일부만 라벨), 자기지도(데이터에서 라벨을 만들어냄, BERT의 MLM)</li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>알고리즘</th>
+<th>유형</th>
+<th>핵심</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>선형 회귀</td>
+<td>회귀</td>
+<td>최소제곱, MSE 최소화</td>
+</tr>
+<tr>
+<td><strong>로지스틱 회귀</strong></td>
+<td><strong>분류</strong>(이름만 회귀)</td>
+<td>시그모이드로 확률 출력</td>
+</tr>
+<tr>
+<td>k-NN</td>
+<td>분류/회귀</td>
+<td>가까운 k개 다수결, 학습 없음(게으른 학습), 거리 척도, 스케일링 필요</td>
+</tr>
+<tr>
+<td>결정 트리</td>
+<td>분류/회귀</td>
+<td>분할 기준: <strong>엔트로피와 정보 이득</strong>(ID3, C4.5), <strong>지니 불순도</strong>(CART)</td>
+</tr>
+<tr>
+<td>랜덤 포레스트</td>
+<td>앙상블</td>
+<td><strong>배깅</strong>(부트스트랩 샘플 + 특징 무작위)</td>
+</tr>
+<tr>
+<td>부스팅</td>
+<td>앙상블</td>
+<td>약한 학습기를 <strong>순차적으로</strong>, 틀린 샘플에 가중. AdaBoost, GBM, XGBoost, LightGBM</td>
+</tr>
+<tr>
+<td>SVM</td>
+<td>분류</td>
+<td><strong>마진 최대화</strong>, 서포트 벡터, <strong>커널 트릭</strong>(비선형)</td>
+</tr>
+<tr>
+<td>나이브 베이즈</td>
+<td>분류</td>
+<td>베이즈 정리 + <strong>특징 독립 가정</strong>, 스팸 필터</td>
+</tr>
+<tr>
+<td>k-means</td>
+<td>군집</td>
+<td>k를 미리 정함, 중심 갱신 반복, 초기값 민감</td>
+</tr>
+<tr>
+<td>계층적 군집</td>
+<td>군집</td>
+<td>덴드로그램</td>
+</tr>
+<tr>
+<td>DBSCAN</td>
+<td>군집</td>
+<td>밀도 기반, 이상치 처리, 임의 모양 군집</td>
+</tr>
+<tr>
+<td>PCA</td>
+<td>차원 축소</td>
+<td>분산이 최대인 축으로 사영</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>엔트로피 계산: H = −Σ p log₂ p. 동전 반반이면 1, 한쪽만이면 0</li>
+</ul>
+<h3>4-5. 평가 <span class="star" aria-label="빈출">★</span><span class="star" aria-label="빈출">★</span> (계산 문제 확실)</h3>
+<ul>
+<li>혼동 행렬: TP, FP(거짓 양성, 1종 오류), FN(거짓 음성, 2종 오류), TN</li>
+<li><strong>정확도</strong> = (TP + TN) / 전체</li>
+<li><strong>정밀도</strong> = TP / (TP + FP) → "양성이라 한 것 중 진짜"</li>
+<li><strong>재현율(민감도)</strong> = TP / (TP + FN) → "진짜 양성 중 맞힌 것"</li>
+<li>특이도 = TN / (TN + FP)</li>
+<li><strong>F1</strong> = 2 × 정밀도 × 재현율 / (정밀도 + 재현율) (조화 평균)</li>
+<li>ROC 곡선: x = FPR(1 − 특이도), y = TPR(재현율). <strong>AUC</strong>가 1에 가까울수록 좋음, 0.5는 무작위</li>
+<li>회귀: MSE, RMSE, MAE, R²</li>
+<li>계산 예: TP 40, FP 10, FN 20, TN 30 → 정확도 70/100 = 0.7, 정밀도 40/50 = 0.8, 재현율 40/60 ≈ 0.667, F1 = 2×0.8×0.667/1.467 ≈ 0.727</li>
+<li>불균형 데이터에서는 정확도가 착시 → 정밀도, 재현율, F1</li>
+<li>데이터 분할: 학습 / 검증(하이퍼파라미터) / 테스트 / <strong>k-겹 교차 검증</strong></li>
+</ul>
+<h3>4-6. 과적합과 일반화 <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li>과적합: 학습 오차 낮고 검증 오차 높음 (높은 분산) / 과소적합: 둘 다 높음 (높은 편향)</li>
+<li><strong>편향 분산 트레이드오프</strong></li>
+<li>해결: 데이터 늘리기, <strong>데이터 증강</strong>, <strong>정규화</strong>(L1 라쏘: 가중치를 0으로, 특징 선택 효과 / L2 릿지: 가중치를 작게), <strong>드롭아웃</strong>, <strong>조기 종료</strong>, 모델 단순화, 배치 정규화, 앙상블</li>
+<li>차원의 저주: 차원이 늘면 데이터가 희소해져 성능 저하</li>
+</ul>
+<h3>4-7. 신경망과 딥러닝 <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>퍼셉트론</strong>: 가중합 + 계단 함수. 단층은 <strong>XOR 불가</strong>(선형 분리 불가) → 다층 퍼셉트론(MLP)과 역전파로 해결</li>
+<li><strong>활성화 함수</strong>
+  | 함수 | 범위 | 특징 |
+  |---|---|---|
+  | 시그모이드 | 0 ~ 1 | 기울기 소실, 이진 분류 출력 |
+  | tanh | −1 ~ 1 | 0 중심, 기울기 소실 |
+  | <strong>ReLU</strong> | 0 ~ ∞ | max(0, x), 기울기 소실 완화, 죽은 ReLU 문제 → Leaky ReLU |
+  | <strong>소프트맥스</strong> | 0 ~ 1, 합 1 | 다중 분류 출력 |</li>
+<li>손실 함수: 회귀는 <strong>MSE</strong>, 분류는 <strong>교차 엔트로피</strong></li>
+<li><strong>경사 하강법</strong>: w ← w − η × ∂L/∂w (η = 학습률, 너무 크면 발산, 너무 작으면 느림)</li>
+<li>배치(전체) / <strong>확률적(SGD, 1개)</strong> / 미니배치</li>
+<li>옵티마이저: 모멘텀(관성) / AdaGrad(파라미터별 학습률, 점점 작아짐) / RMSProp(AdaGrad 개선, 지수 이동 평균) / <strong>Adam</strong>(모멘텀 + RMSProp)</li>
+<li><strong>역전파</strong>: 연쇄 법칙(chain rule)으로 출력층에서 입력층 방향으로 기울기 계산</li>
+<li><strong>기울기 소실</strong>: 깊을수록 앞층 기울기가 0에 가까워짐 → ReLU, 배치 정규화, <strong>잔차 연결(ResNet)</strong>, 적절한 초기화(Xavier, He)</li>
+<li>에폭(전체 데이터 1회) / 배치 크기 / 이터레이션(= 데이터 수 / 배치 크기, 1에폭당)</li>
+</ul>
+<h3>4-8. 대표 구조 <span class="star" aria-label="빈출">★</span></h3>
+<ul>
+<li><strong>CNN</strong>: 합성곱층(필터로 특징 추출, 가중치 공유) → 풀링층(최대, 평균, 크기 축소) → 완전 연결층</li>
+<li><strong>출력 크기 = (N − F + 2P) / S + 1</strong> (N 입력, F 필터, P 패딩, S 스트라이드)</li>
+<li>계산: 입력 32, 필터 5, 패딩 0, 스트라이드 1 → (32 − 5)/1 + 1 = <strong>28</strong> / 입력 28, 필터 3, 패딩 1, 스트라이드 1 → <strong>28</strong>(same)</li>
+<li>파라미터 수 = (F × F × 입력 채널 + 1) × 필터 개수</li>
+<li>계보: LeNet → AlexNet → VGG → GoogLeNet(인셉션) → ResNet</li>
+<li><strong>RNN</strong>: 순차 데이터, 은닉 상태를 다음 시점에 전달, 장기 의존성 문제 → <strong>LSTM</strong>(입력, 망각, 출력 게이트 + 셀 상태), <strong>GRU</strong>(리셋, 업데이트 게이트, LSTM 간소화)</li>
+<li><strong>Transformer</strong>: RNN 없이 <strong>셀프 어텐션</strong>만. Query, Key, Value / Attention = softmax(QKᵀ / √dₖ) V / 멀티헤드 어텐션 / <strong>위치 인코딩</strong>(순서 정보) / 병렬 처리 가능</li>
+<li><strong>BERT</strong>: 인코더, 양방향, MLM(가린 단어 맞히기) + NSP, 이해 과제</li>
+<li><strong>GPT</strong>: 디코더, 단방향 <strong>자기회귀</strong>(다음 토큰 예측), 생성 과제</li>
+<li><strong>GAN</strong>: 생성자(가짜 생성)와 판별자(진짜 판별)의 적대적 학습</li>
+<li><strong>오토인코더</strong>: 인코더 → 잠재 공간 → 디코더, 입력 재구성. 이상 탐지, 차원 축소 / VAE는 확률적 잠재 공간</li>
+<li>전이 학습: 사전 학습 모델을 가져와 <strong>미세 조정(파인튜닝)</strong></li>
+<li>객체 탐지: 2단계(R-CNN 계열) / 1단계(YOLO, SSD) / 평가 지표 IoU, mAP</li>
+</ul>
+<h3>4-9. 생성형 AI와 윤리</h3>
+<ul>
+<li>거대 언어 모델: 토큰, 사전 학습 → 지시 미세 조정 → <strong>RLHF</strong>(인간 피드백 강화 학습)</li>
+<li><strong>할루시네이션</strong>(그럴듯한 거짓 생성) → <strong>RAG</strong>(검색 증강 생성: 외부 문서를 검색해 근거로 제공)</li>
+<li>프롬프트 엔지니어링: 제로샷, 퓨샷, 사고의 연쇄(CoT)</li>
+<li>임베딩: 의미를 벡터로, 코사인 유사도</li>
+<li>AI 윤리: 공정성(편향), 투명성, <strong>설명 가능성(XAI)</strong>, 책임성, 개인정보 보호</li>
+</ul>
+
+</section><section class="sec" id="cs-6"><h2>부록 A. 운영체제 (범위 외, 시간 남으면)</h2>
+<ul>
+<li>프로세스 상태: 생성 → 준비 → 실행 → 대기 → 종료. 준비 → 실행 = 디스패치, 실행 → 준비 = 타임아웃</li>
+<li>프로세스(독립 메모리) vs 스레드(코드, 데이터, 힙 공유, 스택은 각자)</li>
+<li><strong>스케줄링</strong> 계산</li>
+<li>비선점: FCFS, SJF, <strong>HRN</strong>(우선순위 = (대기 시간 + 서비스 시간) / 서비스 시간, 큰 것 먼저)</li>
+<li>선점: <strong>RR</strong>(타임 슬라이스), SRT(남은 시간 짧은 것), 다단계 큐</li>
+<li>평균 대기 시간, 반환 시간(= 종료 − 도착) 계산 문제</li>
+<li><strong>페이지 교체</strong>: FIFO(벨레이디 모순 발생 가능), <strong>LRU</strong>(가장 오래 안 쓴 것), LFU(가장 적게 쓴 것), OPT(가장 오래 안 쓸 것, 이론상 최적)</li>
+<li>페이지 부재 횟수 계산 문제가 단골</li>
+<li>메모리 배치: 최초 적합, 최적 적합, 최악 적합 / 단편화: 내부(페이징), 외부(세그먼테이션)</li>
+<li>스래싱: 페이지 교체에 시간을 더 씀 → 워킹 셋, 페이지 부재 빈도</li>
+<li>동기화: 임계 구역, 세마포어(P는 감소 대기, V는 증가 신호), 뮤텍스, 모니터</li>
+<li>교착상태 대응: 예방, <strong>회피(은행원 알고리즘)</strong>, 탐지, 회복</li>
+</ul>
+</section><section class="sec" id="cs-7"><h2>부록 B. 네트워크와 보안 (범위 외, 시간 남으면)</h2>
+<ul>
+<li><strong>OSI 7계층</strong>: 물리 → 데이터링크(MAC, 스위치, 프레임) → 네트워크(IP, 라우터, 패킷) → 전송(TCP/UDP, 세그먼트) → 세션 → 표현(암호화, 압축) → 응용(HTTP, FTP, SMTP, DNS)</li>
+<li>TCP: 연결 지향, 3-way handshake(SYN → SYN+ACK → ACK), 신뢰성, 흐름 제어(슬라이딩 윈도우), 혼잡 제어 / UDP: 비연결, 빠름, 스트리밍과 DNS</li>
+<li>포트: FTP 20/21, SSH 22, Telnet 23, SMTP 25, DNS 53, HTTP 80, POP3 110, IMAP 143, HTTPS 443</li>
+<li>IPv4 32비트, IPv6 128비트 / 클래스 A(1~126), B(128~191), C(192~223) / 사설 IP 10.x, 172.16~31.x, 192.168.x</li>
+<li><strong>서브넷 계산</strong>: /26 → 서브넷 마스크 255.255.255.192, 호스트 비트 6, 사용 가능 호스트 2⁶ − 2 = <strong>62</strong></li>
+<li>암호: <strong>대칭키</strong>(DES, 3DES, <strong>AES</strong>, SEED, ARIA, 빠름, 키 배분 문제) / <strong>비대칭키</strong>(<strong>RSA</strong>(소인수분해), ECC, 디피 헬만(키 교환)) / <strong>해시</strong>(SHA-256, MD5, 단방향)</li>
+<li>공격: SQL 인젝션(입력값 검증, PreparedStatement), XSS(스크립트 삽입, 출력 인코딩), CSRF(요청 위조, 토큰), DoS/DDoS, 스니핑, 스푸핑, 랜섬웨어</li>
+<li>보안 3요소: 기밀성, 무결성, 가용성</li>
+</ul>
+
+</section><section class="sec" id="cs-8"><h2>공부 순서 (10/11까지)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9/30 ~ 10/2</td>
+<td>1장 소프트웨어공학, 2장 DB 정독. <span class="star" aria-label="빈출">★</span> 표 암기 (결합도, 응집도, 패턴, 커버리지, 정규화, 격리 수준)</td>
+</tr>
+<tr>
+<td>10/3(토)</td>
+<td>3장 프로그래밍 코드 추적 + 정렬 1회전 손으로 풀기</td>
+</tr>
+<tr>
+<td>10/4(일)</td>
+<td>4장 AI 개론. 탐색(A*, 미니맥스)과 평가지표 계산 위주, 딥러닝은 훑기만</td>
+</tr>
+<tr>
+<td>10/5 ~ 10/8</td>
+<td>정보처리기사 필기 기출로 문제 적응 (SW공학, DB, 프로그래밍 파트가 이 범위와 거의 겹친다)</td>
+</tr>
+<tr>
+<td>10/9 ~ 10/10</td>
+<td><span class="star" aria-label="빈출">★</span> 표만 다시 보기 + 부록 훑기</td>
+</tr>
+</tbody>
+</table></div>
+<p>정보처리기사 필기 기출이 가장 가까운 문제 은행이다. 과목 1(소프트웨어 설계), 2(소프트웨어 개발), 3(데이터베이스 구축), 4(프로그래밍 언어 활용)가 이번 범위와 겹친다.</p></section></article></div><div class="part" id="part-ncs" data-part="ncs" hidden><nav class="chips" aria-label="NCS 목차"><a class="chip" href="#ncs-1">1. NCS가 뭔가</a><a class="chip" href="#ncs-2">2. 시험장 운용 원칙</a><a class="chip" href="#ncs-3">3. 영역별 정리</a><a class="chip" href="#ncs-4">4. 12일 공부법</a><a class="chip" href="#ncs-5">5. 시험 당일 체크리스트</a></nav><article class="doc"><section class="sec intro"><blockquote>
+<p>1차 용도: 지방재정공제회 필기 10/11(일) NCS <strong>60문항 70분 = 문항당 70초</strong>.
+공고에 나온 5개 영역: <strong>의사소통, 수리, 문제해결, 자원관리, 조직이해</strong>.
+영역별 문항 수, 출제 대행사, 오답 감점 여부는 레포에 기록이 없다. 수험표와 시험 안내문이 나오면 확인해서 여기에 적는다.</p>
+</blockquote>
+
+</section><section class="sec" id="ncs-1"><h2>1. NCS가 뭔가</h2>
+<ul>
+<li>국가직무능력표준(NCS)의 <strong>직업기초능력 10개 영역</strong> 중 기관이 몇 개를 골라 출제한다.
+  10개: 의사소통, 수리, 문제해결, 자기개발, 자원관리, 대인관계, 정보, 기술, 조직이해, 직업윤리</li>
+<li><strong>출제 유형 3가지</strong>
+  | 유형 | 성격 | 체감 |
+  |---|---|---|
+  | <strong>모듈형</strong> | NCS 학습 모듈(교재) 내용을 아는지 묻는 <strong>암기형</strong> | 개념 이론 문제. 답이 보이면 10초, 모르면 못 푼다 |
+  | <strong>PSAT형</strong> | 공무원 PSAT처럼 긴 지문, 표, 조건을 주고 <strong>푸는 능력</strong> | 시간이 절대 부족하다 |
+  | <strong>피듈형</strong> | 둘을 섞은 것 | 요즘 공공기관 다수 |</li>
+<li>이번 시험은 <strong>자원관리와 조직이해</strong>가 들어 있다. 이 두 영역은 모듈형 이론 문제가 섞여 나오는 경우가 많아서 <strong>피듈형일 가능성이 크다</strong>(추정이다).</li>
+</ul>
+</section><section class="sec" id="ncs-2"><h2>2. 시험장 운용 원칙 (제일 중요)</h2>
+<ol>
+<li><strong>다 못 푸는 게 정상이다.</strong> 70초에 한 문제는 PSAT형 기준으로 빠듯하다. 목표는 전부 푸는 게 아니라 풀 수 있는 걸 전부 맞히는 것이다.</li>
+<li><strong>한 문제에 2분 넘기면 표시하고 넘어간다.</strong> 한 문제 붙잡고 세 문제 잃는 게 제일 큰 손해다.</li>
+<li><strong>쉬운 유형부터 쓸어 담는다.</strong> 순서: 모듈형 이론(조직이해, 자원관리 개념) → 의사소통 일치/불일치 → 수리 자료해석 → 문제해결 조건 추리</li>
+<li><strong>보기부터 읽는다.</strong> 지문을 다 읽고 보기를 보면 두 번 읽게 된다. 보기의 키워드를 먼저 잡고 지문에서 찾는다.</li>
+<li><strong>오답 감점이 없으면 빈칸 없이 전부 찍는다.</strong> 감점이 있으면 절반 이상 확신할 때만 마킹. 시험 안내문에서 반드시 확인.</li>
+<li><strong>OMR 마킹 시간 5분</strong>을 따로 남긴다(OMR 방식일 경우).</li>
+</ol>
+</section><section class="sec" id="ncs-3"><h2>3. 영역별 정리</h2>
+<h3>3-1. 의사소통</h3>
+<ul>
+<li><strong>문제 형태</strong>: 지문 일치/불일치(가장 많음), 주제 찾기, 문단 순서 배열, 빈칸 추론, 맞춤법과 어휘, 공문서 작성법</li>
+<li><strong>요령</strong></li>
+<li>일치/불일치: 보기의 <strong>숫자, 주어, 부정어("아니다", "만")</strong>를 지문과 대조한다. 오답은 대개 지문 단어를 그대로 쓰고 한 군데만 비튼다</li>
+<li>주제: 첫 문단과 마지막 문단, "그러나/따라서" 뒤 문장에 답이 있다</li>
+<li>순서 배열: 접속어와 지시어("이러한", "그", "또한")로 앞뒤를 묶는다. 보기에서 첫 문단 후보를 먼저 거른다</li>
+<li><strong>모듈형 암기 포인트</strong></li>
+<li>의사소통 하위: 문서 이해, 문서 작성, 경청, 의사 표현, 기초 외국어</li>
+<li><strong>공문서 작성 원칙</strong>: 날짜는 연월일 뒤에 마침표(2026. 10. 11.), 괄호 안 요일은 마침표 없이, <strong>"끝."</strong>으로 마무리, 두괄식, 한 장에 담기, 금액은 숫자와 한글 병기</li>
+<li>문서 종류: 기획서(아이디어 설득), 기안서(내부 결재), 보고서, 설명서(상품), 보도자료(언론), 공문서(대외)</li>
+<li>경청 방해 요인: 짐작하기, 대답할 말 준비하기, 걸러내기, 판단하기, 다른 생각하기, 조언하기, 언쟁하기, 슬쩍 넘어가기, 비위 맞추기</li>
+<li><strong>맞춤법 단골</strong>: 되/돼(하/해로 바꿔서 해가 되면 돼), 안/않(안은 부사, 않은 "아니하"), 로서(자격)/로써(수단), 률/율(모음이나 ㄴ 뒤는 율: 비율, 이율 / 나머지 률: 합격률), 며칠(몇일은 틀림), 금세, 웬일, 설거지, 어이없다</li>
+</ul>
+<h3>3-2. 수리</h3>
+<ul>
+<li><strong>문제 형태</strong>: 자료 해석(표와 그래프에서 옳은 설명 고르기, 가장 많음), 응용 계산(거리, 농도, 일, 확률), 도표 작성(수치를 그래프로 옮긴 것 중 틀린 것)</li>
+<li><strong>공식</strong>
+  | 항목 | 공식 |
+  |---|---|
+  | 증감률 | (비교값 − 기준값) / 기준값 × 100 |
+  | %와 %p | 30%에서 36%로 오르면 <strong>6%p 증가</strong>, 증가율은 <strong>20%</strong> |
+  | 비중 | 부분 / 전체 × 100 |
+  | 속력 | 거리 = 속력 × 시간 (단위 통일: 분 ↔ 시간) |
+  | 농도 | 소금 양 = 소금물 × 농도 / 100. 섞으면 소금 양끼리, 소금물 양끼리 더한다 |
+  | 일률 | 혼자 a일 걸리면 하루 1/a. 둘이 같이 하면 1/a + 1/b |
+  | 원가와 정가 | 정가 = 원가 × (1 + 이익률), 판매가 = 정가 × (1 − 할인율) |
+  | 경우의 수 | 순열 nPr = n! / (n−r)!, 조합 nCr = n! / (r!(n−r)!) |
+  | 확률 | "적어도 하나" = 1 − (하나도 없을 확률) |
+  | 평균 | 가중평균 = Σ(값 × 인원) / 총 인원 |</li>
+<li><strong>자료 해석 요령</strong></li>
+<li>보기 중 <strong>계산 없이 판별되는 것부터</strong> 지운다("매년 증가"는 한 해만 감소해도 틀림)</li>
+<li>정확한 계산 대신 <strong>어림산</strong>: 비교만 하면 되면 앞 두 자리로 나눈다</li>
+<li>"비율"과 "수"를 헷갈리게 하는 보기가 단골이다. 비율이 올라도 실제 수는 줄 수 있다</li>
+<li>단위(천 명, 억 원, %) 확인</li>
+</ul>
+<h3>3-3. 문제해결</h3>
+<ul>
+<li><strong>문제 형태</strong>: 명제 추리, 참/거짓 말하는 사람 찾기, 자리/순서 배치, 조건 맞는 선택지 고르기(규정과 표 적용), 모듈형 이론</li>
+<li><strong>명제</strong></li>
+<li>p → q 가 참이면 <strong>대우 ¬q → ¬p도 참</strong>. 역(q → p), 이(¬p → ¬q)는 알 수 없음</li>
+<li>삼단논법: p → q, q → r 이면 p → r</li>
+<li>"어떤 A는 B이다"는 전부가 아니다</li>
+<li><strong>참/거짓 문제</strong>: 서로 <strong>모순되는 두 진술</strong>을 먼저 찾는다. 둘 중 하나만 참이므로 경우를 두 개로 나눠 검증한다</li>
+<li><strong>배치 문제</strong>: 확정 조건(○는 3번 자리)부터 표에 넣고, 나머지를 경우의 수로 분기한다. 표를 그리는 게 제일 빠르다</li>
+<li><strong>규정 적용 문제</strong>(PSAT형 핵심): 선택지를 규정에 하나씩 대입해 <strong>탈락 조건</strong>부터 걸러낸다</li>
+<li><strong>모듈형 암기 포인트</strong></li>
+<li>문제 유형: <strong>발생형</strong>(이미 일어난 문제, 원상 복귀) / <strong>탐색형</strong>(더 잘하기 위한, 개선) / <strong>설정형</strong>(미래 목표를 새로 세움)</li>
+<li>문제 해결 절차: <strong>문제 인식 → 문제 도출 → 원인 분석 → 해결안 개발 → 실행 및 평가</strong></li>
+<li>사고력: 창의적(자유 연상은 브레인스토밍, 강제 연상은 체크리스트, 비교 발상은 NM법과 시네틱스), 논리적(피라미드 구조, So What 기법), 비판적</li>
+<li><strong>브레인스토밍 4원칙</strong>: 비판 금지, 자유분방, 질보다 양, 결합과 개선</li>
+<li>분석 도구: <strong>SWOT</strong>(강점, 약점, 기회, 위협 / SO, ST, WO, WT 전략), <strong>3C</strong>(자사, 경쟁사, 고객), 로직 트리, MECE(중복 없이 누락 없이)</li>
+<li>퍼실리테이션: 제3자가 촉진, 구성원이 스스로 해결</li>
+</ul>
+<h3>3-4. 자원관리</h3>
+<ul>
+<li><strong>문제 형태</strong>: 비용 최소 선택(업체, 교통편, 숙소), 일정 짜기(회의 가능 시간), 인력 배치(조건 맞는 사람), 물품 관리, 모듈형 이론</li>
+<li><strong>요령</strong>: 조건표를 만들고 선택지를 대입한다. <strong>시차, 요일, 할인 조건, 최소 인원</strong> 같은 함정 조건을 먼저 표시한다</li>
+<li>해외 출장 시차 계산: 도착 현지 시각 = 출발 시각 + 비행 시간 + (현지 시각 − 한국 시각)</li>
+<li><strong>모듈형 암기 포인트</strong></li>
+<li>자원 4종: <strong>시간, 예산, 물적, 인적</strong></li>
+<li>자원 관리 과정: <strong>필요 자원 확인 → 이용 가능 자원 수집 → 활용 계획 → 계획대로 수행</strong></li>
+<li>낭비 요인: 비계획적 행동, 편리성 추구, 자원에 대한 인식 부재, 노하우 부족</li>
+<li><strong>시간 관리 매트릭스</strong>(코비): 1사분면 긴급+중요(위기) / <strong>2사분면 중요+비긴급(계획, 가장 투자해야 할 영역)</strong> / 3사분면 긴급+비중요(잡무, 전화) / 4사분면 둘 다 아님</li>
+<li>예산: <strong>직접비</strong>(재료비, 원료와 장비, 인건비, 출장비, 시설비) / <strong>간접비</strong>(보험료, 건물 관리비, 광고비, 통신비, 사무 비품비, 공과금)
+    → 출장비와 인건비가 직접비라는 게 함정</li>
+<li>물적 자원 관리: 사용 물품과 보관 물품 구분 → 동일 및 유사 물품 분류 → 물품 특성에 맞는 보관 장소</li>
+<li>인적 자원 배치 원칙: <strong>적재적소</strong>, 능력주의, 균형주의 / 배치 유형: 양적 배치, 질적 배치, 적성 배치</li>
+<li>인맥 관리: 핵심 인맥과 파생 인맥</li>
+</ul>
+<h3>3-5. 조직이해</h3>
+<ul>
+<li><strong>문제 형태</strong>: 조직도 해석(결재 라인, 담당 부서 찾기), 업무 분장, 모듈형 이론(가장 많이 나오는 영역), 국제 매너</li>
+<li><strong>요령</strong>: 조직도 문제는 "누가 결재하나", "어느 팀 업무인가"를 조직도와 업무 분장표에서 찾기만 하면 된다. 이론 문제는 아래 암기로 끝낸다</li>
+<li><strong>모듈형 암기 포인트</strong></li>
+<li>조직 분류: 공식/비공식, 영리/비영리, 대규모/소규모</li>
+<li><strong>경영 4요소</strong>: 경영 목적, 인적 자원, 자금, <strong>경영 전략</strong></li>
+<li>조직 구조: <strong>기계적</strong>(엄격한 규칙, 위계, 안정적 환경) / <strong>유기적</strong>(권한 위임, 유연, 급변하는 환경)</li>
+<li>조직 형태: <strong>기능별</strong>(안정적 환경, 효율) / <strong>사업별</strong>(제품, 지역, 고객별, 급변 환경) / 매트릭스(기능 + 프로젝트, 이중 보고)</li>
+<li>조직 구조 결정 요인: <strong>전략, 규모, 기술, 환경</strong></li>
+<li><strong>민츠버그 경영자 역할</strong>: 대인적(대표자, 리더, 연락자) / 정보적(모니터, 전파자, 대변인) / 의사결정적(기업가, 분쟁 조정자, 자원 배분자, 협상가)</li>
+<li><strong>포터 본원적 경쟁 전략</strong>: <strong>원가 우위</strong>, <strong>차별화</strong>, <strong>집중화</strong></li>
+<li>맥킨지 <strong>7S</strong>: 공유 가치(Shared value), 전략, 구조, 시스템, 스타일, 구성원(Staff), 기술(Skill)</li>
+<li>의사결정: 브레인스토밍, <strong>델파이</strong>(전문가 서면 반복, 익명), 명목 집단법 / 집단 의사결정 장점(다양한 시각, 수용성) 단점(시간, 특정인 주도)</li>
+<li>조직 문화 기능: 일체감, 몰입, 안정성, 행동 지침</li>
+<li>경영 참가: 경영 참가(노사협의회), 이윤 참가(성과 배분), 자본 참가(우리사주)</li>
+<li><strong>업무 수행 시트</strong>: <strong>간트 차트</strong>(단계별 시간), <strong>워크 플로 시트</strong>(흐름, 도형으로 구분), <strong>체크리스트</strong>(수행 수준 자가 점검)</li>
+<li>국제 매너: 명함은 오른손으로, 받으면 바로 넣지 않는다 / 악수는 오른손, 윗사람이 먼저 청한다 / 이름이나 직함을 우리식으로 줄이지 않는다</li>
+<li>조직이해 문제에 기관 조직도가 지문으로 나올 수 있다. 공제회 홈페이지 조직도를 한 번 봐둔다</li>
+</ul>
+
+</section><section class="sec" id="ncs-4"><h2>4. 12일 공부법 (처음 보는 사람 기준)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>날짜</th>
+<th>NCS</th>
+<th>전공 (<code>prep/cs-written-exam-summary.md</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9/30 ~ 10/2</td>
+<td>이 파일 3장 모듈형 암기 포인트 정독 (자원관리, 조직이해, 문제해결 이론)</td>
+<td>SW공학, DB</td>
+</tr>
+<tr>
+<td>10/3(토)</td>
+<td><strong>모의고사 1회를 실전 시간(70분)으로.</strong> 채점 후 틀린 유형 확인</td>
+<td>프로그래밍</td>
+</tr>
+<tr>
+<td>10/4(일)</td>
+<td>틀린 유형 집중. 수리 공식표 손으로 써보기</td>
+<td>AI 개론</td>
+</tr>
+<tr>
+<td>10/5 ~ 10/8</td>
+<td>매일 영역 하나씩 문제 20개 (70초 타이머)</td>
+<td>정보처리기사 기출</td>
+</tr>
+<tr>
+<td>10/9(금)</td>
+<td><strong>모의고사 2회 실전 시간.</strong> NCS 70분 + 전공 80분 연달아 (실제 시험 순서 체감)</td>
+<td></td>
+</tr>
+<tr>
+<td>10/10(토)</td>
+<td>오답만 다시 보기. 일찍 잔다</td>
+<td><span class="star" aria-label="빈출">★</span> 표 다시 보기</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>교재는 <strong>피듈형 모의고사 문제집 한 권</strong>이면 된다. 이론서는 이 파일로 대체한다.</li>
+<li>모의고사 점수가 낮게 나와도 정상이다. 처음 보는 사람은 대개 시간이 모자라서 절반쯤 푼다. 목표는 두 번째 모의고사에서 <strong>푼 문제 정답률</strong>을 올리는 것이다.</li>
+</ul>
+</section><section class="sec" id="ncs-5"><h2>5. 시험 당일 체크리스트</h2>
+<ul>
+<li>신분증, 수험표, 컴퓨터용 사인펜, 수정테이프, <strong>아날로그 손목시계</strong>(시험장에 시계 없을 수 있음. 전자시계 금지일 수 있으니 안내문 확인)</li>
+<li>계산기는 대개 금지. 연습 때도 쓰지 않는다</li>
+<li>시험 안내문에서 확인할 것: <strong>오답 감점</strong>, 과락 기준, 영역별 문항 수, 입실 시각</li>
+</ul></section></article></div>
+
+  <p class="foot">원본: prep/cs-written-exam-summary.md, prep/ncs-intro.md (2026-09-29). ★ 표시는 빈출.</p>
+</div>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tab');
+  var parts = document.querySelectorAll('.part');
+  var chipsBar = document.getElementById('chips');
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function show(key) {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.part === key ? 'true' : 'false'); });
+    parts.forEach(function (p) {
+      var on = p.dataset.part === key;
+      p.hidden = !on;
+      if (on) chipsBar.innerHTML = p.querySelector('.chips').innerHTML;
+    });
+    store('lofa-tab', key);
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.part); window.scrollTo(0, 0); }); });
+  var h = (location.hash || '').slice(1);
+  var start = (h === 'ncs' || h === 'cs') ? h : (store('lofa-tab') || 'cs');
+  if (!document.getElementById('part-' + start)) start = 'cs';
+  show(start);
+
+  var quiz = document.getElementById('quiz'), hint = document.getElementById('hint');
+  quiz.addEventListener('click', function () {
+    var on = document.body.classList.toggle('hide-on');
+    quiz.setAttribute('aria-pressed', on ? 'true' : 'false');
+    hint.hidden = !on;
+    document.querySelectorAll('strong.shown').forEach(function (s) { s.classList.remove('shown'); });
+  });
+  document.addEventListener('click', function (e) {
+    var s = e.target.closest && e.target.closest('strong');
+    if (s && document.body.classList.contains('hide-on')) s.classList.toggle('shown');
+  });
+
+  var exam = new Date(2026, 9, 11), now = new Date();
+  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  var d = Math.round((exam - today) / 86400000);
+  document.getElementById('dday').textContent = d > 0 ? 'D-' + d : (d === 0 ? 'D-DAY' : '시험 종료');
+})();
+</script>
+
+</body>
+</html>
