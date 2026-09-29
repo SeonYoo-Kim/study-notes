@@ -105,6 +105,18 @@ td:first-child { font-weight: 500; }
   .cols-2 td:not(:first-child)::before { display: none; }
 }
 
+/* 연습문제 */
+.q { margin-top: 22px; padding-top: 14px; border-top: 1px dashed var(--rule); }
+h2 + .q { border-top: 0; padding-top: 0; margin-top: 8px; }
+.ans { margin: 8px 0 4px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); }
+.ans summary { cursor: pointer; padding: 8px 12px; font-weight: 600; color: var(--omr); list-style: none; }
+.ans summary::before { content: "▸ "; }
+.ans[open] summary::before { content: "▾ "; }
+.ans summary::-webkit-details-marker { display: none; }
+.ans p { margin: 0; padding: 0 12px 10px; }
+.noquiz strong { background: none; }
+.ans strong { background: none; }
+
 /* 가리기 모드 */
 .hide-on .sec:not(.intro):not(.noquiz) strong { color: transparent; background: var(--omr-soft); border-radius: 3px; cursor: pointer; }
 .hide-on .sec:not(.intro):not(.noquiz) strong.shown { color: inherit; background: linear-gradient(transparent 62%, var(--omr-soft) 62%); }
@@ -129,7 +141,7 @@ td:first-child { font-weight: 500; }
 
   <div class="bar">
     <div class="row">
-      <div class="tabs" role="tablist"><button class="tab" role="tab" id="tab-cs" data-part="cs" aria-selected="true">전공</button><button class="tab" role="tab" id="tab-ncs" data-part="ncs" aria-selected="false">NCS</button></div>
+      <div class="tabs" role="tablist"><button class="tab" role="tab" id="tab-cs" data-part="cs" aria-selected="true">전공</button><button class="tab" role="tab" id="tab-ncs" data-part="ncs" aria-selected="false">NCS</button><button class="tab" role="tab" id="tab-drill" data-part="drill" aria-selected="false">NCS 연습</button></div>
       <button class="quiz" id="quiz" aria-pressed="false">가리기</button>
     </div>
     <nav class="chips" id="chips"></nav>
@@ -894,6 +906,370 @@ OS/네트워크/보안은 범위에 명시되지 않았지만 "전산학 일반"
 <li>신분증, 수험표, 컴퓨터용 사인펜, 수정테이프, <strong>아날로그 손목시계</strong>(시험장에 시계 없을 수 있음. 전자시계 금지일 수 있으니 안내문 확인)</li>
 <li>계산기는 대개 금지. 연습 때도 쓰지 않는다</li>
 <li>시험 안내문에서 확인할 것: <strong>오답 감점</strong>, 과락 기준, 영역별 문항 수, 입실 시각</li>
+</ul></section></article></div><div class="part" id="part-drill" data-part="drill" hidden><nav class="chips" aria-label="NCS 연습 목차"><a class="chip" href="#drill-1">1. 의사소통</a><a class="chip" href="#drill-2">2. 수리</a><a class="chip" href="#drill-3">3. 문제해결</a><a class="chip" href="#drill-4">4. 자원관리</a><a class="chip" href="#drill-5">5. 조직이해</a><a class="chip" href="#drill-6">채점표</a></nav><article class="doc"><section class="sec intro"><blockquote>
+<p>지방재정공제회 필기 10/11 대비. 5개 영역 피듈형(모듈 이론 + PSAT식 풀이) 자작 문제.
+문제마다 목표 시간이 있다. <strong>70초 안에 못 풀면 넘기는 연습</strong>까지가 목표다.
+정답은 문제 아래 접혀 있다. 먼저 풀고 열어라. 지문의 기관, 인물, 수치는 전부 가상이다.</p>
+</blockquote>
+
+</section><section class="sec noquiz" id="drill-1"><h2>1. 의사소통 (8제)</h2>
+<p class="q"><strong>문 1.</strong> [목표 60초] 다음 안내문과 일치하지 않는 것은?</p>
+<blockquote>
+<p>유연근무제 운영 안내
+1. 시차출퇴근형은 08:00부터 10:00 사이에 출근하고 1일 8시간을 근무한다.
+2. 신청은 시행일 3근무일 전까지 부서장 승인을 받아 인사팀에 제출한다.
+3. 주 1회 이상 부서 회의가 있는 요일에는 10:00 이전 출근을 원칙으로 한다.
+4. 시보 기간 직원은 시보 종료 후부터 신청할 수 있다.</p>
+</blockquote>
+<p>① 09:30에 출근하면 17:30 퇴근이 원칙이다.
+② 월요일 시행이면 늦어도 전주 수요일까지 제출해야 한다.
+③ 회의가 있는 요일에는 10:00 정각 출근이 가능하다.
+④ 시보 기간 직원은 신청 대상이 아니다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 3항은 "10:00 이전 출근"이라 10:00 정각은 허용되지 않는다. ①은 1항(8시간), ②는 2항(월요일 시행이면 목, 금, 그 전 수요일까지 3근무일), ④는 4항과 일치한다.
+풀이 요령: 보기의 시각과 숫자를 안내문 항목 번호와 1:1로 대조한다. "이전", "이상", "까지" 같은 경계 표현이 함정이다.</p>
+</details>
+<p class="q"><strong>문 2.</strong> [목표 60초] 다음 문장을 논리적 순서로 배열한 것은?</p>
+<p>(가) 그 결과 조회 응답 시간이 평균 362ms에서 32ms로 줄었다.
+(나) 원인은 매 요청마다 동일한 기준 정보를 DB에서 다시 읽는 구조였다.
+(다) 정보시스템 개편 후 조회 화면이 느리다는 민원이 접수되었다.
+(라) 이에 기준 정보를 캐시에 올리고 변경 시에만 갱신하도록 바꿨다.</p>
+<p>① 다 나 라 가  ② 나 다 라 가  ③ 다 라 나 가  ④ 나 라 다 가</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 문제 발생(다) → 원인(나) → 조치(라, "이에") → 결과(가, "그 결과"). 접속어 "이에"와 "그 결과"가 뒤에 오는 문장의 표지다.</p>
+</details>
+<p class="q"><strong>문 3.</strong> [목표 40초] 맞춤법이 모두 옳은 것은?</p>
+<p>① 몇일 뒤에 회의가 열립니다. 결과는 금새 나옵니다.
+② 며칠 뒤에 회의가 열립니다. 결과는 금세 나옵니다.
+③ 며칠 뒤에 회의가 열립니다. 결과는 금새 나옵니다.
+④ 몇일 뒤에 회의가 열립니다. 결과는 금세 나옵니다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> "며칠"이 표준어이고 "몇일"은 틀린 표기다. "금세"는 "금시에"의 준말이라 "금새"가 아니다.</p>
+</details>
+<p class="q"><strong>문 4.</strong> [목표 40초] 밑줄 친 부분이 어법에 맞는 것은?</p>
+<p>① 담당자로써 책임을 다하겠습니다.
+② 합격율이 지난해보다 올랐습니다.
+③ 그렇게 하면 안 됩니다.
+④ 보고서를 제출하지 않했습니다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> "안 됩니다"는 "아니 됩니다"의 준말로 맞다. ①은 자격이므로 "로서". ②는 받침 있는 말 뒤라 "합격률"(율은 모음이나 ㄴ 받침 뒤에만). ④는 "않았습니다".
+되/돼 판별: "하/해"로 바꿔서 "해"가 자연스러우면 "돼". "안 해요"가 되니 "안 돼요".</p>
+</details>
+<p class="q"><strong>문 5.</strong> [목표 30초] 공문서 날짜 표기로 옳은 것은?</p>
+<p>① 2026.10.11(일)  ② 2026. 10. 11.(일)  ③ 2026년 10월 11일(일요일)  ④ 26. 10. 11. (일)</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 연월일 뒤에 각각 마침표를 찍고 한 칸을 띄우며, 마지막 마침표 뒤에 괄호 요일을 붙인다. 괄호 안 요일에는 마침표를 찍지 않는다.</p>
+</details>
+<p class="q"><strong>문 6.</strong> [목표 40초] 빈칸에 들어갈 접속어로 알맞은 것은?</p>
+<blockquote>
+<p>이번 시스템은 사용자 만족도가 높았다. ( ) 유지보수 비용이 예상의 두 배로 늘어 재검토가 필요하다.</p>
+</blockquote>
+<p>① 그래서  ② 그러나  ③ 또한  ④ 즉</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 앞 문장은 긍정, 뒤 문장은 부정적 사실이므로 역접이다. "그래서"는 인과, "또한"은 첨가, "즉"은 환언이다.</p>
+</details>
+<p class="q"><strong>문 7.</strong> [목표 30초] 다음 중 경청을 방해하는 행동이 아닌 것은?</p>
+<p>① 상대의 말이 끝나기 전에 대답할 말을 준비한다.
+② 상대의 말을 내 경험에 비추어 미리 짐작한다.
+③ 상대의 말을 요약해 확인한다.
+④ 듣기 싫은 부분을 걸러서 듣는다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 요약 확인은 적극적 경청 기법이다. 나머지는 경청 방해 요인(대답할 말 준비하기, 짐작하기, 걸러내기)이다.</p>
+</details>
+<p class="q"><strong>문 8.</strong> [목표 40초] 다음 상황에 적합한 문서는?</p>
+<blockquote>
+<p>정보화팀이 내년 회원 포털 개편을 위해 예산과 일정을 제안하고 경영진의 승인을 얻으려 한다.</p>
+</blockquote>
+<p>① 보도자료  ② 기획서  ③ 설명서  ④ 회의록</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 기획서는 아이디어나 사업을 제안해 상대를 설득하는 문서다. 보도자료는 언론, 설명서는 상품이나 제도 안내, 회의록은 기록용이다.</p>
+</details>
+
+</section><section class="sec noquiz" id="drill-2"><h2>2. 수리 (10제)</h2>
+<p class="q"><strong>문 9.</strong> [목표 40초] 어느 기관의 사업비가 2024년 250억 원에서 2025년 290억 원이 되었다. 증가율은?</p>
+<p>① 14%  ② 16%  ③ 18%  ④ 40%</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> (290 − 250) / 250 × 100 = 40 / 250 × 100 = 16%. ④ 40은 증가 금액이지 증가율이 아니다.</p>
+</details>
+<p class="q"><strong>문 10.</strong> [목표 40초] A 지역 제도 찬성률이 42%에서 48%로 올랐다. 옳은 것은?</p>
+<p>① 6% 증가했다.  ② 6%p 증가했다.  ③ 14.3%p 증가했다.  ④ 48% 증가했다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 비율끼리의 차이는 %p(퍼센트포인트)다. 증가율로 말하면 6 / 42 ≈ 14.3%이지 14.3%p가 아니다.</p>
+</details>
+<p class="q"><strong>문 11.</strong> [목표 50초] 10% 소금물 300g에 물 200g을 더하면 농도는?</p>
+<p>① 5%  ② 6%  ③ 7.5%  ④ 8%</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 소금 양은 300 × 0.1 = 30g으로 변하지 않는다. 전체는 500g. 30 / 500 = 6%.</p>
+</details>
+<p class="q"><strong>문 12.</strong> [목표 60초] 집에서 회사까지 12km다. 갈 때는 자전거로 시속 6km, 올 때는 걸어서 시속 4km로 이동했다. 왕복 평균 속력은?</p>
+<p>① 4.8km/h  ② 5km/h  ③ 5.2km/h  ④ 6km/h</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 갈 때 2시간, 올 때 3시간. 총 24km를 5시간에 이동했으니 24 / 5 = 4.8km/h. 두 속력의 산술평균 5가 아니다.</p>
+</details>
+<p class="q"><strong>문 13.</strong> [목표 50초] A 혼자 하면 6일, B 혼자 하면 12일 걸리는 일을 둘이 함께 하면 며칠 걸리는가?</p>
+<p>① 3일  ② 4일  ③ 8일  ④ 9일</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 하루 일량은 A가 1/6, B가 1/12. 합은 3/12 = 1/4. 따라서 4일.</p>
+</details>
+<p class="q"><strong>문 14.</strong> [목표 50초] 직원 5명 중 감사위원 2명을 뽑는 경우의 수와, 위원장과 부위원장을 각각 1명씩 뽑는 경우의 수를 순서대로 고르면?</p>
+<p>① 10, 10  ② 10, 20  ③ 20, 10  ④ 20, 20</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 감사위원은 순서가 없으니 조합 5C2 = 10. 위원장과 부위원장은 역할이 다르니 순열 5P2 = 20.</p>
+</details>
+<p class="q"><strong>문 15.</strong> [목표 40초] 동전을 세 번 던져 적어도 한 번 앞면이 나올 확률은?</p>
+<p>① 1/8  ② 3/8  ③ 1/2  ④ 7/8</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> "적어도 하나"는 여사건으로 푼다. 세 번 모두 뒷면일 확률 1/8을 1에서 뺀다.</p>
+</details>
+<p class="q"><strong>문 16.</strong> [목표 70초] 다음 표는 어느 공제회의 연도별 회원 수다. 옳지 않은 것은?</p>
+<div class="tw cols-5"><table>
+<thead>
+<tr>
+<th>연도</th>
+<th>2022</th>
+<th>2023</th>
+<th>2024</th>
+<th>2025</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="연도">회원 수(명)</td><td data-label="2022">1,200</td><td data-label="2023">1,320</td><td data-label="2024">1,452</td><td data-label="2025">1,500</td></tr>
+</tbody>
+</table></div>
+<p>① 회원 수는 매년 10% 이상 증가했다.
+② 2023년 증가율은 10%다.
+③ 2025년 회원 수는 2022년 대비 25% 증가했다.
+④ 2024년에 늘어난 회원 수는 132명이다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 2025년은 48 / 1,452 ≈ 3.3% 증가라 "매년 10% 이상"이 틀렸다. ② 120 / 1,200 = 10%. ③ 300 / 1,200 = 25%. ④ 1,452 − 1,320 = 132.
+요령: "매년"이 들어간 보기는 한 해만 깨져도 틀리므로 가장 먼저 검증한다.</p>
+</details>
+<p class="q"><strong>문 17.</strong> [목표 60초] 원가 8,000원인 물품에 25%의 이익을 붙여 정가를 정한 뒤, 정가의 10%를 할인해 팔았다. 물품 1개당 이익은?</p>
+<p>① 800원  ② 1,000원  ③ 1,200원  ④ 2,000원</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 정가 8,000 × 1.25 = 10,000원. 판매가 10,000 × 0.9 = 9,000원. 이익 9,000 − 8,000 = 1,000원.</p>
+</details>
+<p class="q"><strong>문 18.</strong> [목표 40초] 1반 30명의 평균이 70점, 2반 20명의 평균이 80점이다. 두 반 전체 평균은?</p>
+<p>① 74점  ② 75점  ③ 76점  ④ 77점</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> (30 × 70 + 20 × 80) / 50 = (2,100 + 1,600) / 50 = 74. 인원이 다르므로 단순 평균 75가 아니다.</p>
+</details>
+
+</section><section class="sec noquiz" id="drill-3"><h2>3. 문제해결 (10제)</h2>
+<p class="q"><strong>문 19.</strong> [목표 50초] "비가 오면 우산을 쓴다"가 참일 때 반드시 참인 것은?</p>
+<p>① 우산을 쓰면 비가 온다.
+② 비가 오지 않으면 우산을 쓰지 않는다.
+③ 우산을 쓰지 않으면 비가 오지 않는다.
+④ 우산을 쓰지 않아도 비가 온다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 대우(¬q → ¬p)만 원 명제와 항상 같이 참이다. ①은 역, ②는 이로, 참인지 알 수 없다.</p>
+</details>
+<p class="q"><strong>문 20.</strong> [목표 60초] 다음 두 명제가 참일 때 반드시 참인 것은?</p>
+<blockquote>
+<p>성실한 사람은 지각하지 않는다.
+지각하지 않는 사람은 신뢰받는다.</p>
+</blockquote>
+<p>① 신뢰받는 사람은 성실하다.
+② 신뢰받지 않는 사람은 성실하지 않다.
+③ 지각하는 사람은 성실할 수도 있다.
+④ 성실하지 않은 사람은 신뢰받지 않는다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 삼단논법으로 "성실 → 신뢰"가 성립하고, 그 대우가 "신뢰 안 함 → 성실 안 함"이다. ①은 역, ④는 이다. ③은 첫 명제의 대우("지각 → 성실 안 함")에 어긋난다.</p>
+</details>
+<p class="q"><strong>문 21.</strong> [목표 50초] 다음이 참일 때 반드시 참인 것은?</p>
+<blockquote>
+<p>모든 개발자는 커피를 마신다.
+커피를 마시는 어떤 사람은 야근을 한다.</p>
+</blockquote>
+<p>① 어떤 개발자는 야근을 한다.
+② 야근하는 사람은 모두 커피를 마신다.
+③ 커피를 마시지 않는 사람은 개발자가 아니다.
+④ 모든 개발자는 야근을 한다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 첫 명제의 대우다. "어떤" 명제는 개발자와 겹친다는 보장이 없으므로 ①, ④는 알 수 없다. ②는 두 번째 명제의 역이다.</p>
+</details>
+<p class="q"><strong>문 22.</strong> [목표 70초] 네 명 중 한 명이 서류를 분실했다. 진실을 말한 사람은 한 명뿐이다. 분실한 사람은?</p>
+<blockquote>
+<p>A: "B가 잃어버렸다."
+B: "D가 잃어버렸다."
+C: "나는 잃어버리지 않았다."
+D: "B의 말은 거짓이다."</p>
+</blockquote>
+<p>① A  ② B  ③ C  ④ D</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> B와 D는 서로 모순이라 진실은 둘 중 하나다. 그러면 A와 C는 거짓이다. C가 거짓이면 C가 잃어버린 것이다. 검증: A 거짓(B 아님) ✓, B 거짓(D 아님) ✓, D 진실 ✓.
+요령: 모순되는 두 진술을 먼저 찾으면 나머지가 결정된다.</p>
+</details>
+<p class="q"><strong>문 23.</strong> [목표 70초] 가, 나, 다, 라, 마 다섯 명이 한 줄로 앉는다. 왼쪽에서 세 번째에 앉는 사람은?</p>
+<blockquote>
+<p>가는 맨 왼쪽에 앉는다.
+마는 맨 오른쪽에 앉는다.
+나는 다의 바로 오른쪽에 앉는다.
+라는 마와 이웃하지 않는다.</p>
+</blockquote>
+<p>① 나  ② 다  ③ 라  ④ 알 수 없다</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 1번 가, 5번 마 확정. 남은 2, 3, 4번에 "다 나"가 붙어서 들어가야 하니 (2, 3) 또는 (3, 4). (2, 3)이면 라가 4번이 되어 마(5번)와 이웃하므로 안 된다. 따라서 다 3, 나 4, 라 2. 배치: 가 라 다 나 마.</p>
+</details>
+<p class="q"><strong>문 24.</strong> [목표 70초] 출장비 규정에 따라 6급 직원의 2박 3일 부산 출장비 총액은?</p>
+<div class="tw cols-4"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>일비(1일)</th>
+<th>숙박비(1박)</th>
+<th>교통비</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="구분">5급 이상</td><td data-label="일비(1일)">25,000원</td><td data-label="숙박비(1박)">80,000원</td><td data-label="교통비">실비</td></tr>
+<tr><td data-label="구분">6급 이하</td><td data-label="일비(1일)">20,000원</td><td data-label="숙박비(1박)">70,000원</td><td data-label="교통비">실비</td></tr>
+</tbody>
+</table></div>
+<p>교통비: KTX 왕복 118,000원</p>
+<p>① 258,000원  ② 298,000원  ③ 318,000원  ④ 338,000원</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 일비 3일 × 20,000 = 60,000. 숙박 2박 × 70,000 = 140,000. 교통 118,000. 합 318,000원. "2박 3일"에서 일비는 3일, 숙박은 2박이라는 점이 함정이다.</p>
+</details>
+<p class="q"><strong>문 25.</strong> [목표 30초] 다음 상황에 해당하는 문제 유형은?</p>
+<blockquote>
+<p>내년 회원 포털 개편을 위해 올해 안에 데이터 이관 체계를 새로 갖추기로 목표를 세웠다.</p>
+</blockquote>
+<p>① 발생형  ② 탐색형  ③ 설정형  ④ 잠재형</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 미래 목표를 새로 세워 생기는 문제가 설정형이다. 발생형은 이미 벌어진 문제, 탐색형은 현재를 더 잘하기 위한 개선 문제다.</p>
+</details>
+<p class="q"><strong>문 26.</strong> [목표 30초] 브레인스토밍의 원칙이 아닌 것은?</p>
+<p>① 다른 사람의 아이디어를 비판하지 않는다.
+② 아이디어는 많을수록 좋다.
+③ 나온 아이디어를 즉시 평가해 걸러낸다.
+④ 남의 아이디어에 덧붙여 발전시킨다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 4원칙은 비판 금지, 자유분방, 질보다 양, 결합과 개선이다. 즉시 평가는 비판 금지에 어긋난다.</p>
+</details>
+<p class="q"><strong>문 27.</strong> [목표 30초] SWOT 분석에서 자사의 강점을 활용해 외부 위협을 피하거나 줄이는 전략은?</p>
+<p>① SO  ② ST  ③ WO  ④ WT</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> S(강점) + T(위협) = ST 전략. SO는 강점으로 기회 활용, WO는 약점 보완으로 기회 활용, WT는 약점 최소화와 위협 회피다.</p>
+</details>
+<p class="q"><strong>문 28.</strong> [목표 30초] 문제 해결 절차를 순서대로 나열한 것은?</p>
+<p>① 문제 인식 → 원인 분석 → 문제 도출 → 해결안 개발 → 실행 및 평가
+② 문제 인식 → 문제 도출 → 원인 분석 → 해결안 개발 → 실행 및 평가
+③ 문제 도출 → 문제 인식 → 원인 분석 → 실행 및 평가 → 해결안 개발
+④ 원인 분석 → 문제 인식 → 문제 도출 → 해결안 개발 → 실행 및 평가</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 인식 → 도출 → 원인 분석 → 해결안 → 실행 및 평가. "도출이 분석보다 먼저"만 기억하면 된다.</p>
+</details>
+
+</section><section class="sec noquiz" id="drill-4"><h2>4. 자원관리 (6제)</h2>
+<p class="q"><strong>문 29.</strong> [목표 30초] 시간관리 매트릭스에서 "다음 달 정보보안기사 시험 준비"는 어느 영역이며, 어느 영역에 시간을 가장 많이 써야 하는가?</p>
+<p>① 1사분면(긴급, 중요) / 1사분면
+② 2사분면(중요, 비긴급) / 2사분면
+③ 2사분면(중요, 비긴급) / 1사분면
+④ 3사분면(긴급, 비중요) / 2사분면</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 시험은 중요하지만 당장 급하지 않으니 2사분면이다. 코비의 매트릭스는 2사분면(계획, 준비, 관계)에 투자할수록 1사분면의 위기가 줄어든다고 본다.</p>
+</details>
+<p class="q"><strong>문 30.</strong> [목표 40초] 다음 중 직접비만 묶은 것은?</p>
+<p>① 출장비, 인건비, 재료비
+② 출장비, 광고비, 통신비
+③ 보험료, 인건비, 사무 비품비
+④ 건물 관리비, 재료비, 공과금</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 직접비는 재료비, 원료와 장비, 인건비, 출장비, 시설비다. 보험료, 건물 관리비, 광고비, 통신비, 사무 비품비, 공과금은 간접비다. 출장비가 직접비라는 점이 자주 나온다.</p>
+</details>
+<p class="q"><strong>문 31.</strong> [목표 70초] 노트북 30대를 구매한다. 가장 저렴한 업체는?</p>
+<div class="tw cols-3"><table>
+<thead>
+<tr>
+<th>업체</th>
+<th>대당 단가</th>
+<th>조건</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="업체">가</td><td data-label="대당 단가">1,000,000원</td><td data-label="조건">20대 이상 구매 시 총액 5% 할인</td></tr>
+<tr><td data-label="업체">나</td><td data-label="대당 단가">960,000원</td><td data-label="조건">배송비 별도 500,000원</td></tr>
+<tr><td data-label="업체">다</td><td data-label="대당 단가">980,000원</td><td data-label="조건">30대 이상 구매 시 대당 40,000원 할인</td></tr>
+<tr><td data-label="업체">라</td><td data-label="대당 단가">950,000원</td><td data-label="조건">할인 없음, 설치비 대당 20,000원 별도</td></tr>
+</tbody>
+</table></div>
+<p>① 가  ② 나  ③ 다  ④ 라</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 가: 30,000,000 × 0.95 = 28,500,000. 나: 28,800,000 + 500,000 = 29,300,000. 다: 940,000 × 30 = 28,200,000. 라: 970,000 × 30 = 29,100,000.
+요령: 단가만 보면 라가 제일 싸 보인다. 조건란의 배송비, 설치비, 할인 기준 수량을 전부 반영한 총액으로 비교한다.</p>
+</details>
+<p class="q"><strong>문 32.</strong> [목표 50초] 서울에서 10:00에 출발해 11시간 비행한다. 현지 시각이 서울보다 8시간 느릴 때 도착 현지 시각은?</p>
+<p>① 05:00  ② 13:00  ③ 21:00  ④ 익일 05:00</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 도착 서울 시각은 21:00. 현지는 8시간 느리므로 21 − 8 = 13:00. 시차를 더하는 실수(④)가 흔하다.</p>
+</details>
+<p class="q"><strong>문 33.</strong> [목표 70초] 네 명이 1시간 회의를 잡으려 한다. 모두 가능한 시간은?</p>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>이름</th>
+<th>불가능 시간</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="이름">가</td><td data-label="불가능 시간">09:00~10:30, 14:00~15:00</td></tr>
+<tr><td data-label="이름">나</td><td data-label="불가능 시간">10:00~11:00, 13:00~14:00</td></tr>
+<tr><td data-label="이름">다</td><td data-label="불가능 시간">11:30~13:00</td></tr>
+<tr><td data-label="이름">라</td><td data-label="불가능 시간">09:00~11:00, 15:00~16:00</td></tr>
+</tbody>
+</table></div>
+<p>(근무 09:00~18:00, 점심 12:00~13:00 제외)</p>
+<p>① 11:00~12:00  ② 13:00~14:00  ③ 14:00~15:00  ④ 16:00~17:00</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> ①은 다(11:30~13:00)가 안 된다. ②는 나, ③은 가가 안 된다. 16:00~17:00은 아무도 불가능 시간이 없다.
+요령: 보기 4개를 표에 하나씩 대입해 탈락시키는 게 빈 시간을 찾는 것보다 빠르다.</p>
+</details>
+<p class="q"><strong>문 34.</strong> [목표 30초] 자원관리의 기본 과정을 순서대로 나열한 것은?</p>
+<p>① 계획 수립 → 필요 자원 확인 → 자원 수집 → 수행
+② 필요 자원 확인 → 이용 가능 자원 수집 → 활용 계획 수립 → 계획대로 수행
+③ 자원 수집 → 필요 자원 확인 → 계획 수립 → 수행
+④ 필요 자원 확인 → 계획 수립 → 자원 수집 → 수행</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 무엇이 필요한지 확인하고, 구할 수 있는 것을 모으고, 계획을 세워 수행한다.</p>
+</details>
+
+</section><section class="sec noquiz" id="drill-5"><h2>5. 조직이해 (6제)</h2>
+<p class="q"><strong>문 35.</strong> [목표 30초] 경영의 4요소가 아닌 것은?</p>
+<p>① 경영 목적  ② 인적 자원  ③ 조직 문화  ④ 경영 전략</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 4요소는 경영 목적, 인적 자원, 자금, 경영 전략이다.</p>
+</details>
+<p class="q"><strong>문 36.</strong> [목표 40초] 유기적 조직의 특징으로 옳은 것은?</p>
+<p>① 엄격한 규칙과 절차에 따라 움직인다.
+② 의사결정 권한이 상층부에 집중된다.
+③ 급변하는 환경에 적합하며 권한 위임이 활발하다.
+④ 안정적인 환경에서 효율이 높다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 나머지는 기계적 조직의 특징이다.</p>
+</details>
+<p class="q"><strong>문 37.</strong> [목표 40초] 민츠버그의 경영자 역할 중 "부서 간 갈등을 조정한다"는?</p>
+<p>① 대인적 역할의 연락자
+② 정보적 역할의 대변인
+③ 의사결정적 역할의 분쟁 조정자
+④ 대인적 역할의 리더</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 의사결정적 역할은 기업가, 분쟁 조정자, 자원 배분자, 협상가다. 대인적은 대표자, 리더, 연락자. 정보적은 모니터, 전파자, 대변인.</p>
+</details>
+<p class="q"><strong>문 38.</strong> [목표 30초] 포터의 본원적 경쟁 전략 중 저가 항공사가 주로 택하는 전략은?</p>
+<p>① 차별화  ② 집중화  ③ 원가 우위  ④ 다각화</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 비용을 낮춰 가격으로 경쟁하는 것이 원가 우위다. 다각화는 본원적 전략에 없다.</p>
+</details>
+<p class="q"><strong>문 39.</strong> [목표 60초] 다음 조직도와 전결 규정에 따를 때, 정보화팀의 400만 원짜리 소프트웨어 구매 결재권자는?</p>
+<blockquote>
+<p>조직: 이사장 아래 사무총장, 사무총장 아래 경영지원본부와 사업본부. 경영지원본부 아래 인사팀, 재무팀, 정보화팀.</p>
+</blockquote>
+<div class="tw cols-2"><table>
+<thead>
+<tr>
+<th>금액</th>
+<th>전결권자</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="금액">300만 원 이하</td><td data-label="전결권자">팀장</td></tr>
+<tr><td data-label="금액">300만 원 초과 1,000만 원 이하</td><td data-label="전결권자">본부장</td></tr>
+<tr><td data-label="금액">1,000만 원 초과 3,000만 원 이하</td><td data-label="전결권자">사무총장</td></tr>
+<tr><td data-label="금액">3,000만 원 초과</td><td data-label="전결권자">이사장</td></tr>
+</tbody>
+</table></div>
+<p>① 정보화팀장  ② 경영지원본부장  ③ 사무총장  ④ 이사장</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 400만 원은 300만 초과 1,000만 이하 구간이므로 본부장이며, 정보화팀의 상위 본부는 경영지원본부다. 조직도에서 소속 본부를 먼저 확인하고 금액 구간을 대입한다.</p>
+</details>
+<p class="q"><strong>문 40.</strong> [목표 30초] 업무 단계별 소요 시간을 막대 길이로 나타내 전체 일정을 한눈에 보는 업무 수행 시트는?</p>
+<p>① 체크리스트  ② 워크 플로 시트  ③ 간트 차트  ④ 조직도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 간트 차트는 단계와 시간, 워크 플로 시트는 흐름과 순서(도형으로 구분), 체크리스트는 수행 수준 자가 점검이다.</p>
+</details>
+
+</section><section class="sec noquiz" id="drill-6"><h2>채점표</h2>
+<div class="tw cols-4"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>문항</th>
+<th>맞힌 수</th>
+<th>목표</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="영역">의사소통</td><td data-label="문항">1~8 (8)</td><td data-label="맞힌 수"></td><td data-label="목표">6 이상</td></tr>
+<tr><td data-label="영역">수리</td><td data-label="문항">9~18 (10)</td><td data-label="맞힌 수"></td><td data-label="목표">7 이상</td></tr>
+<tr><td data-label="영역">문제해결</td><td data-label="문항">19~28 (10)</td><td data-label="맞힌 수"></td><td data-label="목표">7 이상</td></tr>
+<tr><td data-label="영역">자원관리</td><td data-label="문항">29~34 (6)</td><td data-label="맞힌 수"></td><td data-label="목표">4 이상</td></tr>
+<tr><td data-label="영역">조직이해</td><td data-label="문항">35~40 (6)</td><td data-label="맞힌 수"></td><td data-label="목표">5 이상</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li>목표 시간 안에 못 푼 문제는 맞혔어도 △로 표시한다. 실전에서는 그 문제를 넘겼을 것이기 때문이다.</li>
+<li>두 번째 풀 때는 답을 외운 상태라 의미가 없다. 틀린 유형만 골라 시중 피듈형 모의고사에서 같은 유형을 20문제씩 더 푼다.</li>
 </ul></section></article></div>
 
   <p class="foot">원본: prep/cs-written-exam-summary.md, prep/ncs-intro.md (2026-09-29). ★ 표시는 빈출.</p>
