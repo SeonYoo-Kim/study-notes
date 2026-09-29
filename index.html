@@ -118,6 +118,8 @@ h2 + .q { border-top: 0; padding-top: 0; margin-top: 8px; }
 .ans[open] summary::before { content: "▾ "; }
 .ans summary::-webkit-details-marker { display: none; }
 .ans p { margin: 0; padding: 0 12px 10px; }
+.q + pre, .q ~ pre { margin: 8px 0; }
+.part pre code { white-space: pre; }
 .noquiz strong { background: none; }
 .ans strong { background: none; }
 
@@ -145,7 +147,7 @@ h2 + .q { border-top: 0; padding-top: 0; margin-top: 8px; }
 
   <div class="bar">
     <div class="row">
-      <div class="tabs" role="tablist"><button class="tab" role="tab" id="tab-cs" data-part="cs" aria-selected="true">전공</button><button class="tab" role="tab" id="tab-ncs" data-part="ncs" aria-selected="false">NCS</button><button class="tab" role="tab" id="tab-drill" data-part="drill" aria-selected="false">NCS 연습</button></div>
+      <div class="tabs" role="tablist"><button class="tab" role="tab" id="tab-cs" data-part="cs" aria-selected="true">전공</button><button class="tab" role="tab" id="tab-ncs" data-part="ncs" aria-selected="false">NCS</button><button class="tab" role="tab" id="tab-drill" data-part="drill" aria-selected="false">NCS 연습</button><button class="tab" role="tab" id="tab-csdrill" data-part="csdrill" aria-selected="false">전공 연습</button></div>
       <button class="quiz timer" id="timer" aria-pressed="false" title="누르면 시작/정지, 두 번 누르면 초기화">70:00</button>
       <button class="quiz" id="quiz" aria-pressed="false">가리기</button>
     </div>
@@ -911,7 +913,7 @@ OS/네트워크/보안은 범위에 명시되지 않았지만 "전산학 일반"
 <li>신분증, 수험표, 컴퓨터용 사인펜, 수정테이프, <strong>아날로그 손목시계</strong>(시험장에 시계 없을 수 있음. 전자시계 금지일 수 있으니 안내문 확인)</li>
 <li>계산기는 대개 금지. 연습 때도 쓰지 않는다</li>
 <li>시험 안내문에서 확인할 것: <strong>오답 감점</strong>, 과락 기준, 영역별 문항 수, 입실 시각</li>
-</ul></section></article></div><div class="part" id="part-drill" data-part="drill" hidden><nav class="chips" aria-label="NCS 연습 목차"><a class="chip" href="#drill-1">진단</a><a class="chip" href="#drill-2">의사소통 드릴</a><a class="chip" href="#drill-3">수리 드릴</a><a class="chip" href="#drill-4">문제해결 드릴</a><a class="chip" href="#drill-5">자원관리 드릴</a><a class="chip" href="#drill-6">조직이해 드릴</a><a class="chip" href="#drill-7">모의 1회</a><a class="chip" href="#drill-8">모의 2회</a></nav><article class="doc"><section class="sec noquiz" id="drill-1"><h2>NCS 연습문제 40제 (2026-09-29 작성)</h2>
+</ul></section></article></div><div class="part" id="part-drill" data-part="drill" hidden><nav class="chips" aria-label="NCS 연습 목차"><a class="chip" href="#drill-1">진단</a><a class="chip" href="#drill-2">의사소통</a><a class="chip" href="#drill-3">수리</a><a class="chip" href="#drill-4">문제해결</a><a class="chip" href="#drill-5">자원관리</a><a class="chip" href="#drill-6">조직이해</a><a class="chip" href="#drill-7">모의 1회</a><a class="chip" href="#drill-8">모의 2회</a></nav><article class="doc"><section class="sec noquiz" id="drill-1"><h2>NCS 연습문제 40제 (2026-09-29 작성)</h2>
 <blockquote>
 <p>지방재정공제회 필기 10/11 대비. 5개 영역 피듈형(모듈 이론 + PSAT식 풀이) 자작 문제.
 문제마다 목표 시간이 있다. <strong>70초 안에 못 풀면 넘기는 연습</strong>까지가 목표다.
@@ -3419,6 +3421,1029 @@ D: "B의 말은 거짓이다."</p>
 ③ 전문성이 지나치게 높아진다.
 ④ 의사결정이 지나치게 집중된다.</p>
 <details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details></section></article></div><div class="part" id="part-csdrill" data-part="csdrill" hidden><nav class="chips" aria-label="전공 연습 목차"><a class="chip" href="#csdrill-1">소프트웨어공학</a><a class="chip" href="#csdrill-2">데이터베이스</a><a class="chip" href="#csdrill-3">프로그래밍과 자료구조</a><a class="chip" href="#csdrill-4">인공지능개론</a><a class="chip" href="#csdrill-5">전공 모의</a></nav><article class="doc"><section class="sec noquiz" id="csdrill-1"><h2>소프트웨어공학 드릴 30제 (문 1~30)</h2>
+<blockquote>
+<p>요약본 <code>cs-written-exam-summary.md</code> 1장 범위. 정보처리기사 필기 1, 2과목 수준. 목표 시간은 실전 80초 기준이다.</p>
+</blockquote>
+<h3>소프트웨어공학 드릴</h3>
+<p class="q"><strong>문 1.</strong> 나선형 모델의 4단계에 해당하지 않는 것은?</p>
+<p>① 계획 수립  ② 위험 분석  ③ 개발 및 검증  ④ 요구사항 동결</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 계획 → 위험 분석 → 개발 및 검증 → 고객 평가를 반복한다. 위험 분석이 나선형의 핵심 키워드다.</p>
+</details>
+<p class="q"><strong>문 2.</strong> 애자일 선언의 4가지 가치로 옳지 않은 것은?</p>
+<p>① 프로세스와 도구보다 개인과 상호작용
+② 포괄적 문서보다 작동하는 소프트웨어
+③ 계약 협상보다 고객과의 협력
+④ 변화 대응보다 계획 준수</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 반대다. 계획 준수보다 변화 대응이다.</p>
+</details>
+<p class="q"><strong>문 3.</strong> XP(eXtreme Programming)의 5가지 핵심 가치가 아닌 것은?</p>
+<p>① 용기  ② 단순성  ③ 효율성  ④ 피드백</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 용기, 단순성, 의사소통, 피드백, 존중.</p>
+</details>
+<p class="q"><strong>문 4.</strong> 스크럼에서 제품 백로그의 우선순위를 결정하는 역할은?</p>
+<p>① 스크럼 마스터  ② 제품 책임자(PO)  ③ 개발팀  ④ 이해관계자</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 스크럼 마스터는 장애 제거와 프로세스 코치, 개발팀은 스프린트 백로그를 관리한다.</p>
+</details>
+<p class="q"><strong>문 5.</strong> V 모델에서 단위 테스트와 대응되는 개발 단계는?</p>
+<p>① 요구 분석  ② 시스템 설계  ③ 상세 설계  ④ 코딩</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 요구 분석은 인수 테스트, 시스템 설계는 시스템 테스트, 상세 설계는 단위 테스트, 아키텍처(기본) 설계는 통합 테스트와 짝이다. 코딩은 테스트와 대응되는 단계가 아니라 V의 꼭짓점이다.</p>
+</details>
+<p class="q"><strong>문 6.</strong> 요구사항 개발 절차를 순서대로 나열한 것은?</p>
+<p>① 도출 → 분석 → 명세 → 확인
+② 분석 → 도출 → 명세 → 확인
+③ 도출 → 명세 → 분석 → 확인
+④ 명세 → 도출 → 분석 → 확인</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 7.</strong> 자료 사전(DD)에서 "선택"을 나타내는 기호는?</p>
+<p>① { }  ② ( )  ③ [ | ]  ④ + </p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> { }는 반복, ( )는 생략 가능, +는 연결, =는 정의, * *는 주석.</p>
+</details>
+<p class="q"><strong>문 8.</strong> DFD(자료 흐름도)의 구성 요소가 아닌 것은?</p>
+<p>① 프로세스  ② 자료 흐름  ③ 자료 저장소  ④ 제어 흐름</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 프로세스, 자료 흐름, 자료 저장소, 단말(외부 엔티티) 4가지다. DFD에는 제어(시간, 순서) 개념이 없다.</p>
+</details>
+<p class="q"><strong>문 9.</strong> UML 다이어그램 중 동적(행위) 다이어그램에 속하는 것은?</p>
+<p>① 클래스 다이어그램  ② 시퀀스 다이어그램  ③ 컴포넌트 다이어그램  ④ 배치 다이어그램</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 구조(정적)는 클래스, 객체, 컴포넌트, 배치, 복합체, 패키지. 행위(동적)는 유스케이스, 시퀀스, 커뮤니케이션, 상태, 활동, 타이밍.</p>
+</details>
+<p class="q"><strong>문 10.</strong> UML 관계 중 "전체가 사라지면 부분도 사라지는" 강한 전체-부분 관계는?</p>
+<p>① 연관  ② 집합(Aggregation)  ③ 합성(Composition)  ④ 의존</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 집합은 부분이 독립적으로 존재할 수 있고(빈 마름모), 합성은 생명주기를 같이한다(채운 마름모).</p>
+</details>
+<p class="q"><strong>문 11.</strong> 유스케이스 다이어그램에서 "특정 조건에서만 추가로 실행되는 기능"을 나타내는 관계는?</p>
+<p>① include  ② extend  ③ generalization  ④ association</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> include는 반드시 포함, extend는 조건부 확장이다.</p>
+</details>
+<p class="q"><strong>문 12.</strong> 결합도를 낮은 것부터 높은 순으로 나열한 것은?</p>
+<p>① 자료 → 스탬프 → 제어 → 외부 → 공통 → 내용
+② 내용 → 공통 → 외부 → 제어 → 스탬프 → 자료
+③ 자료 → 제어 → 스탬프 → 공통 → 외부 → 내용
+④ 스탬프 → 자료 → 제어 → 외부 → 공통 → 내용</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> "자스제외공내". 낮을수록 좋다.</p>
+</details>
+<p class="q"><strong>문 13.</strong> 다음 설명에 해당하는 결합도는?</p>
+<blockquote>
+<p>한 모듈이 다른 모듈에 플래그 값을 넘겨 그 모듈의 처리 흐름을 결정한다.</p>
+</blockquote>
+<p>① 자료 결합도  ② 스탬프 결합도  ③ 제어 결합도  ④ 공통 결합도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 흐름을 제어하는 값을 넘기면 제어 결합도다. 배열이나 구조체를 통째로 넘기면 스탬프, 전역 변수를 공유하면 공통이다.</p>
+</details>
+<p class="q"><strong>문 14.</strong> 응집도가 가장 높은 것은?</p>
+<p>① 논리적 응집도  ② 시간적 응집도  ③ 순차적 응집도  ④ 우연적 응집도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> "기순교절시논우" 순으로 높다. 기능 &gt; 순차 &gt; 교환 &gt; 절차 &gt; 시간 &gt; 논리 &gt; 우연.</p>
+</details>
+<p class="q"><strong>문 15.</strong> 다음 설명에 해당하는 응집도는?</p>
+<blockquote>
+<p>모듈 안의 기능들이 같은 시점에 실행되어야 한다는 이유로 묶여 있다. 예: 초기화 모듈.</p>
+</blockquote>
+<p>① 시간적 응집도  ② 절차적 응집도  ③ 교환적 응집도  ④ 기능적 응집도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 16.</strong> 좋은 모듈 설계에 대한 설명으로 옳은 것은?</p>
+<p>① 팬인은 낮고 팬아웃은 높아야 한다.
+② 결합도는 높고 응집도는 낮아야 한다.
+③ 팬인은 높고 팬아웃은 낮아야 한다.
+④ 모듈 크기는 클수록 좋다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 팬인(나를 호출하는 수)이 높으면 재사용이 잘 되는 것이고, 팬아웃(내가 호출하는 수)이 높으면 복잡하다.</p>
+</details>
+<p class="q"><strong>문 17.</strong> SOLID 원칙 중 "클라이언트는 자신이 쓰지 않는 메서드에 의존하지 않아야 한다"는?</p>
+<p>① SRP  ② OCP  ③ LSP  ④ ISP</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 인터페이스 분리 원칙.</p>
+</details>
+<p class="q"><strong>문 18.</strong> 다음 설명에 해당하는 원칙은?</p>
+<blockquote>
+<p>상위 모듈은 하위 모듈의 구체 클래스가 아니라 추상(인터페이스)에 의존해야 한다.</p>
+</blockquote>
+<p>① 단일 책임 원칙  ② 개방 폐쇄 원칙  ③ 리스코프 치환 원칙  ④ 의존 역전 원칙</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> Spring의 DI가 이 원칙의 구현이다.</p>
+</details>
+<p class="q"><strong>문 19.</strong> GoF 디자인 패턴 중 생성 패턴이 아닌 것은?</p>
+<p>① 싱글톤  ② 빌더  ③ 어댑터  ④ 프로토타입</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 어댑터는 구조 패턴이다. 생성 5개: 추상 팩토리, 빌더, 팩토리 메서드, 프로토타입, 싱글톤.</p>
+</details>
+<p class="q"><strong>문 20.</strong> 다음 설명에 해당하는 패턴은?</p>
+<blockquote>
+<p>한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들에게 자동으로 통지되어 갱신된다.</p>
+</blockquote>
+<p>① 옵서버  ② 전략  ③ 데코레이터  ④ 퍼사드</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 옵서버는 행위 패턴이다.</p>
+</details>
+<p class="q"><strong>문 21.</strong> 복잡한 서브시스템에 대해 단순한 통합 인터페이스를 제공하는 구조 패턴은?</p>
+<p>① 프록시  ② 퍼사드  ③ 브리지  ④ 컴포지트</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 22.</strong> 블랙박스 테스트 기법이 아닌 것은?</p>
+<p>① 동등 분할  ② 경계값 분석  ③ 기초 경로 검사  ④ 원인 결과 그래프</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 기초 경로 검사는 화이트박스(구조 기반)다.</p>
+</details>
+<p class="q"><strong>문 23.</strong> 입력값 범위가 1 이상 100 이하일 때 경계값 분석으로 선택할 테스트 값으로 가장 적절한 것은?</p>
+<p>① 1, 50, 100  ② 0, 1, 100, 101  ③ 10, 20, 30  ④ −100, 0, 200</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 경계와 경계 바로 바깥을 검사한다.</p>
+</details>
+<p class="q"><strong>문 24.</strong> 다음 제어 흐름 그래프의 순환 복잡도는? (노드 7개, 간선 9개)</p>
+<p>① 2  ② 3  ③ 4  ④ 9</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> V(G) = E − N + 2 = 9 − 7 + 2 = 4.</p>
+</details>
+<p class="q"><strong>문 25.</strong> 프로그램에 if 문이 3개, while 문이 1개 있다. McCabe 순환 복잡도는?</p>
+<p>① 3  ② 4  ③ 5  ④ 8</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 판단문 수 + 1 = 4 + 1 = 5.</p>
+</details>
+<p class="q"><strong>문 26.</strong> 하향식 통합 테스트에서 아직 개발되지 않은 하위 모듈을 대신하는 것은?</p>
+<p>① 드라이버  ② 스텁  ③ 오라클  ④ 하네스</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 하향식은 스텁, 상향식은 드라이버.</p>
+</details>
+<p class="q"><strong>문 27.</strong> 테스트 커버리지를 약한 것부터 강한 순으로 나열한 것은?</p>
+<p>① 구문 → 결정 → 조건/결정 → MC/DC → 다중 조건
+② 다중 조건 → MC/DC → 결정 → 구문
+③ 결정 → 구문 → 조건 → 다중 조건
+④ 구문 → 다중 조건 → 결정 → MC/DC</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 28.</strong> 소프트웨어 개발 비용 산정 기법 중 수학적 산정 모델이 아닌 것은?</p>
+<p>① COCOMO  ② Putnam  ③ 기능 점수(FP)  ④ 델파이</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 델파이는 전문가 판단 기반의 하향식 기법이다.</p>
+</details>
+<p class="q"><strong>문 29.</strong> COCOMO 모델에서 30만 라인을 초과하는 대형 시스템에 적용하는 유형은?</p>
+<p>① 조직형(Organic)  ② 반분리형(Semi-detached)  ③ 내장형(Embedded)  ④ 분산형</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 조직형 5만 이하, 반분리형 30만 이하, 내장형 30만 초과.</p>
+</details>
+<p class="q"><strong>문 30.</strong> CMMI 성숙도 5단계를 순서대로 나열한 것은?</p>
+<p>① 초기 → 관리 → 정의 → 정량적 관리 → 최적화
+② 초기 → 정의 → 관리 → 최적화 → 정량적 관리
+③ 관리 → 초기 → 정의 → 정량적 관리 → 최적화
+④ 초기 → 관리 → 정량적 관리 → 정의 → 최적화</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+</section><section class="sec noquiz" id="csdrill-2"><h2>데이터베이스 드릴 30제 (문 31~60)</h2>
+<blockquote>
+<p>요약본 2장 범위. 정규화 판별, SQL 결과, 트랜잭션 격리 수준은 계산 문제로 나온다. 목표 시간은 실전 80초 기준이다.</p>
+</blockquote>
+<h3>데이터베이스 드릴</h3>
+<p class="q"><strong>문 31.</strong> 3단계 스키마 중 "기관 전체의 논리적 구조로 하나만 존재하는" 것은?</p>
+<p>① 외부 스키마  ② 개념 스키마  ③ 내부 스키마  ④ 물리 스키마</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 32.</strong> 내부 스키마가 바뀌어도 개념 스키마가 영향을 받지 않는 성질은?</p>
+<p>① 논리적 데이터 독립성  ② 물리적 데이터 독립성  ③ 참조 무결성  ④ 원자성</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 개념이 바뀌어도 외부가 영향 없으면 논리적 독립성이다.</p>
+</details>
+<p class="q"><strong>문 33.</strong> 데이터베이스 설계 단계 중 정규화를 수행하는 단계는?</p>
+<p>① 요구 분석  ② 개념적 설계  ③ 논리적 설계  ④ 물리적 설계</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 개념적 설계는 ER 다이어그램, 물리적 설계는 인덱스와 저장 구조다.</p>
+</details>
+<p class="q"><strong>문 34.</strong> 릴레이션 R의 속성이 5개, 튜플이 8개다. 차수와 카디널리티는?</p>
+<p>① 차수 8, 카디널리티 5  ② 차수 5, 카디널리티 8  ③ 차수 13, 카디널리티 40  ④ 차수 5, 카디널리티 40</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 차수는 속성(열) 수, 카디널리티는 튜플(행) 수.</p>
+</details>
+<p class="q"><strong>문 35.</strong> 유일성은 만족하지만 최소성은 만족하지 않을 수 있는 키는?</p>
+<p>① 후보키  ② 기본키  ③ 슈퍼키  ④ 외래키</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 후보키 = 유일성 + 최소성. 슈퍼키는 유일성만.</p>
+</details>
+<p class="q"><strong>문 36.</strong> 기본키에 NULL이나 중복이 있을 수 없다는 제약은?</p>
+<p>① 참조 무결성  ② 개체 무결성  ③ 도메인 무결성  ④ 키 무결성</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 37.</strong> 부모 튜플을 삭제할 때 이를 참조하는 자식 튜플도 함께 삭제되는 옵션은?</p>
+<p>① RESTRICT  ② SET NULL  ③ CASCADE  ④ NO ACTION</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 38.</strong> 관계 대수에서 조건에 맞는 튜플(행)을 고르는 연산은?</p>
+<p>① π(Project)  ② σ(Select)  ③ ⋈(Join)  ④ ÷(Division)</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> π는 열, σ는 행.</p>
+</details>
+<p class="q"><strong>문 39.</strong> 릴레이션 R(차수 3, 카디널리티 4)과 S(차수 2, 카디널리티 5)의 카티션 곱의 차수와 카디널리티는?</p>
+<p>① 5, 9  ② 5, 20  ③ 6, 9  ④ 6, 20</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 차수는 합(3 + 2), 카디널리티는 곱(4 × 5).</p>
+</details>
+<p class="q"><strong>문 40.</strong> 다음 중 부분 함수 종속을 제거해 얻는 정규형은?</p>
+<p>① 1NF  ② 2NF  ③ 3NF  ④ BCNF</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 1NF 원자값, 2NF 부분 종속 제거, 3NF 이행 종속 제거, BCNF 모든 결정자가 후보키.</p>
+</details>
+<p class="q"><strong>문 41.</strong> 릴레이션 수강(학번, 과목코드, 성적, 과목명)에서 기본키가 (학번, 과목코드)이고 과목코드 → 과목명이 성립한다. 이 릴레이션이 위반하는 정규형은?</p>
+<p>① 1NF  ② 2NF  ③ 3NF  ④ BCNF</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 과목명이 기본키의 일부(과목코드)에만 종속되는 부분 함수 종속이다. 2NF를 만족하려면 (과목코드, 과목명)을 분리한다.</p>
+</details>
+<p class="q"><strong>문 42.</strong> 릴레이션 직원(사번, 부서코드, 부서명)에서 사번 → 부서코드, 부서코드 → 부서명이 성립한다. 기본키는 사번이다. 위반하는 정규형은?</p>
+<p>① 1NF  ② 2NF  ③ 3NF  ④ 4NF</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 사번 → 부서코드 → 부서명의 이행 함수 종속이다. 기본키가 단일 속성이라 부분 종속은 생길 수 없다.</p>
+</details>
+<p class="q"><strong>문 43.</strong> BCNF의 조건은?</p>
+<p>① 모든 속성이 원자값이다.
+② 모든 결정자가 후보키다.
+③ 다치 종속이 없다.
+④ 조인 종속이 없다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> ③은 4NF, ④는 5NF.</p>
+</details>
+<p class="q"><strong>문 44.</strong> 정규화의 목적으로 옳지 않은 것은?</p>
+<p>① 삽입, 삭제, 갱신 이상 방지
+② 데이터 중복 최소화
+③ 조회 성능 극대화
+④ 저장 공간 효율화</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 정규화는 테이블을 나누므로 조인이 늘어 조회 성능이 오히려 떨어질 수 있다. 성능을 위해 일부러 되돌리는 것이 반정규화다.</p>
+</details>
+<p class="q"><strong>문 45.</strong> SQL 명령어 분류가 옳은 것은?</p>
+<p>① CREATE: DML  ② GRANT: DDL  ③ COMMIT: TCL  ④ SELECT: DCL</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> DDL(CREATE, ALTER, DROP, TRUNCATE), DML(SELECT, INSERT, UPDATE, DELETE), DCL(GRANT, REVOKE), TCL(COMMIT, ROLLBACK, SAVEPOINT).</p>
+</details>
+<p class="q"><strong>문 46.</strong> DELETE와 TRUNCATE의 차이로 옳은 것은?</p>
+<p>① DELETE는 테이블 구조까지 삭제한다.
+② TRUNCATE는 ROLLBACK으로 되돌릴 수 있다.
+③ DELETE는 WHERE로 일부 행만 삭제할 수 있다.
+④ TRUNCATE는 DML이다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> TRUNCATE는 DDL이라 롤백 불가, 전체 행 삭제, 구조는 유지. DROP이 구조까지 삭제.</p>
+</details>
+<p class="q"><strong>문 47.</strong> SELECT 문의 논리적 실행 순서로 옳은 것은?</p>
+<p>① SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY
+② FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
+③ FROM → SELECT → WHERE → GROUP BY → HAVING → ORDER BY
+④ WHERE → FROM → GROUP BY → SELECT → HAVING → ORDER BY</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 그래서 WHERE에는 집계 함수를 쓸 수 없고 HAVING에 쓴다.</p>
+</details>
+<p class="q"><strong>문 48.</strong> 다음 테이블 직원(이름, 부서, 급여)에 대해 <code>SELECT 부서, COUNT(*) FROM 직원 GROUP BY 부서 HAVING COUNT(*) &gt;= 2;</code>의 결과 행 수는?</p>
+<div class="tw cols-3"><table>
+<thead>
+<tr>
+<th>이름</th>
+<th>부서</th>
+<th>급여</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="이름">김</td><td data-label="부서">인사</td><td data-label="급여">300</td></tr>
+<tr><td data-label="이름">이</td><td data-label="부서">인사</td><td data-label="급여">350</td></tr>
+<tr><td data-label="이름">박</td><td data-label="부서">정보화</td><td data-label="급여">400</td></tr>
+<tr><td data-label="이름">최</td><td data-label="부서">정보화</td><td data-label="급여">420</td></tr>
+<tr><td data-label="이름">정</td><td data-label="부서">재무</td><td data-label="급여">380</td></tr>
+</tbody>
+</table></div>
+<p>① 1  ② 2  ③ 3  ④ 5</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 인사 2, 정보화 2, 재무 1. HAVING으로 재무가 걸러져 2행.</p>
+</details>
+<p class="q"><strong>문 49.</strong> 위 테이블에서 <code>SELECT AVG(급여) FROM 직원 WHERE 부서 = '정보화';</code>의 결과는?</p>
+<p>① 370  ② 400  ③ 410  ④ 420</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> (400 + 420) / 2 = 410.</p>
+</details>
+<p class="q"><strong>문 50.</strong> 테이블 T의 컬럼 C 값이 10, NULL, 20, NULL일 때 <code>COUNT(*)</code>, <code>COUNT(C)</code>, <code>SUM(C)</code>, <code>AVG(C)</code>의 결과는?</p>
+<p>① 4, 4, 30, 7.5  ② 4, 2, 30, 15  ③ 2, 2, 30, 15  ④ 4, 2, 30, 7.5</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> COUNT(*)는 NULL 포함, COUNT(C)와 SUM, AVG는 NULL 제외. AVG = 30 / 2.</p>
+</details>
+<p class="q"><strong>문 51.</strong> NULL 값을 조회하는 조건으로 옳은 것은?</p>
+<p>① WHERE C = NULL  ② WHERE C == NULL  ③ WHERE C IS NULL  ④ WHERE C EQUALS NULL</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> <code>= NULL</code>은 항상 참이 아니다(UNKNOWN).</p>
+</details>
+<p class="q"><strong>문 52.</strong> 두 SELECT 결과를 합치되 중복 행을 남기는 집합 연산자는?</p>
+<p>① UNION  ② UNION ALL  ③ INTERSECT  ④ EXCEPT</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> UNION은 중복을 제거한다.</p>
+</details>
+<p class="q"><strong>문 53.</strong> <code>WHERE 이름 LIKE '김_%'</code>에 해당하는 값은?</p>
+<p>① 김  ② 김철수  ③ 박김수  ④ 수김</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> <code>_</code>는 정확히 1글자, <code>%</code>는 0글자 이상. "김"으로 시작하고 두 글자 이상이어야 한다. "김"만 있으면 <code>_</code> 자리가 없어 탈락.</p>
+</details>
+<p class="q"><strong>문 54.</strong> 뷰(View)에 대한 설명으로 옳지 않은 것은?</p>
+<p>① 물리적으로 저장되지 않는 가상 테이블이다.
+② 뷰 위에 다른 뷰를 정의할 수 있다.
+③ ALTER VIEW로 정의를 변경할 수 있다.
+④ 독립적인 인덱스를 가질 수 없다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 뷰 정의는 변경할 수 없고 삭제 후 재생성한다. (실제 DBMS에는 CREATE OR REPLACE가 있지만 시험은 이 답이다.)</p>
+</details>
+<p class="q"><strong>문 55.</strong> <code>GRANT SELECT ON 직원 TO 김 WITH GRANT OPTION;</code>의 의미는?</p>
+<p>① 김에게 직원 테이블의 모든 권한을 준다.
+② 김은 직원 테이블을 조회할 수 있고, 그 권한을 다른 사람에게도 줄 수 있다.
+③ 김의 조회 권한을 회수한다.
+④ 김은 직원 테이블을 수정할 수 있다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 56.</strong> 트랜잭션의 ACID 중 "트랜잭션의 연산이 모두 실행되거나 전혀 실행되지 않아야 한다"는?</p>
+<p>① 원자성  ② 일관성  ③ 격리성  ④ 지속성</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 57.</strong> 격리 수준 READ COMMITTED에서 발생할 수 있는 현상은?</p>
+<p>① Dirty Read  ② Non-Repeatable Read  ③ 아무 이상 현상도 없다  ④ 갱신 분실만</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> READ COMMITTED는 Dirty Read만 막고 Non-Repeatable Read와 Phantom Read는 허용한다.</p>
+</details>
+<p class="q"><strong>문 58.</strong> 같은 조건으로 두 번 조회했는데 두 번째에 없던 행이 나타나는 현상은?</p>
+<p>① Dirty Read  ② Non-Repeatable Read  ③ Phantom Read  ④ Lost Update</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 같은 행의 값이 바뀌면 Non-Repeatable, 행이 생기거나 사라지면 Phantom.</p>
+</details>
+<p class="q"><strong>문 59.</strong> 2단계 로킹(2PL) 규약에 대한 설명으로 옳은 것은?</p>
+<p>① 직렬 가능성을 보장하지만 교착 상태는 막지 못한다.
+② 교착 상태를 예방한다.
+③ 확장 단계에서 락을 해제한다.
+④ 로킹 단위가 클수록 병행성이 높아진다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 확장 단계는 획득만, 축소 단계는 해제만이다. 로킹 단위가 크면 병행성이 낮아진다.</p>
+</details>
+<p class="q"><strong>문 60.</strong> 즉시 갱신 회복 기법에서 장애 시점에 커밋되지 않은 트랜잭션에 대해 수행하는 것은?</p>
+<p>① REDO  ② UNDO  ③ COMMIT  ④ CHECKPOINT</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 커밋된 것은 REDO, 커밋 안 된 것은 UNDO. 지연 갱신은 UNDO가 필요 없다.</p>
+</details>
+</section><section class="sec noquiz" id="csdrill-3"><h2>프로그래밍과 자료구조 드릴 30제 (문 61~90)</h2>
+<blockquote>
+<p>요약본 3장 범위. Java 12제, Python 8제, 자료구조와 알고리즘 10제. 코드 출력은 실제로 실행해 확인한 값이다. 목표 시간은 실전 80초 기준이다.</p>
+</blockquote>
+<h3>프로그래밍과 자료구조 드릴</h3>
+<p class="q"><strong>문 61.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">int a = 5;
+int b = a++ + ++a;
+System.out.println(a + &quot; &quot; + b);
+</code></pre>
+<p>① 6 11  ② 7 12  ③ 7 13  ④ 6 12</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> a++는 5를 쓰고 a를 6으로, ++a는 a를 7로 올리고 7을 쓴다. b = 5 + 7 = 12, a = 7.</p>
+</details>
+<p class="q"><strong>문 62.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">String s = &quot;abc&quot;;
+s.concat(&quot;d&quot;);
+System.out.println(s);
+</code></pre>
+<p>① abc  ② abcd  ③ d  ④ 컴파일 오류</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> String은 불변이라 concat은 새 문자열을 반환할 뿐 s는 바뀌지 않는다.</p>
+</details>
+<p class="q"><strong>문 63.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">class Parent { int x = 10; void show() { System.out.print(&quot;P&quot;); } }
+class Child extends Parent { int x = 20; void show() { System.out.print(&quot;C&quot;); } }
+...
+Parent p = new Child();
+p.show();
+System.out.print(p.x);
+</code></pre>
+<p>① P10  ② P20  ③ C10  ④ C20</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 메서드는 오버라이딩되어 실제 객체(Child)의 것이 실행되고, 필드는 선언 타입(Parent)의 것을 읽는다.</p>
+</details>
+<p class="q"><strong>문 64.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">int k = 2;
+switch (k) {
+  case 1: System.out.print(&quot;1 &quot;);
+  case 2: System.out.print(&quot;2 &quot;);
+  case 3: System.out.print(&quot;3 &quot;); break;
+  case 4: System.out.print(&quot;4 &quot;);
+}
+</code></pre>
+<p>① 2  ② 2 3  ③ 2 3 4  ④ 1 2 3</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> case 2에 break가 없어 case 3까지 실행되고 break에서 멈춘다.</p>
+</details>
+<p class="q"><strong>문 65.</strong> 다음 Java 메서드에서 f(4)의 반환값은?</p>
+<pre><code class="language-java">static int f(int n) { return n == 0 ? 0 : n + f(n - 1); }
+</code></pre>
+<p>① 4  ② 6  ③ 10  ④ 24</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 4 + 3 + 2 + 1 + 0 = 10.</p>
+</details>
+<p class="q"><strong>문 66.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">System.out.println((-7 / 2) + &quot; &quot; + (-7 % 2));
+</code></pre>
+<p>① -3 -1  ② -4 1  ③ -3 1  ④ -4 -1</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> Java의 정수 나눗셈은 0 방향으로 버리고, 나머지 부호는 피제수를 따른다. (Python은 -4 1)</p>
+</details>
+<p class="q"><strong>문 67.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">System.out.println((6 &amp; 3) + &quot; &quot; + (6 | 3) + &quot; &quot; + (6 ^ 3) + &quot; &quot; + (6 &lt;&lt; 1));
+</code></pre>
+<p>① 2 7 5 12  ② 2 7 5 3  ③ 3 6 5 12  ④ 2 5 7 12</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 6 = 110, 3 = 011. AND 010 = 2, OR 111 = 7, XOR 101 = 5, 왼쪽 시프트는 ×2.</p>
+</details>
+<p class="q"><strong>문 68.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">static int g() {
+  try { return 1; }
+  finally { System.out.print(&quot;fin &quot;); }
+}
+...
+System.out.println(g());
+</code></pre>
+<p>① 1  ② fin 1  ③ 1 fin  ④ fin</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> return이 실행되기 전에 finally가 먼저 실행된다.</p>
+</details>
+<p class="q"><strong>문 69.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">System.out.println(new String(&quot;a&quot;) == new String(&quot;a&quot;));
+System.out.println(new String(&quot;a&quot;).equals(new String(&quot;a&quot;)));
+</code></pre>
+<p>① true true  ② false true  ③ true false  ④ false false</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> ==는 참조 비교, equals는 값 비교.</p>
+</details>
+<p class="q"><strong>문 70.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">class A { A() { System.out.print(&quot;A &quot;); } }
+class B extends A { B() { System.out.print(&quot;B &quot;); } }
+...
+new B();
+</code></pre>
+<p>① A  ② B  ③ A B  ④ B A</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 자식 생성자 첫 줄에 super()가 자동 삽입되어 부모 생성자가 먼저 실행된다.</p>
+</details>
+<p class="q"><strong>문 71.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">System.out.println(1 + 2 + &quot;3&quot; + 4 + 5);
+</code></pre>
+<p>① 12345  ② 3345  ③ 15  ④ 339</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 왼쪽부터 계산한다. 1 + 2 = 3(정수), 3 + "3" = "33"(문자열), 이후는 문자열 연결.</p>
+</details>
+<p class="q"><strong>문 72.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">int cnt = 0;
+for (int q = 0; q &lt; 5; q++) {
+  if (q == 2) continue;
+  if (q == 4) break;
+  cnt++;
+}
+System.out.println(cnt);
+</code></pre>
+<p>① 2  ② 3  ③ 4  ④ 5</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> q = 0, 1, 3에서 증가. 2는 건너뛰고 4에서 종료.</p>
+</details>
+<p class="q"><strong>문 73.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">print([x * x for x in range(5) if x % 2 == 1])
+</code></pre>
+<p>① [1, 9]  ② [0, 4, 16]  ③ [1, 3]  ④ [1, 4, 9, 16]</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> range(5)는 0~4, 홀수 1과 3의 제곱.</p>
+</details>
+<p class="q"><strong>문 74.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">s = &quot;hello&quot;
+print(s[1:4], s[::-1], s[-3:])
+</code></pre>
+<p>① ell olleh llo  ② ello olleh lo  ③ hel hello llo  ④ ell hello olleh</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 슬라이싱 끝은 미포함, [::-1]은 뒤집기, [-3:]은 뒤에서 3글자.</p>
+</details>
+<p class="q"><strong>문 75.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">a = [1, 2, 3]
+b = a
+b.append(4)
+print(len(a), a is b)
+</code></pre>
+<p>① 3 False  ② 4 False  ③ 3 True  ④ 4 True</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> b = a는 같은 객체를 가리킨다.</p>
+</details>
+<p class="q"><strong>문 76.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">def f(x, l=[]):
+    l.append(x)
+    return l
+f(1)
+print(f(2))
+</code></pre>
+<p>① [2]  ② [1, 2]  ③ [1]  ④ 오류</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 가변 기본 인자는 함수 정의 시 한 번만 만들어져 호출 간에 공유된다.</p>
+</details>
+<p class="q"><strong>문 77.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">print(-7 // 2, -7 % 2, 7 / 2, 2 ** 10)
+</code></pre>
+<p>① -3 -1 3 1024  ② -4 1 3.5 1024  ③ -3 1 3.5 20  ④ -4 -1 3.5 1024</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> //는 내림, %는 결과가 제수의 부호를 따르고, /는 항상 실수, **는 거듭제곱.</p>
+</details>
+<p class="q"><strong>문 78.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">def fib(n):
+    return n if n &lt; 2 else fib(n - 1) + fib(n - 2)
+print(fib(6))
+</code></pre>
+<p>① 5  ② 8  ③ 13  ④ 21</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 0, 1, 1, 2, 3, 5, 8.</p>
+</details>
+<p class="q"><strong>문 79.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">x = 10
+def g():
+    x = 20
+    return x
+print(g(), x)
+</code></pre>
+<p>① 20 20  ② 10 10  ③ 20 10  ④ 오류</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 함수 안의 x는 지역 변수라 전역 x에 영향이 없다.</p>
+</details>
+<p class="q"><strong>문 80.</strong> 다음 Python 식의 결과를 순서대로 나열한 것은?</p>
+<pre><code class="language-python">0 or 5, &quot;&quot; and &quot;x&quot;, not []
+</code></pre>
+<p>① 5, "", True  ② True, False, True  ③ 0, "x", False  ④ 5, "x", True</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> or는 첫 참 값(없으면 마지막), and는 첫 거짓 값(없으면 마지막)을 반환. 빈 리스트는 거짓이라 not []은 True.</p>
+</details>
+<p class="q"><strong>문 81.</strong> 중위 표기식 <code>A + B * C - D</code>를 후위 표기로 바꾼 것은?</p>
+<p>① A B + C * D -  ② A B C * + D -  ③ A B C * D - +  ④ + A - * B C D</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 우선순위대로 괄호: ((A + (B * C)) - D). 연산자를 괄호 뒤로: A B C * + D -.</p>
+</details>
+<p class="q"><strong>문 82.</strong> 다음 이진 트리를 중위 순회한 결과는?</p>
+<blockquote>
+<p>루트 D, D의 왼쪽 자식 B, 오른쪽 자식 F. B의 자식 A(왼쪽), C(오른쪽). F의 자식 E(왼쪽), G(오른쪽).</p>
+</blockquote>
+<p>① D B A C F E G  ② A B C D E F G  ③ A C B E G F D  ④ D B F A C E G</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 중위는 왼쪽 → 루트 → 오른쪽. 이진 탐색 트리라면 오름차순이 나온다. ①은 전위, ③은 후위, ④는 레벨 순회다.</p>
+</details>
+<p class="q"><strong>문 83.</strong> 깊이(높이)가 4인 이진 트리가 가질 수 있는 최대 노드 수는? (루트의 깊이를 1로 본다)</p>
+<p>① 7  ② 8  ③ 15  ④ 16</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 2⁴ − 1 = 15.</p>
+</details>
+<p class="q"><strong>문 84.</strong> 배열 [5, 3, 8, 1]에 버블 정렬(오름차순)을 1회전 적용한 결과는?</p>
+<p>① [3, 5, 1, 8]  ② [1, 3, 5, 8]  ③ [1, 5, 3, 8]  ④ [3, 5, 8, 1]</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 인접 비교 교환: (5,3)→3,5 / (5,8) 유지 / (8,1)→1,8. 가장 큰 값이 끝으로 간다.</p>
+</details>
+<p class="q"><strong>문 85.</strong> 배열 [5, 3, 8, 1]에 선택 정렬(오름차순)을 1회전 적용한 결과는?</p>
+<p>① [3, 5, 8, 1]  ② [1, 3, 8, 5]  ③ [1, 5, 8, 3]  ④ [1, 3, 5, 8]</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 최솟값 1을 찾아 맨 앞 5와 교환한다.</p>
+</details>
+<p class="q"><strong>문 86.</strong> 평균과 최악 시간 복잡도가 모두 O(n log n)이고 안정 정렬인 것은?</p>
+<p>① 퀵 정렬  ② 힙 정렬  ③ 병합 정렬  ④ 삽입 정렬</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 퀵은 최악 n², 힙은 불안정, 삽입은 n².</p>
+</details>
+<p class="q"><strong>문 87.</strong> 정렬된 배열 1,000개에서 이진 탐색으로 값을 찾을 때 최대 비교 횟수는 약?</p>
+<p>① 10  ② 32  ③ 100  ④ 500</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> log₂1000 ≈ 10.</p>
+</details>
+<p class="q"><strong>문 88.</strong> 정점이 6개인 무방향 완전 그래프의 간선 수는?</p>
+<p>① 6  ② 12  ③ 15  ④ 30</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> n(n − 1) / 2 = 15. 방향 그래프면 30.</p>
+</details>
+<p class="q"><strong>문 89.</strong> 스택에 push(1), push(2), pop, push(3), push(4), pop, pop을 순서대로 수행했을 때 마지막에 pop된 값은?</p>
+<p>① 1  ② 2  ③ 3  ④ 4</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> pop 순서는 2, 4, 3.</p>
+</details>
+<p class="q"><strong>문 90.</strong> 최소 신장 트리 알고리즘 중 간선을 가중치 순으로 정렬해 사이클이 생기지 않는 것부터 고르는 것은?</p>
+<p>① 프림  ② 크루스칼  ③ 다익스트라  ④ 플로이드</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 프림은 정점에서 확장, 다익스트라는 최단 경로, 플로이드는 모든 쌍 최단 경로.</p>
+</details>
+</section><section class="sec noquiz" id="csdrill-4"><h2>인공지능개론 드릴 30제 (문 91~120)</h2>
+<blockquote>
+<p>요약본 4장 범위. 고전 AI(탐색, 추론) 8제, 머신러닝 12제, 딥러닝 10제. 평가지표와 CNN 출력 크기는 계산 문제다. 목표 시간은 실전 80초 기준이다.</p>
+</blockquote>
+<h3>인공지능개론 드릴</h3>
+<p class="q"><strong>문 91.</strong> "인공지능"이라는 용어가 처음 제안된 1956년의 학술 회의는?</p>
+<p>① 튜링 회의  ② 다트머스 회의  ③ 매카시 회의  ④ 스탠퍼드 회의</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 존 매카시가 다트머스 회의에서 제안했다.</p>
+</details>
+<p class="q"><strong>문 92.</strong> 튜링 테스트에 대한 비판으로, 기호 조작만으로는 이해라고 볼 수 없다는 사고 실험은?</p>
+<p>① 중국어 방  ② 프레임 문제  ③ 모라벡의 역설  ④ 괴델의 불완전성</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 설(Searle)의 중국어 방 논증이다.</p>
+</details>
+<p class="q"><strong>문 93.</strong> 지능형 에이전트 중 "목표 달성 정도를 수치로 평가해 가장 좋은 행동을 고르는" 유형은?</p>
+<p>① 단순 반사 에이전트  ② 모델 기반 에이전트  ③ 목표 기반 에이전트  ④ 효용 기반 에이전트</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 목표 기반은 목표 달성 여부(참/거짓)만 보고, 효용 기반은 얼마나 좋은지를 본다.</p>
+</details>
+<p class="q"><strong>문 94.</strong> 너비 우선 탐색(BFS)에 대한 설명으로 옳은 것은?</p>
+<p>① 스택을 사용한다.
+② 간선 비용이 같으면 최적해를 보장한다.
+③ 메모리 사용량이 DFS보다 적다.
+④ 무한 경로에 빠질 위험이 크다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> BFS는 큐, 완전성과 (균일 비용에서) 최적성 보장, 메모리가 크다. ①③④는 DFS의 특징이다.</p>
+</details>
+<p class="q"><strong>문 95.</strong> A* 알고리즘의 평가 함수 f(n) = g(n) + h(n)에서 h(n)이 만족해야 최적해를 보장하는 조건은?</p>
+<p>① 항상 실제 비용보다 크다.
+② 실제 비용을 과대평가하지 않는다(허용적).
+③ 0이어야 한다.
+④ g(n)과 같아야 한다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> h가 실제 남은 비용 이하이면(허용적) 최적이다. h = 0이면 균일 비용 탐색이 된다.</p>
+</details>
+<p class="q"><strong>문 96.</strong> 언덕 오르기 탐색의 대표적 문제점은?</p>
+<p>① 메모리 부족  ② 지역 최적에 갇힘  ③ 완전성 보장으로 인한 느린 속도  ④ 휴리스틱 불필요</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 해결책은 무작위 재시작, 모의 담금질 등이다.</p>
+</details>
+<p class="q"><strong>문 97.</strong> 미니맥스 게임 트리에서 알파 베타 가지치기를 적용하면?</p>
+<p>① 결과값이 미니맥스와 달라진다.
+② 결과값은 같고 탐색 노드 수가 줄어든다.
+③ 항상 절반의 노드만 탐색한다.
+④ MAX 노드만 가지치기된다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 결과에 영향을 주지 않는 가지만 잘라내므로 값은 동일하다.</p>
+</details>
+<p class="q"><strong>문 98.</strong> 전문가 시스템에서 "데이터에서 출발해 규칙을 적용하며 결론으로 나아가는" 추론은?</p>
+<p>① 전향 추론  ② 후향 추론  ③ 귀추 추론  ④ 유비 추론</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 후향 추론은 가설(목표)에서 출발해 근거를 확인한다.</p>
+</details>
+<p class="q"><strong>문 99.</strong> 다음 중 지도 학습에 해당하는 것은?</p>
+<p>① k-means 군집  ② 주성분 분석(PCA)  ③ 로지스틱 회귀  ④ 연관 규칙 학습</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 로지스틱 회귀는 이름은 회귀지만 정답 라벨이 있는 분류 알고리즘이다. 나머지는 비지도.</p>
+</details>
+<p class="q"><strong>문 100.</strong> 강화 학습의 구성 요소가 아닌 것은?</p>
+<p>① 에이전트  ② 보상  ③ 정답 라벨  ④ 정책</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 강화 학습은 정답 대신 보상 신호로 학습한다.</p>
+</details>
+<p class="q"><strong>문 101.</strong> k-NN 알고리즘에 대한 설명으로 옳은 것은?</p>
+<p>① 학습 단계에서 복잡한 모델을 만든다.
+② 예측 시 가장 가까운 k개 이웃의 다수결로 결정한다.
+③ 특징의 스케일 차이에 영향을 받지 않는다.
+④ k는 항상 1로 둔다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 학습이 사실상 없는 게으른 학습이며 거리 기반이라 스케일링이 필요하다.</p>
+</details>
+<p class="q"><strong>문 102.</strong> 결정 트리에서 CART 알고리즘이 분할 기준으로 쓰는 것은?</p>
+<p>① 정보 이득  ② 지니 불순도  ③ 유클리드 거리  ④ 코사인 유사도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> ID3와 C4.5는 엔트로피 기반 정보 이득, CART는 지니 불순도.</p>
+</details>
+<p class="q"><strong>문 103.</strong> 두 클래스가 정확히 반반인 데이터의 엔트로피는? (밑 2)</p>
+<p>① 0  ② 0.5  ③ 1  ④ 2</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> −(0.5 log₂0.5 + 0.5 log₂0.5) = 1. 한쪽뿐이면 0.</p>
+</details>
+<p class="q"><strong>문 104.</strong> 랜덤 포레스트의 학습 방식은?</p>
+<p>① 약한 학습기를 순차적으로 학습시켜 오답에 가중치를 준다.
+② 부트스트랩 샘플과 무작위 특징 선택으로 여러 트리를 만들어 평균 낸다.
+③ 하나의 깊은 트리를 만든다.
+④ 트리를 가지치기하지 않고 하나만 쓴다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 배깅 계열이다. ①은 부스팅(AdaBoost, GBM, XGBoost).</p>
+</details>
+<p class="q"><strong>문 105.</strong> SVM의 핵심 아이디어는?</p>
+<p>① 클래스 간 마진을 최대화하는 결정 경계를 찾는다.
+② 가장 가까운 k개 이웃을 본다.
+③ 특징 간 독립을 가정한다.
+④ 중심점을 반복 갱신한다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 비선형은 커널 트릭으로 처리한다. ③은 나이브 베이즈, ④는 k-means.</p>
+</details>
+<p class="q"><strong>문 106.</strong> 혼동 행렬이 TP 40, FP 10, FN 20, TN 30일 때 정밀도와 재현율은?</p>
+<p>① 0.8, 0.667  ② 0.667, 0.8  ③ 0.7, 0.8  ④ 0.8, 0.7</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 정밀도 = 40 / (40 + 10) = 0.8. 재현율 = 40 / (40 + 20) ≈ 0.667.</p>
+</details>
+<p class="q"><strong>문 107.</strong> 위 혼동 행렬의 정확도는?</p>
+<p>① 0.6  ② 0.7  ③ 0.8  ④ 0.9</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> (40 + 30) / 100 = 0.7.</p>
+</details>
+<p class="q"><strong>문 108.</strong> 정밀도 0.8, 재현율 0.6일 때 F1 점수는?</p>
+<p>① 0.7  ② 0.686  ③ 0.72  ④ 0.48</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 2 × 0.8 × 0.6 / (0.8 + 0.6) = 0.96 / 1.4 ≈ 0.686. 산술 평균(0.7)이 아니라 조화 평균이다.</p>
+</details>
+<p class="q"><strong>문 109.</strong> 양성이 1%뿐인 불균형 데이터에서 모든 샘플을 음성으로 예측하는 모델의 정확도는 99%다. 이 모델의 문제를 드러내는 지표는?</p>
+<p>① 정확도  ② 재현율  ③ 학습 시간  ④ 파라미터 수</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 양성을 하나도 못 잡으므로 재현율 0. 불균형 데이터에서는 정밀도, 재현율, F1을 본다.</p>
+</details>
+<p class="q"><strong>문 110.</strong> ROC 곡선의 x축과 y축은?</p>
+<p>① x: 정밀도, y: 재현율  ② x: FPR, y: TPR  ③ x: TPR, y: FPR  ④ x: 임계값, y: 정확도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> AUC가 1에 가까울수록 좋고 0.5는 무작위.</p>
+</details>
+<p class="q"><strong>문 111.</strong> 학습 오차는 매우 낮은데 검증 오차가 높은 상태와 그 해결책으로 옳은 것은?</p>
+<p>① 과소적합, 모델을 더 복잡하게
+② 과적합, 드롭아웃이나 정규화 적용
+③ 과적합, 학습 데이터를 줄임
+④ 과소적합, 학습률을 0으로</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 과적합 해결: 데이터 증강, 정규화(L1, L2), 드롭아웃, 조기 종료, 모델 단순화.</p>
+</details>
+<p class="q"><strong>문 112.</strong> L1 정규화(라쏘)의 특징은?</p>
+<p>① 가중치를 0에 가깝게 하되 0으로 만들지는 않는다.
+② 일부 가중치를 정확히 0으로 만들어 특징 선택 효과가 있다.
+③ 학습률을 자동 조정한다.
+④ 배치 크기를 늘린다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> L2(릿지)는 가중치를 작게만 만든다.</p>
+</details>
+<p class="q"><strong>문 113.</strong> 단층 퍼셉트론이 학습할 수 없는 문제는?</p>
+<p>① AND  ② OR  ③ XOR  ④ NOT</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> XOR은 선형 분리가 안 된다. 다층 퍼셉트론과 역전파로 해결되었다.</p>
+</details>
+<p class="q"><strong>문 114.</strong> 다중 클래스 분류 신경망의 출력층 활성화 함수와 손실 함수의 조합으로 적절한 것은?</p>
+<p>① 시그모이드, MSE  ② 소프트맥스, 교차 엔트로피  ③ ReLU, MSE  ④ tanh, 교차 엔트로피</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 이진 분류는 시그모이드 + 이진 교차 엔트로피, 회귀는 항등 함수 + MSE.</p>
+</details>
+<p class="q"><strong>문 115.</strong> 기울기 소실 문제를 완화하는 방법으로 옳지 않은 것은?</p>
+<p>① ReLU 활성화 함수 사용  ② 배치 정규화  ③ 잔차 연결(ResNet)  ④ 시그모이드 층을 더 깊게 쌓기</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 시그모이드는 기울기 소실의 원인이다.</p>
+</details>
+<p class="q"><strong>문 116.</strong> 경사 하강법에서 학습률이 너무 클 때 나타나는 현상은?</p>
+<p>① 수렴이 매우 느리다  ② 손실이 발산하거나 진동한다  ③ 항상 전역 최적에 도달한다  ④ 과적합이 사라진다</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 너무 작으면 느리고, 너무 크면 튄다.</p>
+</details>
+<p class="q"><strong>문 117.</strong> 모멘텀과 RMSProp의 아이디어를 결합한 옵티마이저는?</p>
+<p>① SGD  ② AdaGrad  ③ Adam  ④ Newton</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 118.</strong> 입력 32×32, 필터 5×5, 패딩 0, 스트라이드 1인 합성곱층의 출력 크기는?</p>
+<p>① 32×32  ② 28×28  ③ 27×27  ④ 16×16</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> (32 − 5 + 0) / 1 + 1 = 28.</p>
+</details>
+<p class="q"><strong>문 119.</strong> 입력 28×28, 필터 3×3, 패딩 1, 스트라이드 1인 합성곱층의 출력 크기는?</p>
+<p>① 26×26  ② 27×27  ③ 28×28  ④ 30×30</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> (28 − 3 + 2) / 1 + 1 = 28. 이른바 same 패딩이다.</p>
+</details>
+<p class="q"><strong>문 120.</strong> Transformer에 대한 설명으로 옳지 않은 것은?</p>
+<p>① 셀프 어텐션으로 시퀀스 내 단어 간 관계를 계산한다.
+② 순환 구조가 없어 병렬 처리가 가능하다.
+③ 순서 정보를 위해 위치 인코딩을 더한다.
+④ BERT는 디코더만, GPT는 인코더만 사용한다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 반대다. BERT는 인코더(양방향, 이해), GPT는 디코더(자기회귀, 생성).</p>
+</details>
+</section><section class="sec noquiz" id="csdrill-5"><h2>전공 모의고사 (문 121~180)</h2>
+<blockquote>
+<p><strong>60문항 80분.</strong> 타이머를 80:00으로 켜고 한 번에 푼다. 구성: 소프트웨어공학 13, 데이터베이스 14, 프로그래밍과 자료구조 14, 인공지능 14, 운영체제와 네트워크 5.
+실제 시험의 과목별 문항 수는 공개되지 않았다. 공고의 출제 범위(소프트웨어공학, 데이터베이스, 프로그래밍, AI의 기본 원리)에 맞춰 배분했고, "전산학 일반"을 감안해 OS와 네트워크를 소량 넣었다.</p>
+</blockquote>
+<h3>모의 소프트웨어공학 (문 121~133)</h3>
+<p class="q"><strong>문 121.</strong> 폭포수 모델의 특징으로 옳은 것은?</p>
+<p>① 요구사항 변경에 유연하다.
+② 각 단계가 끝나야 다음 단계로 넘어가며 되돌아가기 어렵다.
+③ 위험 분석을 반복한다.
+④ 프로토타입을 먼저 만든다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 122.</strong> 스크럼의 스프린트 기간으로 일반적인 것은?</p>
+<p>① 1일  ② 2~4주  ③ 6개월  ④ 1년</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 123.</strong> 기능 요구사항에 해당하는 것은?</p>
+<p>① 응답 시간은 2초 이내여야 한다.
+② 동시 사용자 1,000명을 지원해야 한다.
+③ 회원은 증명서를 PDF로 발급받을 수 있어야 한다.
+④ 시스템 가용성은 99.9% 이상이어야 한다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 나머지는 비기능(성능, 용량, 가용성) 요구사항이다.</p>
+</details>
+<p class="q"><strong>문 124.</strong> 클래스 다이어그램에서 인터페이스를 구현하는 관계를 나타내는 표기는?</p>
+<p>① 실선 화살표  ② 빈 삼각형 실선  ③ 빈 삼각형 점선  ④ 채운 마름모</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 실체화(realization). 일반화(상속)는 빈 삼각형 실선.</p>
+</details>
+<p class="q"><strong>문 125.</strong> 다음 중 가장 바람직한 모듈 조합은?</p>
+<p>① 자료 결합도, 기능적 응집도
+② 내용 결합도, 기능적 응집도
+③ 자료 결합도, 우연적 응집도
+④ 공통 결합도, 논리적 응집도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 결합도는 가장 낮은 자료, 응집도는 가장 높은 기능.</p>
+</details>
+<p class="q"><strong>문 126.</strong> 두 모듈이 전역 변수를 공유해 데이터를 주고받는 결합도는?</p>
+<p>① 스탬프 결합도  ② 외부 결합도  ③ 공통 결합도  ④ 내용 결합도</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 127.</strong> 다음 설명에 해당하는 디자인 패턴은?</p>
+<blockquote>
+<p>객체의 인터페이스를 클라이언트가 기대하는 다른 인터페이스로 변환해 호환되지 않는 클래스들이 함께 동작하게 한다.</p>
+</blockquote>
+<p>① 어댑터  ② 데코레이터  ③ 프록시  ④ 싱글톤</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 128.</strong> 알고리즘군을 정의하고 각각 캡슐화해 실행 중에 교체할 수 있게 하는 패턴은?</p>
+<p>① 상태  ② 전략  ③ 템플릿 메서드  ④ 커맨드</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 129.</strong> 상향식 통합 테스트에서 상위 모듈을 대신하는 것은?</p>
+<p>① 스텁  ② 드라이버  ③ 목(Mock)  ④ 클러스터</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 130.</strong> 소프트웨어를 수정한 뒤 기존 기능이 여전히 잘 동작하는지 확인하는 테스트는?</p>
+<p>① 단위 테스트  ② 회귀 테스트  ③ 알파 테스트  ④ 스모크 테스트</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 131.</strong> 개발자 환경에서 사용자가 직접 수행하는 인수 테스트는?</p>
+<p>① 알파 테스트  ② 베타 테스트  ③ 감마 테스트  ④ 부하 테스트</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 베타는 사용자 환경에서 개발자 없이.</p>
+</details>
+<p class="q"><strong>문 132.</strong> LOC 기법에서 낙관치 4,000, 중간치 5,000, 비관치 9,000라인일 때 예측치는?</p>
+<p>① 5,000  ② 5,500  ③ 6,000  ④ 6,500</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> (4,000 + 4 × 5,000 + 9,000) / 6 = 33,000 / 6 = 5,500.</p>
+</details>
+<p class="q"><strong>문 133.</strong> 형상 관리 절차를 순서대로 나열한 것은?</p>
+<p>① 형상 식별 → 형상 통제 → 형상 감사 → 형상 기록
+② 형상 통제 → 형상 식별 → 형상 기록 → 형상 감사
+③ 형상 감사 → 형상 식별 → 형상 통제 → 형상 기록
+④ 형상 기록 → 형상 식별 → 형상 통제 → 형상 감사</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<h3>모의 데이터베이스 (문 134~147)</h3>
+<p class="q"><strong>문 134.</strong> ER 다이어그램(피터 첸 표기)에서 관계(relationship)를 나타내는 도형은?</p>
+<p>① 사각형  ② 타원  ③ 마름모  ④ 원</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 개체는 사각형, 속성은 타원.</p>
+</details>
+<p class="q"><strong>문 135.</strong> 다음 중 릴레이션의 특성으로 옳지 않은 것은?</p>
+<p>① 튜플은 중복되지 않는다.
+② 튜플의 순서는 의미가 없다.
+③ 속성값은 원자값이다.
+④ 속성의 순서는 의미가 있다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong></p>
+</details>
+<p class="q"><strong>문 136.</strong> 다른 릴레이션의 기본키를 참조하는 속성은?</p>
+<p>① 후보키  ② 대체키  ③ 외래키  ④ 슈퍼키</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 137.</strong> 관계 대수에서 두 릴레이션의 합집합이 가능하려면?</p>
+<p>① 카디널리티가 같아야 한다.
+② 차수가 같고 대응 속성의 도메인이 같아야 한다.
+③ 기본키가 같아야 한다.
+④ 외래키로 연결되어야 한다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 합병 가능(union-compatible) 조건이다.</p>
+</details>
+<p class="q"><strong>문 138.</strong> 이상(anomaly)에 대한 설명으로 옳은 것은?</p>
+<p>① 삽입 이상은 원하지 않는 정보까지 함께 삭제되는 현상이다.
+② 삭제 이상은 불필요한 데이터가 있어야만 삽입할 수 있는 현상이다.
+③ 갱신 이상은 중복된 값 중 일부만 갱신되어 불일치가 생기는 현상이다.
+④ 이상은 정규화를 할수록 심해진다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> ①과 ②는 설명이 서로 바뀌었다.</p>
+</details>
+<p class="q"><strong>문 139.</strong> 릴레이션 주문(주문번호, 고객번호, 고객명, 상품코드, 수량)에서 기본키는 (주문번호, 상품코드), 함수 종속 주문번호 → 고객번호, 고객번호 → 고객명이 있다. 이 릴레이션의 정규형은?</p>
+<p>① 1NF  ② 2NF  ③ 3NF  ④ BCNF</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> 고객번호가 기본키의 일부(주문번호)에만 종속되는 부분 함수 종속이 있어 2NF를 만족하지 못한다. 원자값이므로 1NF.</p>
+</details>
+<p class="q"><strong>문 140.</strong> 반정규화를 수행하는 이유로 가장 적절한 것은?</p>
+<p>① 데이터 중복을 없애기 위해
+② 조인을 줄여 조회 성능을 높이기 위해
+③ 이상 현상을 방지하기 위해
+④ 저장 공간을 줄이기 위해</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 141.</strong> 다음 SQL의 결과 행 수는?</p>
+<blockquote>
+<p>테이블 학생(이름, 학년, 점수): (김, 1, 70), (이, 2, 85), (박, 2, 90), (최, 3, 60), (정, 3, 95)
+<code>SELECT 학년 FROM 학생 WHERE 점수 &gt;= 80 GROUP BY 학년 HAVING COUNT(*) &gt;= 2;</code></p>
+</blockquote>
+<p>① 0  ② 1  ③ 2  ④ 3</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> WHERE로 남는 것: 이(2), 박(2), 정(3). 학년별 개수 2학년 2, 3학년 1. HAVING으로 2학년만 남아 1행.</p>
+</details>
+<p class="q"><strong>문 142.</strong> 테이블에서 특정 행만 삭제하려면?</p>
+<p>① DROP TABLE 학생 WHERE 학년 = 1;
+② TRUNCATE TABLE 학생 WHERE 학년 = 1;
+③ DELETE FROM 학생 WHERE 학년 = 1;
+④ REMOVE FROM 학생 WHERE 학년 = 1;</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 143.</strong> 컬럼 값이 20, NULL, 40일 때 <code>AVG(컬럼)</code>의 결과는?</p>
+<p>① 20  ② 30  ③ 60  ④ NULL</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> NULL을 제외한 (20 + 40) / 2.</p>
+</details>
+<p class="q"><strong>문 144.</strong> 두 테이블에서 조인 조건에 맞지 않는 왼쪽 테이블의 행도 모두 포함하는 조인은?</p>
+<p>① INNER JOIN  ② LEFT OUTER JOIN  ③ CROSS JOIN  ④ SELF JOIN</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 145.</strong> 트랜잭션의 격리 수준 중 가장 엄격하며 Phantom Read까지 막는 것은?</p>
+<p>① READ UNCOMMITTED  ② READ COMMITTED  ③ REPEATABLE READ  ④ SERIALIZABLE</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong></p>
+</details>
+<p class="q"><strong>문 146.</strong> 교착 상태의 4가지 필요 조건이 아닌 것은?</p>
+<p>① 상호 배제  ② 점유와 대기  ③ 선점  ④ 환형 대기</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 비선점이 조건이다. 선점을 허용하면 교착이 예방된다.</p>
+</details>
+<p class="q"><strong>문 147.</strong> B+트리 인덱스가 해시 인덱스보다 유리한 경우는?</p>
+<p>① 정확히 일치하는 값 하나를 찾을 때
+② 범위 검색(BETWEEN)을 할 때
+③ 데이터가 매우 적을 때
+④ 인덱스 크기를 최소화할 때</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> B+트리는 리프가 연결되어 있어 범위 검색에 강하고, 해시는 동등 비교에만 강하다.</p>
+</details>
+<h3>모의 프로그래밍과 자료구조 (문 148~161)</h3>
+<p class="q"><strong>문 148.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">class Counter { static int cnt = 0; Counter() { cnt++; } }
+...
+new Counter(); new Counter(); new Counter();
+System.out.println(Counter.cnt);
+</code></pre>
+<p>① 0  ② 1  ③ 3  ④ 컴파일 오류</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> static 필드는 모든 인스턴스가 공유한다.</p>
+</details>
+<p class="q"><strong>문 149.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">int x = 0;
+if (x != 0 &amp;&amp; 10 / x &gt; 1) System.out.println(&quot;yes&quot;);
+else System.out.println(&quot;no&quot;);
+</code></pre>
+<p>① yes  ② no  ③ ArithmeticException  ④ 컴파일 오류</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> &amp;&amp;는 앞이 거짓이면 뒤를 평가하지 않아 0으로 나누기가 실행되지 않는다.</p>
+</details>
+<p class="q"><strong>문 150.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">int i = 10;
+i += i++ + ++i;
+System.out.println(i);
+</code></pre>
+<p>① 30  ② 31  ③ 32  ④ 33</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> i += (10 + 12) → 10 + 22 = 32. 복합 대입은 왼쪽 값(10)을 먼저 읽어 둔다.</p>
+</details>
+<p class="q"><strong>문 151.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">System.out.println((char)('A' + 2) + &quot; &quot; + (int)'A');
+</code></pre>
+<p>① C 65  ② 67 65  ③ C A  ④ A2 65</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 152.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">double d = 7 / 2;
+System.out.println(d + &quot; &quot; + 7 / 2.0);
+</code></pre>
+<p>① 3.5 3.5  ② 3.0 3.5  ③ 3 3.5  ④ 3.0 3.0</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 7 / 2는 정수 나눗셈 3이 먼저 계산된 뒤 double로 변환된다.</p>
+</details>
+<p class="q"><strong>문 153.</strong> 다음 Java 코드의 출력은?</p>
+<pre><code class="language-java">int[][] m = {{1, 2}, {3, 4}};
+int t = 0;
+for (int[] r : m) for (int v : r) t += v;
+System.out.println(t);
+</code></pre>
+<p>① 4  ② 6  ③ 10  ④ 24</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 154.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">n = 0
+for i in range(3):
+    for j in range(i):
+        n += 1
+print(n)
+</code></pre>
+<p>① 3  ② 6  ③ 9  ④ 0</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong> i = 0일 때 0회, 1일 때 1회, 2일 때 2회.</p>
+</details>
+<p class="q"><strong>문 155.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">i = 0
+c = 0
+while i &lt; 10:
+    i += 3
+    c += 1
+print(i, c)
+</code></pre>
+<p>① 9 3  ② 10 4  ③ 12 4  ④ 12 3</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> i는 3, 6, 9, 12로 4번 증가.</p>
+</details>
+<p class="q"><strong>문 156.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">print(len({1, 2, 2, 3}), {1, 2} | {2, 3}, {1, 2} &amp; {2, 3})
+</code></pre>
+<p>① 4 {1, 2, 3} {2}  ② 3 {1, 2, 3} {2}  ③ 3 {1, 2, 2, 3} {}  ④ 4 {1, 2, 2, 3} {2}</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 집합은 중복을 제거한다.</p>
+</details>
+<p class="q"><strong>문 157.</strong> 다음 Python 코드의 결과는?</p>
+<pre><code class="language-python">t = (1, 2)
+t[0] = 5
+</code></pre>
+<p>① t가 (5, 2)가 된다  ② TypeError  ③ IndexError  ④ (1, 2) 그대로 아무 일 없음</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 튜플은 불변이다.</p>
+</details>
+<p class="q"><strong>문 158.</strong> 다음 Python 코드의 출력은?</p>
+<pre><code class="language-python">print(round(2.5), round(3.5), int(3.9), -7 // 2)
+</code></pre>
+<p>① 3 4 4 -3  ② 2 4 3 -4  ③ 3 4 3 -4  ④ 2 3 3 -3</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> Python의 round는 짝수 쪽으로(은행가 반올림), int는 버림, //는 내림.</p>
+</details>
+<p class="q"><strong>문 159.</strong> 후위 표기식 <code>3 4 + 2 *</code>의 값은?</p>
+<p>① 11  ② 14  ③ 10  ④ 24</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> (3 + 4) × 2.</p>
+</details>
+<p class="q"><strong>문 160.</strong> 빈 이진 탐색 트리에 50, 30, 70, 20, 40을 순서대로 삽입한 뒤 전위 순회한 결과는?</p>
+<p>① 20 30 40 50 70  ② 50 30 20 40 70  ③ 20 40 30 70 50  ④ 50 70 30 40 20</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 루트 50, 왼쪽 30(그 아래 20, 40), 오른쪽 70. 전위는 루트 → 왼쪽 → 오른쪽. ①은 중위(오름차순), ③은 후위.</p>
+</details>
+<p class="q"><strong>문 161.</strong> 다음 코드의 시간 복잡도는?</p>
+<pre><code class="language-python">for i in range(n):
+    for j in range(n):
+        total += i * j
+</code></pre>
+<p>① O(1)  ② O(n)  ③ O(n log n)  ④ O(n²)</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong></p>
+</details>
+<h3>모의 인공지능 (문 162~175)</h3>
+<p class="q"><strong>문 162.</strong> 약한 AI와 강한 AI에 대한 설명으로 옳은 것은?</p>
+<p>① 약한 AI는 인간 수준의 범용 지능을 가진다.
+② 강한 AI는 특정 작업만 수행한다.
+③ 현재 상용화된 AI는 대부분 약한 AI다.
+④ 강한 AI는 이미 널리 상용화되었다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 163.</strong> 깊이 우선 탐색(DFS)에 사용하는 자료구조는?</p>
+<p>① 큐  ② 스택  ③ 힙  ④ 해시 테이블</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> BFS는 큐.</p>
+</details>
+<p class="q"><strong>문 164.</strong> 반복 심화 탐색(IDS)의 장점은?</p>
+<p>① DFS의 메모리 효율과 BFS의 완전성을 함께 얻는다.
+② 휴리스틱이 필요 없어 항상 가장 빠르다.
+③ 메모리를 BFS보다 많이 쓴다.
+④ 최적해를 절대 보장하지 않는다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ①.</strong></p>
+</details>
+<p class="q"><strong>문 165.</strong> 유전 알고리즘의 연산자가 아닌 것은?</p>
+<p>① 선택  ② 교차  ③ 돌연변이  ④ 역전파</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ④.</strong> 역전파는 신경망 학습 방법이다.</p>
+</details>
+<p class="q"><strong>문 166.</strong> 명제 "p이면 q이다"와 항상 동치인 것은?</p>
+<p>① q이면 p이다  ② p가 아니면 q가 아니다  ③ q가 아니면 p가 아니다  ④ p이고 q이다</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 대우.</p>
+</details>
+<p class="q"><strong>문 167.</strong> 다음 중 비지도 학습 과제는?</p>
+<p>① 스팸 메일 분류  ② 집값 예측  ③ 고객 세분화(군집)  ④ 손글씨 숫자 인식</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong></p>
+</details>
+<p class="q"><strong>문 168.</strong> 나이브 베이즈 분류기의 "나이브"가 뜻하는 가정은?</p>
+<p>① 클래스가 두 개뿐이다  ② 특징들이 서로 조건부 독립이다  ③ 데이터가 정규분포를 따른다  ④ 학습 데이터가 무한하다</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 169.</strong> k-means 군집에 대한 설명으로 옳지 않은 것은?</p>
+<p>① 군집 수 k를 미리 정해야 한다.
+② 초기 중심점에 따라 결과가 달라질 수 있다.
+③ 임의 모양의 군집을 잘 찾는다.
+④ 중심점 갱신을 수렴할 때까지 반복한다.</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 임의 모양과 이상치에 강한 것은 DBSCAN이다.</p>
+</details>
+<p class="q"><strong>문 170.</strong> 학습 데이터를 k개로 나누어 하나씩 검증용으로 돌려가며 평가하는 방법은?</p>
+<p>① 홀드아웃  ② k-겹 교차 검증  ③ 부트스트랩  ④ 조기 종료</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 171.</strong> 혼동 행렬이 TP 30, FP 20, FN 10, TN 40일 때 재현율은?</p>
+<p>① 0.6  ② 0.667  ③ 0.75  ④ 0.7</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ③.</strong> 30 / (30 + 10) = 0.75. 정밀도는 30 / 50 = 0.6.</p>
+</details>
+<p class="q"><strong>문 172.</strong> 시그모이드 함수의 출력 범위는?</p>
+<p>① −1 ~ 1  ② 0 ~ 1  ③ 0 ~ ∞  ④ −∞ ~ ∞</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> tanh가 −1 ~ 1, ReLU가 0 ~ ∞.</p>
+</details>
+<p class="q"><strong>문 173.</strong> 학습 데이터 10,000개를 배치 크기 100으로 학습하면 1에폭당 이터레이션 수는?</p>
+<p>① 10  ② 100  ③ 1,000  ④ 10,000</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 10,000 / 100.</p>
+</details>
+<p class="q"><strong>문 174.</strong> 입력 64×64, 필터 3×3, 패딩 0, 스트라이드 1 합성곱 뒤 2×2 최대 풀링(스트라이드 2)을 거친 출력 크기는?</p>
+<p>① 32×32  ② 31×31  ③ 62×62  ④ 30×30</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 합성곱 후 62×62, 풀링으로 절반 31×31.</p>
+</details>
+<p class="q"><strong>문 175.</strong> LLM이 그럴듯하지만 사실이 아닌 내용을 생성하는 현상과, 이를 줄이기 위해 외부 문서를 검색해 근거로 제공하는 기법은?</p>
+<p>① 과적합, 드롭아웃  ② 할루시네이션, RAG  ③ 기울기 소실, ResNet  ④ 편향, 정규화</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<h3>모의 운영체제와 네트워크 (문 176~180)</h3>
+<p class="q"><strong>문 176.</strong> 프로세스 상태 전이에서 "실행 → 준비"로 가는 경우는?</p>
+<p>① 입출력 요청  ② 타임 슬라이스 소진(타임아웃)  ③ 디스패치  ④ 입출력 완료</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 입출력 요청은 실행 → 대기, 디스패치는 준비 → 실행, 입출력 완료는 대기 → 준비.</p>
+</details>
+<p class="q"><strong>문 177.</strong> 페이지 참조열 1, 2, 3, 1, 4, 5에 프레임 3개, FIFO 교체를 적용할 때 페이지 부재 횟수는?</p>
+<p>① 4  ② 5  ③ 6  ④ 3</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 1(부재) 2(부재) 3(부재) 1(적중) 4(부재, 1 교체) 5(부재, 2 교체). 총 5회.</p>
+</details>
+<p class="q"><strong>문 178.</strong> OSI 7계층에서 IP 주소를 기반으로 경로를 결정하는 계층은?</p>
+<p>① 데이터링크  ② 네트워크  ③ 전송  ④ 세션</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 179.</strong> TCP 3-way handshake의 순서는?</p>
+<p>① SYN → ACK → SYN+ACK  ② SYN → SYN+ACK → ACK  ③ ACK → SYN → FIN  ④ SYN+ACK → SYN → ACK</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong></p>
+</details>
+<p class="q"><strong>문 180.</strong> 서브넷 마스크가 255.255.255.192(/26)일 때 한 서브넷에서 사용 가능한 호스트 수는?</p>
+<p>① 30  ② 62  ③ 64  ④ 126</p>
+<details class="ans"><summary>정답과 풀이</summary><p><strong>정답 ②.</strong> 호스트 비트 6개 → 2⁶ − 2 = 62.</p>
 </details></section></article></div>
 
   <p class="foot">원본: prep/cs-written-exam-summary.md, prep/ncs-intro.md (2026-09-29). ★ 표시는 빈출.</p>
@@ -3438,12 +4463,12 @@ D: "B의 말은 거짓이다."</p>
       if (on) chipsBar.innerHTML = p.querySelector('.chips').innerHTML;
     });
     store('lofa-tab', key);
+    if (window.__setTimer) window.__setTimer(key);
   }
   tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.part); window.scrollTo(0, 0); }); });
   var h = (location.hash || '').slice(1);
   var start = document.getElementById('part-' + h) ? h : (store('lofa-tab') || 'cs');
   if (!document.getElementById('part-' + start)) start = 'cs';
-  show(start);
 
   var quiz = document.getElementById('quiz'), hint = document.getElementById('hint');
   quiz.addEventListener('click', function () {
@@ -3473,6 +4498,12 @@ D: "B의 말은 거짓이다."</p>
   });
   tbtn.addEventListener('dblclick', function () { stop(); left = T; tbtn.classList.remove('done'); draw(); });
   draw();
+  // 탭별 기본 시간: NCS 70분, 전공 80분. 타이머가 돌고 있거나 건드린 상태면 바꾸지 않는다
+  window.__setTimer = function (key) {
+    if (tick || left !== T) return;
+    T = (key === 'csdrill') ? 80 * 60 : 70 * 60; left = T; draw();
+  };
+  show(start);
 
   var exam = new Date(2026, 9, 11), now = new Date();
   var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
